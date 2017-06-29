@@ -10,7 +10,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 export class AppComponent {
   title = 'app';
 
-  constructor(db: AngularFireDatabase) {
+  constructor(/*db: AngularFireDatabase*/) {
   }
 
 }

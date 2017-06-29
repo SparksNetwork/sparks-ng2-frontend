@@ -16,7 +16,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
     // come before AppRoutingModule, as
     // AppRoutingModule defines the catch-all ** route
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    //AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
   ],
   providers: [],
