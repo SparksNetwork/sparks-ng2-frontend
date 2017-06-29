@@ -1,4 +1,5 @@
 import { TestBed, async } from '@angular/core/testing';
+import RouterTestingModule from '@angular/cli'
 
 import { AppComponent } from './app.component';
 
@@ -7,6 +8,9 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
+      ],
+      imports: [
+        RouterTestingModule
       ],
     }).compileComponents();
   }));

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(db: AngularFireDatabase) {
+  }
+
 }
