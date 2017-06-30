@@ -1,5 +1,262 @@
 <app-header-carousel></app-header-carousel>
 
-<p>
-  event works!
-</p>
+<!-- @TODO generate EVENT TITLE+DATE+LOCATION component -->
+<div class="row">
+  <div class="col-xs-12">
+    <div id="event-head" class="row segment">
+      <div class="col-xs-10">
+        <h1 class="event-title">Department of Public Works</h1>
+      </div>
+      <div class="col-xs-2">
+        2700 up to <a><span class="glyphicon glyphicon-star"></span></a>
+      </div>
+    </div>
+    <div id="event-date-location" class="row segment">
+      <div id="event-date" class="col-xs-6 text-right">
+        <a href="#">
+          <div class="icon">
+            <span class="glyphicon glyphicon-calendar glyphicon-lg"></span>
+          </div>
+          <div class="text">
+            july 5 - sept 15<br/><span>add to calendar</span>
+          </div>
+        </a>
+      </div>
+      <div id="event-location" class="col-xs-6">
+        <a href="#">
+          <div class="text">
+            Black Rocky City, NV<br/><span>get directions</span>
+          </div>
+          <div class="icon">
+            <span class="glyphicon glyphicon-map-marker glyphicon-lg"></span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div id="event-description" class="row segment">
+      <div class="col-xs-12">
+        <p class="card-text">Make Kellog Park Great Again! Help plant, paint, and beautify our community park. Si se puedes!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate YOU WILL GET/ YOU WILL GIVE component -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="you-will-give-got segment">
+      <h3>You Will Get</h3>
+      <ul>
+        <li>
+          <div class="icon">
+            <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
+          </div>
+          <div class="text">
+            <h4><span class="count">20</span> Karma Points</h4>
+            <p>Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network</p>
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
+          </div>
+          <div class="text">
+            <h4>To help you community</h4>
+            <p>Serve your neightbors on the Avenue!</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="you-will-give-got segment">
+      <h3>You Will Give</h3>
+      <ul>
+        <li>
+          <div class="icon">
+            <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
+          </div>
+          <div class="text">
+            <h4><span class="shiftcount">1</span> Shift</h4>
+            <p>Serve your neightbors on the Avenue!</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate USER SCHEDULE component -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row segment">
+      <div class="col-xs-12">
+        <div class="col-xs-6">
+          <h3>Your Schedule</h3>
+        </div>
+        <div class="col-xs-6"><a href="#">add to calendar <span class="glyphicon glyphicon-calendar"></span></a></div>
+      </div>
+
+
+      <div class="col-xs-12">
+        <ul class="timeline">
+          <li>
+            <div class="timeline-info">
+              <div class="timeline-title">
+                <h4>Head Squad - <span>Shift - 1</span></h4>
+              </div>
+              <div class="timeline-when">
+                <p>june 1st, 2017 - 2:00 PM</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-info">
+              <div class="timeline-title">
+                <h4>Security Crew - <span>Shift - 2</span></h4>
+              </div>
+              <div class="timeline-when">
+                <p>june 1st, 2017 - 2:00 PM</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="timeline-info">
+              <div class="timeline-title">
+                <h4>Heath Squad - <span>Shift - 3</span></h4>
+              </div>
+              <div class="timeline-when">
+                <p>june 1st, 2017 - 2:00 PM</p>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate EVENT BADGES component: normal, active, pending, disabled -->
+<div class="row">
+  <div class="col-xs-12">
+    <div id="event-requirements" class="row segment">
+      <div class="col-xs-6" data-badgetype="pending">
+        <div class="icon">
+          <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
+          <div class="status">pending</div>  
+        </div>
+        <div class="text">
+          <h4>Volunteer</h4>
+          <p>30 Days</p>
+          <p><span>100% involvement</span></p>
+        </div>
+      </div>
+      <div class="col-xs-6" data-badgetype="active">
+        <div class="icon">
+          <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
+          <div class="status">active</div>
+        </div>
+        <div class="text">
+          <h4>Crew</h4>
+          <p>60 Days</p>
+          <p><span>100% involvement</span></p>
+        </div>
+      </div>
+
+      <!-- 8-v2-Event-Normal-Multi-Day, 8-v3-Event-Normal-Pending, 8-v4-Event-Normal-Active Has more elements here START -->
+      <div class="col-xs-6 req-disabled" data-badgetype="disabled">
+        <div class="icon">
+          <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
+        </div>
+        <div class="text">
+          <h4>Pre-Event Builders</h4>
+          <p>$364 in value</p>
+          <p><span>100% involvement</span></p>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="icon">
+          <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
+        </div>
+        <div class="text">
+          <h4>Crew</h4>
+          <p>60 Days</p>
+          <p><span>100% involvement</span></p>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="icon">
+          <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
+        </div>
+        <div class="text">
+          <h4>Teardown $59</h4>
+          <p>$444 in value</p>
+          <p><span>87% discount</span></p>
+        </div>
+      </div>
+      <!-- Has more elements here END -->
+
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate EVENT ORGANIZER component -->
+<div class="row">
+  <div class="col-xs-12">
+    <div id="event-organizer" class="row segment">
+      <div class="col-xs-12">
+        <h3>Organized by</h3>
+        <div class="row">
+          <div class="col-xs-9">Cobra Commander from The Burning Man Project</div>
+          <div class="col-xs-3"><img class="img-circle" src="https://placeimg.com/30/30/people/grayscale" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate EVENT SOCIAL component -->
+<div class="row">
+  <div class="col-xs-12">
+    <div id="event-social" class="row">
+      <div class="col-xs-8"><a href="#">View Event Page <span class="glyphicon glyphicon glyphicon-link"></span></a></div>
+      <div class="col-xs-4 text-center">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+          <div class="btn-group" role="group">
+            <a href="#"><span class="glyphicon glyphicon-cog"></span></a>
+          </div>
+          <div class="btn-group" role="group">
+            <a href="#"><span class="glyphicon glyphicon-cog"></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div id="share-for-karma">
+          <span>Share for 100 Karma Points</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate EVENT CONTACT component -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="col-xs-4">
+      <div id="event-contact" class="row segment">
+        <div class="col-xs-12">
+          <a href="#"><span class="glyphicon glyphicon-cog"></span>Ask The Organizer</a>
+        </div>
+      </div>
+    </div>
+
+    <!--<?php if ( basename($_SERVER["SCRIPT_FILENAME"], '.php') == '8-v1-Event-Simple-one-' ){ ?>-->
+    <div class="col-xs-6">
+      <a href="#" class="btn btn-default" title="Join Now">Join Now</a>
+    </div>
+    <!--<?php } ?>-->
+
+  </div>
+</div>
