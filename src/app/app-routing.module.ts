@@ -6,7 +6,9 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
-    { path: 'events', loadChildren: 'app/events/events.module#EventsModule' },    
+    { path: 'events', loadChildren: 'app/events/events.module#EventsModule' },  
+    { path: 'profile', loadChildren: 'app/user-profile/user-profile.module#UserProfileModule' },
+    { path: 'account', loadChildren: 'app/account/account.module#AccountModule' },    
     { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ]
 

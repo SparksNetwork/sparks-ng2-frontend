@@ -5,10 +5,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from "app/app-routing.module";
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { SharedModule } from "app/shared/shared.module";
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     
@@ -17,7 +17,8 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
     // AppRoutingModule defines the catch-all ** route
     AppRoutingModule,
     //AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
