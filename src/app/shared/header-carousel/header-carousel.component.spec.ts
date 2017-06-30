@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderSpinnerComponent } from './header-spinner.component';
+import { HeaderCarouselComponent } from './header-carousel.component';
 
-describe('HeaderSpinnerComponent', () => {
-  let component: HeaderSpinnerComponent;
-  let fixture: ComponentFixture<HeaderSpinnerComponent>;
+describe('HeaderCarouselComponent', () => {
+  let component: HeaderCarouselComponent;
+  let fixture: ComponentFixture<HeaderCarouselComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderSpinnerComponent ]
+      declarations: [ HeaderCarouselComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderSpinnerComponent);
+    fixture = TestBed.createComponent(HeaderCarouselComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
