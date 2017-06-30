@@ -97,6 +97,17 @@
         &:first-child:nth-last-child(2) ~ li {
             border-bottom: none;
         }
+        &[data-badgetype="pending"]{
+            .status{
+                 opacity: 0.6;
+            }
+        }
+        &[data-badgetype="active"]{
+            opacity: 0.6;
+        }
+        &[data-badgetype="disabled"]{
+            opacity: 0.6;
+        }
     }
     .icon {
         width: 50px;
@@ -115,9 +126,6 @@
         span {
             font-size: 12px;
         }
-    }
-    .req-disabled {
-        opacity: 0.6;
     }
 }
 
