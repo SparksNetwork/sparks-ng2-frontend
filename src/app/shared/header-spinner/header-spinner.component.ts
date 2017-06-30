@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-header-spinner',
+  selector: 'header-spinner',
   templateUrl: './header-spinner.component.html',
   styleUrls: ['./header-spinner.component.css']
 })

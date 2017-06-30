@@ -8,6 +8,7 @@ import { HeaderSpinnerComponent } from './header-spinner/header-spinner.componen
   imports: [
     CommonModule
   ],
-  declarations: [PageNotFoundComponent, HeaderSimpleComponent, HeaderSpinnerComponent]
+  declarations: [PageNotFoundComponent, HeaderSimpleComponent, HeaderSpinnerComponent],
+  exports: [PageNotFoundComponent, HeaderSimpleComponent, HeaderSpinnerComponent]
 })
 export class SharedModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-header-simple',
+  selector: 'header-simple',
   templateUrl: './header-simple.component.html',
   styleUrls: ['./header-simple.component.css']
 })

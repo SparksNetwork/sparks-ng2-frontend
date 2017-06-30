@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserGamificationComponent } from './user-gamification.component';
+import { BadgeListComponent } from './badge-list.component';
 
-describe('UserGamificationComponent', () => {
-  let component: UserGamificationComponent;
-  let fixture: ComponentFixture<UserGamificationComponent>;
+describe('BadgeListComponent', () => {
+  let component: BadgeListComponent;
+  let fixture: ComponentFixture<BadgeListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserGamificationComponent ]
+      declarations: [ BadgeListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserGamificationComponent);
+    fixture = TestBed.createComponent(BadgeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
