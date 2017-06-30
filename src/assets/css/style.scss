@@ -1,0 +1,208 @@
+/* body {
+    min-height: 2000px;
+    padding-top: 51px;
+} */
+
+.prettypadding {
+    padding-top: 70px;
+    min-height: 2000px;
+}
+
+.segment {
+    border-bottom: 1px solid #E0E1E1;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    &.no-padding-tb {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.glyphicon-lg {
+    font-size: 30px;
+}
+
+.navbar-default {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7);
+    // .navbar-collapse {
+    //     background-color: #f8f8f8;
+    // }
+}
+
+#eventCarousel {
+    .item {
+        height: 410px;
+        width: 100%;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+        background-size: cover !important;
+    }
+}
+
+#event-date-location {
+    .icon {
+        width: 50px;
+        float: left;
+        text-align: center;
+    }
+    .text {
+        width: calc(100% - 60px);
+        float: right;
+    }
+    #event-date {}
+    #event-location {
+        border-left: 1px solid #E0E1E1;
+        .icon {
+            float: right;
+        }
+        .text {
+            float: left;
+        }
+    }
+    a {
+        display: block;
+        overflow: hidden;
+    }
+    .text {
+        span {
+            font-size: 12px;
+        }
+    }
+}
+
+#event-requirements {
+    padding-top: 0;
+    padding-bottom: 0;
+    .col-xs-6 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #E0E1E1;
+        &:nth-child(odd) {
+            border-right: 1px solid #E0E1E1;
+        }
+        &:last-child {
+            border-bottom: none;
+        }
+        /* only two items */
+        &:first-child:nth-last-child(2),
+        &:first-child:nth-last-child(2) ~ li {
+            border-bottom: none;
+        }
+    }
+    .icon {
+        width: 50px;
+        float: left;
+        text-align: center;
+    }
+    .text {
+        width: calc(100% - 60px);
+        float: right;
+        h4 {
+            margin: 0;
+        }
+        p {
+            margin-bottom: 0;
+        }
+        span {
+            font-size: 12px;
+        }
+    }
+    .req-disabled {
+        opacity: 0.6;
+    }
+}
+
+.you-will-give-got {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            display: block;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .icon {
+            width: 30px;
+            float: left;
+        }
+        .text {
+            width: calc(100% - 40px);
+            float: right;
+            h4 {
+                margin: 0;
+            }
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+#event-social {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    .col-xs-8 {
+        border-right: 1px solid #E0E1E1;
+    }
+    #share-for-karma {
+        width: 100%;
+        text-align: right;
+        border-bottom: 1px solid #E0E1E1;
+        line-height: 0.1em;
+        margin: 20px 0;
+        span {
+            background: #fff;
+            padding: 0 10px;
+        }
+    }
+}
+
+
+/* -----------------------------------------------
+ * Timeline
+ * --------------------------------------------- */
+
+.timeline {
+    padding-left: 30px;
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+    list-style: none;
+    li {
+        display: block;
+        border-left: 1px solid #B8BABA;
+        padding-bottom: 10px;
+        &:before {
+            content: '';
+            width: 20px;
+            height: 20px;;
+            text-align: center;
+            line-height: 2em;
+            border-radius: 1em;
+            border:1px solid #B8BABA;  
+            display: inline-block;
+            background: #FFF;
+            position: relative;
+            left: -10px;
+            float: left;
+        }
+        .timeline-info{
+            display: inline-block;
+            .timeline-title{
+                h4{
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
