@@ -27,7 +27,6 @@
     font-size: 30px;
 }
 
-
 .icon {
     width: 50px;
     float: left;
@@ -37,6 +36,10 @@
 .text {
     width: calc(100% - 60px);
     float: right;
+}
+
+.input-group {
+    margin-bottom: 15px;
 }
 
 .navbar-default {
