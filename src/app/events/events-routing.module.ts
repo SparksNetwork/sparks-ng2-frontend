@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { EventComponent } from './event/event.component';
 import { EventsComponent } from "./events.component";
-import { PackagesComponent} from "app/events/packages/packages.component";
-import { PackageComponent } from "app/events/packages/package/package.component";
+import { PackagesModule } from "app/events/packages/packages.module";
 
+const testroutes: Routes = []
 const routes: Routes = [
   {
     path: '',
@@ -17,13 +17,7 @@ const routes: Routes = [
       },
       {
         path: ':id/packages',
-        component: PackagesComponent,
-        children: [
-          {
-            path: ':packageId',
-            component: PackageComponent
-          },
-        ]
+        loadChildren: () => PackagesModule
       }
     ]
   },
@@ -35,4 +29,4 @@ const routes: Routes = [
 })
 export class EventsRoutingModule { }
 
-export const routedComponents = [EventsComponent, EventComponent, PackagesComponent, PackageComponent];
+export const routedComponents = [EventsComponent, EventComponent];
