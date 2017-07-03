@@ -5,7 +5,6 @@ import { EventComponent } from './event/event.component';
 import { EventsComponent } from "./events.component";
 import { PackagesModule } from "app/events/packages/packages.module";
 
-const testroutes: Routes = []
 const routes: Routes = [
   {
     path: '',
