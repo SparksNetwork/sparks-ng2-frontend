@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PackageComponent } from './package/package.component';
+import { SharedModule } from "app/shared/shared.module";
+import { PackagesRoutingModule, routedComponents } from "app/events/packages/packages-routing.module";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    PackagesRoutingModule
   ],
-  declarations: [PackageComponent]
+  declarations: [routedComponents]
 })
 export class PackagesModule { }
