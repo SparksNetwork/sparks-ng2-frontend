@@ -27,6 +27,17 @@
     font-size: 30px;
 }
 
+.lineabove{
+    &:before{
+        content: '';
+            width: 120px;
+            height: 1px;
+            background: #E0E1E1;
+            position: absolute;
+            margin-top: -5px;
+    }
+}
+
 .icon {
     width: 50px;
     float: left;
