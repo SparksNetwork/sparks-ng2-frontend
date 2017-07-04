@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BadgesComponent } from './badges.component';
+import { sharedComponents } from "app/shared/shared.module";
+import { BadgeListDetailsComponent } from "app/user-profile/badges/badge-list-details/badge-list-details.component";
 
 describe('BadgesComponent', () => {
   let component: BadgesComponent;
@@ -8,7 +10,7 @@ describe('BadgesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BadgesComponent ]
+      declarations: [ BadgesComponent, BadgeListDetailsComponent, sharedComponents ]
     })
     .compileComponents();
   }));

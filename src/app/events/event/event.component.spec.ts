@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventComponent } from './event.component';
+import { sharedComponents } from "app/shared/shared.module";
 
 describe('EventComponent', () => {
   let component: EventComponent;
@@ -8,7 +9,7 @@ describe('EventComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventComponent ]
+      declarations: [ EventComponent, sharedComponents]
     })
     .compileComponents();
   }));
