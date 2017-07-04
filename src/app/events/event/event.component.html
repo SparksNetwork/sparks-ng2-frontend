@@ -1,6 +1,5 @@
 <app-header-carousel></app-header-carousel>
 
-<!-- @TODO generate EVENT TITLE+DATE+LOCATION component -->
 <div class="row">
   <div class="col-xs-12">
     <div id="event-head" class="row segment">
@@ -48,22 +47,10 @@
       <h3>You Will Get</h3>
       <ul>
         <li>
-          <div class="icon">
-            <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
-          </div>
-          <div class="text">
-            <h4><span class="count">20</span> Karma Points</h4>
-            <p>Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network</p>
-          </div>
+          <app-card-item [icon]="'glyphicon-cog'" [title]="'20 Karma Points'" [subtitle]="'Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network'"></app-card-item>
         </li>
         <li>
-          <div class="icon">
-            <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
-          </div>
-          <div class="text">
-            <h4>To help you community</h4>
-            <p>Serve your neightbors on the Avenue!</p>
-          </div>
+          <app-card-item [icon]="'glyphicon-cog'" [title]="'To help you community'" [subtitle]="'Serve your neightbors on the Avenue!'"></app-card-item>
         </li>
       </ul>
     </div>
@@ -72,13 +59,7 @@
       <h3>You Will Give</h3>
       <ul>
         <li>
-          <div class="icon">
-            <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
-          </div>
-          <div class="text">
-            <h4><span class="shiftcount">1</span> Shift</h4>
-            <p>Serve your neightbors on the Avenue!</p>
-          </div>
+          <app-card-item [icon]="'glyphicon-cog'" [title]="'Shift'" [subtitle]="'Serve your neightbors on the Avenue!'"></app-card-item>
         </li>
       </ul>
     </div>
@@ -93,45 +74,12 @@
         <div class="col-xs-6">
           <h3>Your Schedule</h3>
         </div>
-        <div class="col-xs-6"><a href="#">add to calendar <span class="glyphicon glyphicon-calendar"></span></a></div>
+        <div class="col-xs-6">
+          <a href="#">add to calendar <span class="glyphicon glyphicon-calendar"></span></a>
+        </div>
       </div>
-
-
       <div class="col-xs-12">
-        <ul class="timeline">
-          <li>
-            <div class="timeline-info">
-              <div class="timeline-title">
-                <h4>Head Squad - <span>Shift - 1</span></h4>
-              </div>
-              <div class="timeline-when">
-                <p>june 1st, 2017 - 2:00 PM</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-info">
-              <div class="timeline-title">
-                <h4>Security Crew - <span>Shift - 2</span></h4>
-              </div>
-              <div class="timeline-when">
-                <p>june 1st, 2017 - 2:00 PM</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="timeline-info">
-              <div class="timeline-title">
-                <h4>Heath Squad - <span>Shift - 3</span></h4>
-              </div>
-              <div class="timeline-when">
-                <p>june 1st, 2017 - 2:00 PM</p>
-              </div>
-            </div>
-          </li>
-
-        </ul>
-
+        <app-schedule [items]="scheduleItems"></app-schedule>
       </div>
     </div>
   </div>
@@ -141,63 +89,25 @@
 <div class="row">
   <div class="col-xs-12">
     <div id="event-requirements" class="row segment">
-      <div class="col-xs-6" data-badgetype="pending">
-        <div class="icon">
-          <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
-          <div class="status">pending</div>  
-        </div>
-        <div class="text">
-          <h4>Volunteer</h4>
-          <p>30 Days</p>
-          <p><span>100% involvement</span></p>
-        </div>
+      <div class="col-xs-6">
+        <app-card-item [type]="cardItemType.Pending" [icon]="'glyphicon-cog'" [title]="'Volunteer'" [subtitle]="'30 Days'" [description]="'100% involvement'"></app-card-item>
       </div>
-      <div class="col-xs-6" data-badgetype="active">
-        <div class="icon">
-          <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
-          <div class="status">active</div>
-        </div>
-        <div class="text">
-          <h4>Crew</h4>
-          <p>60 Days</p>
-          <p><span>100% involvement</span></p>
-        </div>
+      <div class="col-xs-6">
+        <app-card-item [type]="cardItemType.Active" [icon]="'glyphicon-cog'" [title]="'Crew'" [subtitle]="'60 Days'" [description]="'100% involvement'"></app-card-item>
       </div>
 
       <!-- 8-v2-Event-Normal-Multi-Day, 8-v3-Event-Normal-Pending, 8-v4-Event-Normal-Active Has more elements here START -->
-      <div class="col-xs-6 req-disabled" data-badgetype="disabled">
-        <div class="icon">
-          <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
-        </div>
-        <div class="text">
-          <h4>Pre-Event Builders</h4>
-          <p>$364 in value</p>
-          <p><span>100% involvement</span></p>
-        </div>
+      <div class="col-xs-6 req-disabled">
+        <app-card-item [type]="cardItemType.Disabled" [icon]="'glyphicon-cog'" [title]="'Pre-Event Builders'" [subtitle]="'$364 in value'"
+          [description]="'100% involvement'"></app-card-item>
       </div>
       <div class="col-xs-6">
-        <div class="icon">
-          <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
-        </div>
-        <div class="text">
-          <h4>Crew</h4>
-          <p>60 Days</p>
-          <p><span>100% involvement</span></p>
-        </div>
+        <app-card-item [icon]="'glyphicon-cog'" [title]="'Crew'" [subtitle]="'60 Days'" [description]="'100% involvement'"></app-card-item>
       </div>
-
       <div class="col-xs-6">
-        <div class="icon">
-          <span class="glyphicon glyphicon-cog glyphicon-lg"></span>
-        </div>
-        <div class="text">
-          <h4>Teardown $59</h4>
-          <p>$444 in value</p>
-          <p><span>87% discount</span></p>
-        </div>
+        <app-card-item [icon]="'glyphicon-cog'" [title]="'Teardown $59'" [subtitle]="'$444 in value'" [description]="'87% discount'"></app-card-item>
       </div>
       <!-- Has more elements here END -->
-
     </div>
   </div>
 </div>
