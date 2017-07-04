@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventComponent } from './event.component';
-import { sharedComponents } from "app/shared/shared.module";
+import { EventSocialComponent } from './event-social.component';
 
-describe('EventComponent', () => {
-  let component: EventComponent;
-  let fixture: ComponentFixture<EventComponent>;
+describe('EventSocialComponent', () => {
+  let component: EventSocialComponent;
+  let fixture: ComponentFixture<EventSocialComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventComponent, sharedComponents]
+      declarations: [ EventSocialComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventComponent);
+    fixture = TestBed.createComponent(EventSocialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

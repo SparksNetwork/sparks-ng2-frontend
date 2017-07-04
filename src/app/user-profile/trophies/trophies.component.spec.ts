@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TrophiesComponent } from './trophies.component';
+import { sharedComponents } from "app/shared/shared.module";
+import { TrophyListDetailsComponent } from "app/user-profile/trophies/trophy-list-details/trophy-list-details.component";
 
 describe('TrophiesComponent', () => {
   let component: TrophiesComponent;
@@ -8,7 +10,7 @@ describe('TrophiesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrophiesComponent ]
+      declarations: [ TrophiesComponent, sharedComponents, TrophyListDetailsComponent ]
     })
     .compileComponents();
   }));

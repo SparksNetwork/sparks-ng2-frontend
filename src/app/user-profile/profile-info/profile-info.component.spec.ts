@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileInfoComponent } from './profile-info.component';
+import { sharedComponents } from "app/shared/shared.module";
+import { UserHeaderComponent } from "app/user-profile/shared/user-header/user-header.component";
 
 describe('ProfileInfoComponent', () => {
   let component: ProfileInfoComponent;
@@ -8,7 +10,7 @@ describe('ProfileInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileInfoComponent ]
+      declarations: [ ProfileInfoComponent, sharedComponents, UserHeaderComponent ]
     })
     .compileComponents();
   }));

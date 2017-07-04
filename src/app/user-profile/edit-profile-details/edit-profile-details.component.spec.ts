@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditProfileDetailsComponent } from './edit-profile-details.component';
+import { sharedComponents } from "app/shared/shared.module";
 
 describe('EditProfileDetailsComponent', () => {
   let component: EditProfileDetailsComponent;
@@ -8,7 +9,7 @@ describe('EditProfileDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditProfileDetailsComponent ]
+      declarations: [ EditProfileDetailsComponent, sharedComponents ]
     })
     .compileComponents();
   }));

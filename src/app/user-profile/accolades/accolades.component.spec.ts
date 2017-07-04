@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccoladesComponent } from './accolades.component';
+import { sharedComponents } from "app/shared/shared.module";
+import { AccoladeListDetailsComponent } from "app/user-profile/accolades/accolade-list-details/accolade-list-details.component";
 
 describe('AccoladesComponent', () => {
   let component: AccoladesComponent;
@@ -8,7 +10,7 @@ describe('AccoladesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccoladesComponent ]
+      declarations: [ AccoladesComponent,sharedComponents, AccoladeListDetailsComponent ]
     })
     .compileComponents();
   }));

@@ -1,0 +1,14 @@
+<ul class="timeline">
+  <li *ngFor="let item of items">
+    <div class="timeline-info">
+      <div class="timeline-title">
+        <h4>{{item.title}}
+          <ng-container> - <span>{{item.shift}}</span></ng-container>
+        </h4>
+      </div>
+      <div class="timeline-when">
+        <p>{{item.date}}</p>
+      </div>
+    </div>
+  </li>
+</ul>
