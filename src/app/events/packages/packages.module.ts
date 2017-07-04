@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from "app/shared/shared.module";
-import { PackagesRoutingModule, routedComponents } from "app/events/packages/packages-routing.module";
+import { PackagesRoutingModule, routedComponents } from "./packages-routing.module";
+import { PackageListComponent } from "./package-list/package-list.component";
 
 @NgModule({
   imports: [
@@ -10,6 +11,6 @@ import { PackagesRoutingModule, routedComponents } from "app/events/packages/pac
     SharedModule,
     PackagesRoutingModule
   ],
-  declarations: [routedComponents]
+  declarations: [routedComponents, PackageListComponent]
 })
 export class PackagesModule { }

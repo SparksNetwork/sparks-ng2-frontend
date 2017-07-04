@@ -16,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: ':id/packages',
-        loadChildren: () => PackagesModule
+        loadChildren: 'app/events/packages/packages.module#PackagesModule'
       }
     ]
   },
