@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
 import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { IScheduleItem } from "app/shared/schedule/schedule-item.interface";
 import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
+import { IEvent } from "app/events/event/event.model";
 
 @Component({
   selector: 'app-event',
@@ -16,9 +18,13 @@ export class EventComponent implements OnInit {
   images: string[];
   addToCalendarData: AddToCalendar;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe((data: { event: any }) => {
+      console.log(data.event);
+    });
+
     this.scheduleItems = [
       { title: "Head Squad", description: null, date: "june 1st, 2017 - 2:00 PM", karmaPoints: null, shift: "Shift - 1" },
       { title: "Security Crew", description: null, date: "june 2nd, 2017 - 2:00 PM", karmaPoints: null, shift: "Shift - 2" },

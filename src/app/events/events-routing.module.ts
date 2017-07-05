@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EventComponent } from './event/event.component';
 import { EventsComponent } from "./events.component";
 import { PackagesModule } from "app/events/packages/packages.module";
+import { EventResolver } from "app/events/event/event-resolver.service";
 
 const routes: Routes = [
   {
@@ -12,7 +13,10 @@ const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: EventComponent
+        component: EventComponent,
+        resolve: {
+          event: EventResolver
+        },
       },
       {
         path: ':id/packages',
@@ -24,7 +28,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [EventResolver]
 })
 export class EventsRoutingModule { }
 
