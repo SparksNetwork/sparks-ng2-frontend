@@ -1,29 +1,68 @@
-/* body {
-    min-height: 2000px;
-    padding-top: 51px;
-} */
+/* demo */
+// .container{
+//   width: 370px;
+//   &.main-content{
+//     -webkit-box-shadow: 5px 5px 20px 3px #858585;
+//     box-shadow: 5px 5px 20px 3px #858585;
+//   }
+// }
 
+// -- Helpers -- //
+
+@import "scss/layout";
+@import "scss/variables";
+@import "scss/mixins";
+
+
+/* Typography */
 body{
-    font-family: Helvetica, Arial, sans-serif
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: #515455;
+    font-size: 15px;
+    font-weight: lighter;
+    a{
+        color: #515455;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+
+h1{
+    &.event-title{
+        font-size: 38px;
+        margin-top: 0;
+    }
 }
 
 h3{
     font-size: 18px;
 }
 
+.title-link{
+    margin-top: 16px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.text h3,
+.timeline h3{
+    margin: 0;
+}
+
+
+/* General */
 .segment-title{
     margin: 0;
 }
 
-.prettypadding {
-    padding-top: 70px;
-    min-height: 2000px;
-}
-
 .segment {
-    border-bottom: 1px solid #E0E1E1;
+    border-bottom: 1px solid #e3e3e3;
     padding-top: 15px;
     padding-bottom: 15px;
+    display: block;
+    overflow: hidden;
     &.no-padding-tb {
         padding-top: 15px;
         padding-bottom: 15px;
@@ -54,6 +93,9 @@ h3{
     width: 50px;
     float: left;
     text-align: center;
+    .ic{
+        font-size: 30px;
+    }
 }
 
 .text {
@@ -61,16 +103,89 @@ h3{
     float: right;
 }
 
+/* Buttons */
+.btn{
+    border-radius: 0;
+    &.btn-primary{
+        color: #fff;
+        background-color: #737676;
+        border-color: #737676;
+        &:hover{
+            background-color: #515455;
+        }
+    }
+}
+
+
+.input-group-btn{
+  .btn{
+    background: transparent;
+    border: transparent;
+  }
+}
+
+/* Forms */
+.form-control{
+    border-radius: 0;
+}
 .input-group {
     margin-bottom: 15px;
 }
 
-.navbar-default {
+.icon{
+    display: block;
+}
+
+
+/* Nav */
+.navbar-default{
+    border: none;
     background-color: rgba(255, 255, 255, 0.7);
     color: rgba(255, 255, 255, 0.7);
-    // .navbar-collapse {
-    //     background-color: #f8f8f8;
-    // }
+    .navbar-brand{
+        font-size: 22px;
+        color: #1e1e1e;
+    }
+    .navbar-toggle{
+        border: none;
+        color: #1e1e1e;
+        &:focus,
+        &:hover{
+            background-color: transparent;
+        }
+    }
+    .navbar-menu{
+        display: block;
+        position: relative;
+        float: right;
+        padding: 9px 10px;
+        margin: 8px 15px 0 8px;
+        border: 1px solid transparent;
+        @include MQ(S) {
+			    display: none;
+    	}
+    }
+
+    .navbar-collapse{
+        border: none;
+        .navbar-menu{
+            display: none;
+            @include MQ(S) {
+			    display: block;
+                margin-top: 5px;
+    		}
+        }
+        .navbar-form{
+            border: none;
+        }
+    }
+}
+
+
+
+/* Header Carousel */
+.carousel-control{
+  display: none;
 }
 
 #eventCarousel{
@@ -79,57 +194,40 @@ h3{
         width: 100%;
         background-repeat: no-repeat !important;
         background-position: center center !important;
-        -webkit-background-size: cover !important;
-        -moz-background-size: cover !important;
-        -o-background-size: cover !important;
-        background-size: cover !important;
+        @include background-size(cover !important);
     }
 }
 
-#packageHero{
-    .item {
-        height: 410px;
-        width: 100%;
-        background-repeat: no-repeat !important;
-        background-position: center center !important;
-        -webkit-background-size: cover !important;
-        -moz-background-size: cover !important;
-        -o-background-size: cover !important;
-        background-size: cover !important;
-        display:table;
-        padding: 0 15px;
-        .package-title{
-            display:table-cell;
-            vertical-align:middle;
-            float:none;
+
+/* Event Details Page */
+.event-title{
+    width: calc( 100% - 100px);
+    float: left;
+}
+.event-karma{
+    width: 90px;
+    float: right;
+    div{
+        display: block;
+        float: left;
+    }
+    .event-karma-count{
+        font-size: 24px;
+        font-weight: regular;
+        p{
+            margin: 0;
+            font-size: 15px;
+            font-weight: lighter;
+
         }
     }
-}
-
-#profileHero{
-    .item {
-        height: 250px;
-        width: 100%;
-        background: #DDD;
-        background-repeat: no-repeat !important;
-        background-position: center center !important;
-        -webkit-background-size: cover !important;
-        -moz-background-size: cover !important;
-        -o-background-size: cover !important;
-        background-size: cover !important;
-        display:table;
-        padding: 40px 15px;
-        .package-title{
-            display:table-cell;
-            vertical-align:middle;
-            float:none;
-        }
+    .icon-karma{
+        font-size: 35px;
+        float: right;
     }
 }
 
-
-
-#event-date-location {
+.event-date-location {
     .icon {
         width: 50px;
         float: left;
@@ -138,9 +236,16 @@ h3{
     .text {
         width: calc(100% - 60px);
         float: right;
+        font-size: 14px;
+        font-weight: lighter;
+        span{
+            font-size: 12px;
+            font-weight: lighter;
+            opacity: 0.8;
+        }
     }
-    #event-date {}
-    #event-location {
+    
+    .event-location {
         border-left: 1px solid #E0E1E1;
         .icon {
             float: right;
@@ -163,30 +268,34 @@ h3{
 #event-requirements {
     padding-top: 0;
     padding-bottom: 0;
+    .event-req-row{
+        border-bottom: 1px solid #E0E1E1;
+    }
     .col-xs-6 {
         padding-top: 15px;
         padding-bottom: 15px;
-        border-bottom: 1px solid #E0E1E1;
+        
         &:nth-child(odd) {
             border-right: 1px solid #E0E1E1;
         }
-        &:last-child {
-            border-bottom: none;
-        }
+        
+        // &:last-child {
+        //     border-bottom: none;
+        // }
         /* only two items */
-        &:first-child:nth-last-child(2),
-        &:first-child:nth-last-child(2) ~ li {
-            border-bottom: none;
-        }
-        &[data-badgetype="pending"]{
+        // &:first-child:nth-last-child(2),
+        // &:first-child:nth-last-child(2) ~ li {
+        //     border-bottom: none;
+        // }
+        .pending{
             .status{
                  opacity: 0.6;
             }
         }
-        &[data-badgetype="active"]{
+        .active{
             opacity: 0.6;
         }
-        &[data-badgetype="disabled"]{
+        .disabled{
             opacity: 0.6;
         }
     }
@@ -257,6 +366,14 @@ h3{
     .col-xs-8 {
         border-right: 1px solid #E0E1E1;
     }
+    .btn-group{
+        .share-facebook,
+        .share-twitter{
+            font-size: 18px;
+            display: block;
+            margin-top: 16px;
+        }
+    }
     #share-for-karma {
         width: 100%;
         text-align: right;
@@ -266,9 +383,61 @@ h3{
         span {
             background: #fff;
             padding: 0 10px;
+            font-size: 12px;
+            color: #919191;
         }
     }
 }
+
+
+#packageHero{
+    .item {
+        height: 410px;
+        width: 100%;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+        background-size: cover !important;
+        display:table;
+        padding: 0 15px;
+        .package-title{
+            display:table-cell;
+            vertical-align:middle;
+            float:none;
+        }
+    }
+}
+
+#profileHero{
+    .item {
+        height: 250px;
+        width: 100%;
+        background: #DDD;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+        background-size: cover !important;
+        display:table;
+        padding: 40px 15px;
+        .package-title{
+            display:table-cell;
+            vertical-align:middle;
+            float:none;
+        }
+    }
+}
+
+.card-text{
+    font-size: 18px;
+    opacity: 0.8;
+    font-weight: lighter;
+}
+
+
 
 
 /* -----------------------------------------------
@@ -285,6 +454,9 @@ h3{
         display: block;
         border-left: 1px solid #B8BABA;
         padding-bottom: 10px;
+        &:last-child{
+            border-left: none;
+        }
         &:before {
             content: '';
             width: 20px;

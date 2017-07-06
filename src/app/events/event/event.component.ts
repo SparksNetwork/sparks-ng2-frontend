@@ -4,7 +4,6 @@ import { ActivatedRoute } from "@angular/router";
 import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { IScheduleItem } from "app/shared/schedule/schedule-item.interface";
 import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
-import { IEvent } from "app/events/event/event.model";
 
 @Component({
   selector: 'app-event',
