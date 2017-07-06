@@ -5,7 +5,7 @@
     <div class="event-head segment">
       <h1 class="event-title">Department of Public Works</h1>
       <div class="event-karma">
-        <div class="event-karma-count">2700
+        <div class="event-karma-count">{{event.maxKarmaPoints}}
           <p>up to</p>
         </div>
         <div class="icon-karma">
@@ -30,7 +30,7 @@
       <div class="event-location col-xs-6">
         <a href="#">
           <div class="text">
-            Black Rocky City, NV<br/><span>get directions</span>
+            {{event.location}}<br/><span>get directions</span>
           </div>
           <div class="icon">
             <span class="ic ic-map-marker"></span>
@@ -42,7 +42,7 @@
 
   <div class="col-xs-12">
     <div class="event-description segment">
-      <p class="card-text">Make Kellog Park Great Again! Help plant, paint, and beautify our community park. Si se puedes!</p>
+      <p class="card-text">{{event.description}}</p>
     </div>
   </div>
 </div>
@@ -98,35 +98,17 @@
     <div id="event-requirements" class="row">
       <div class="col-xs-12 event-req-row">
         <div class="row">
-          <div class="col-xs-6">
-            <app-card-item [type]="cardItemType.Pending" [icon]="'glyphicon-cog'" [title]="'Volunteer'" [subtitle]="'30 Days'" [description]="'100% involvement'"></app-card-item>
-          </div>
-          <div class="col-xs-6">
-            <app-card-item [type]="cardItemType.Active" [icon]="'glyphicon-cog'" [title]="'Crew'" [subtitle]="'60 Days'" [description]="'100% involvement'"></app-card-item>
-          </div>
+          <ng-container *ngFor="let opportunity of event.opportunities; let i=index">
+            <div class="col-xs-6">
+              <a href="" [routerLink]="['packages', opportunity.id]">
+                <app-card-item [type]="cardItemType.Pending" [icon]="opportunity.icon" [title]="opportunity.title" [subtitle]="opportunity.subtitle"
+                  [description]="opportunity.description"></app-card-item>
+              </a>
+            </div>
+            <div class="clearfix" *ngIf="i%2==1"></div>
+          </ng-container>
         </div>
       </div>
-
-      <!-- 8-v2-Event-Normal-Multi-Day, 8-v3-Event-Normal-Pending, 8-v4-Event-Normal-Active Has more elements here START -->
-      <div class="col-xs-12 event-req-row">
-        <div class="row">
-          <div class="col-xs-6 req-disabled">
-            <app-card-item [type]="cardItemType.Disabled" [icon]="'glyphicon-cog'" [title]="'Pre-Event Builders'" [subtitle]="'$364 in value'"
-              [description]="'100% involvement'"></app-card-item>
-          </div>
-          <div class="col-xs-6">
-            <app-card-item [icon]="'glyphicon-cog'" [title]="'Crew'" [subtitle]="'60 Days'" [description]="'100% involvement'"></app-card-item>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 event-req-row">
-        <div class="row">
-          <div class="col-xs-6">
-            <app-card-item [icon]="'glyphicon-cog'" [title]="'Teardown $59'" [subtitle]="'$444 in value'" [description]="'87% discount'"></app-card-item>
-          </div>
-        </div>
-      </div>
-      <!-- Has more elements here END -->
     </div>
   </div>
 </div>
@@ -135,11 +117,11 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="event-organizer segment">
-        <h3>Organized by</h3>
-        <div class="row">
-          <div class="col-xs-9">Cobra Commander from The Burning Man Project</div>
-          <div class="col-xs-3"><img class="img-circle" src="https://placeimg.com/40/40/people/grayscale" /></div>
-        </div>
+      <h3>Organized by</h3>
+      <div class="row">
+        <div class="col-xs-9">Cobra Commander from The Burning Man Project</div>
+        <div class="col-xs-3"><img class="img-circle" src="https://placeimg.com/40/40/people/grayscale" /></div>
+      </div>
     </div>
   </div>
 </div>
