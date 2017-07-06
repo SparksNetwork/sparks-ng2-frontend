@@ -18,11 +18,11 @@
 body{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
-    color: #515455;
+    color: $base-color;
     font-size: 15px;
     font-weight: lighter;
     a{
-        color: #515455;
+        color: $base-color;
         &:hover{
             text-decoration: none;
         }
@@ -58,7 +58,7 @@ h3{
 }
 
 .segment {
-    border-bottom: 1px solid #e3e3e3;
+    border-bottom: 1px solid $light-gray;
     padding-top: 15px;
     padding-bottom: 15px;
     display: block;
@@ -74,16 +74,12 @@ h3{
     margin: 0 !important;
 }
 
-.glyphicon-lg {
-    font-size: 30px;
-}
-
 .lineabove{
     &:before{
         content: '';
             width: 120px;
             height: 1px;
-            background: #E0E1E1;
+            background: $light-gray;
             position: absolute;
             margin-top: -5px;
     }
@@ -246,7 +242,7 @@ h3{
     }
     
     .event-location {
-        border-left: 1px solid #E0E1E1;
+        border-left: 1px solid $light-gray;
         .icon {
             float: right;
         }
@@ -269,14 +265,14 @@ h3{
     padding-top: 0;
     padding-bottom: 0;
     .event-req-row{
-        border-bottom: 1px solid #E0E1E1;
+        border-bottom: 1px solid $light-gray;
     }
     .col-xs-6 {
         padding-top: 15px;
         padding-bottom: 15px;
         
         &:nth-child(odd) {
-            border-right: 1px solid #E0E1E1;
+            border-right: 1px solid $light-gray;
         }
         
         // &:last-child {
@@ -335,7 +331,7 @@ h3{
                         content: '';
                         width: 120px;
                         height: 1px;
-                        background: #E0E1E1;
+                        background: $light-gray;
                         position: absolute;
                         margin-top: -5px;
                     }
@@ -364,7 +360,7 @@ h3{
     padding-top: 15px;
     padding-bottom: 15px;
     .col-xs-8 {
-        border-right: 1px solid #E0E1E1;
+        border-right: 1px solid $light-gray;
     }
     .btn-group{
         .share-facebook,
@@ -377,7 +373,7 @@ h3{
     #share-for-karma {
         width: 100%;
         text-align: right;
-        border-bottom: 1px solid #E0E1E1;
+        border-bottom: 1px solid $light-gray;
         line-height: 0.1em;
         margin: 20px 0;
         span {
