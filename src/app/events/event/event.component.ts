@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+
 import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { IScheduleItem } from "app/shared/schedule/schedule-item.interface";
+import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
+import { IEvent } from "app/events/event/event.model";
 
 @Component({
   selector: 'app-event',
@@ -8,14 +12,19 @@ import { IScheduleItem } from "app/shared/schedule/schedule-item.interface";
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-  
+
   cardItemType = CardItemType;
   scheduleItems: IScheduleItem[];
   images: string[];
+  addToCalendarData: AddToCalendar;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe((data: { event: any }) => {
+      console.log(data.event);
+    });
+
     this.scheduleItems = [
       { title: "Head Squad", description: null, date: "june 1st, 2017 - 2:00 PM", karmaPoints: null, shift: "Shift - 1" },
       { title: "Security Crew", description: null, date: "june 2nd, 2017 - 2:00 PM", karmaPoints: null, shift: "Shift - 2" },
@@ -27,5 +36,13 @@ export class EventComponent implements OnInit {
       'https://placeimg.com/1140/410/people/grayscale',
       'https://placeimg.com/1140/410/nature/grayscale'
     ]
+
+    this.addToCalendarData = {
+      startDate: "20180704T190000",
+      endDate: "20180704T210000",
+      title: "Fourth of July Fireworks",
+      location: "Battery Park' \"this is\" City, New York, City\NY",
+      description: "Celebrate' the independence of the United States with fireworks in one of the greatest cities in the world. New line"
+    };
   }
 }

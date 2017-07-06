@@ -7,16 +7,31 @@ import { HeaderCarouselComponent } from './header-carousel/header-carousel.compo
 import { NavComponent } from './nav/nav.component';
 import { CardItemComponent } from './card-item/card-item.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { AddToCalendarComponent } from './add-to-calendar/add-to-calendar.component';
+import { AddToCalendarService } from "./add-to-calendar/add-to-calendar.service";
+import { DateService } from "app/core/date.service";
 
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [PageNotFoundComponent, HeaderSimpleComponent, HeaderCarouselComponent, NavComponent, CardItemComponent, ScheduleComponent],
-  exports: [PageNotFoundComponent, HeaderSimpleComponent, HeaderCarouselComponent, NavComponent, CardItemComponent, ScheduleComponent]
+  declarations: [
+    PageNotFoundComponent, HeaderSimpleComponent,
+    HeaderCarouselComponent, NavComponent, CardItemComponent,
+    ScheduleComponent, AddToCalendarComponent],
+  exports: [
+    PageNotFoundComponent, HeaderSimpleComponent,
+    HeaderCarouselComponent, NavComponent, CardItemComponent,
+    ScheduleComponent, AddToCalendarComponent
+  ],
+  providers: [AddToCalendarService, DateService]
+
 })
 export class SharedModule { }
 
-export const sharedComponents = [PageNotFoundComponent, HeaderSimpleComponent, HeaderCarouselComponent, NavComponent, CardItemComponent, ScheduleComponent];
+export const sharedComponents = [
+  PageNotFoundComponent, HeaderSimpleComponent, 
+  HeaderCarouselComponent, NavComponent, CardItemComponent, 
+  ScheduleComponent, AddToCalendarComponent];
 
