@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
@@ -9,7 +10,7 @@ import 'rxjs/add/observable/of';
 @Injectable()
 export class EventResolver implements Resolve<any> {
 
-    constructor(private router: Router) { }
+    constructor(private http: Http, private router: Router) { }
 
     resolve(route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<any> {
@@ -21,20 +22,27 @@ export class EventResolver implements Resolve<any> {
             this.router.navigate(['/events']);
             return Observable.of(null);
         }
+        //TODO user Stevo service and models
+        return <Observable<any[]>>this.http.get(`api/eventdetails/${id}`)
+            .map(res => this.extractData<any[]>(res))
+            .catch(error => {
+                console.log(`Retrieval error: ${error}`);
+                this.router.navigate(['/events']);
+                return Observable.of(null);
+            });
+    }
 
-        let mockEvent = { title: "First Event", description: "This is the description for event." };
+    private extractData<T>(res: Response) {
+        if (res.status < 200 || res.status >= 300 || !res.json) {
+            throw new Error('Bad response status: ' + res.status);
+        }
 
-        return Observable.of(mockEvent).map(eventDetails => {
-            if (eventDetails) {
-                return eventDetails;
-            }
-            console.log(`Event was not found: ${id}`);
-            this.router.navigate(['/events']);
-            return null;
-        }).catch(error => {
-            console.log(`Retrieval error: ${error}`);
-            this.router.navigate(['/events']);
-            return Observable.of(null);
-        });
+        let body = res.json();
+
+        if (!body) {
+            throw new Error('Bad response status: ' + res.status);
+        }
+
+        return <T>(body && body.data || {});
     }
 }
