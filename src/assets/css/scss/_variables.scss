@@ -1,0 +1,49 @@
+.ic {
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    position: relative;
+     top: 1px;
+     display: inline-block;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ic-calendar:before {
+    content: "\E109";
+}
+.ic-star:before {
+    content: "\E006";
+}
+
+.ic-map-marker:before {
+    content: "\E062";
+}
+
+.ic-question-sign:before {
+    content: "\E085";
+}
+
+.ic-link:before {
+    content: "\E144";
+}
+
+.ic-cog:before {
+    content: "\E019";
+}
+
+// Colors
+
+$base-color: #515455;
+$base-light: lighten( $base-color, 10% );
+$light-gray: #e3e3e3;
+
+$twitter-color: #1f88ca;
+$facebook-color: #304ea5;
+$linkedin-color: #1E87BE;
