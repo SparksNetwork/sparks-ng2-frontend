@@ -1,26 +1,143 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { EventComponent } from './event.component';
-import { sharedComponents } from "app/shared/shared.module";
+import { RouterTestingModule } from '@angular/router/testing';
+import { RouterModule, ActivatedRoute } from '@angular/router';
+import { HttpModule } from "@angular/http";
+
+import { sharedComponents, sharedServices } from "app/shared/shared.module";
+import { OpportunityService } from "app/events/shared/opportunity.service";
+import { EventSocialComponent } from "app/events/shared/event-social/event-social.component";
+import { EventAskOrganizerButtonComponent } from "app/events/shared/event-ask-organizer-button/event-ask-organizer-button.component";
+import { AddToCalendarService } from "app/shared/add-to-calendar/add-to-calendar.service";
+import { InMemoryEventsService } from "api/in-memory-events.service";
+import { Observable } from "rxjs/Observable";
+import { MockActivatedRoute } from "api/mock-activated-route";
+import { EventOpportunityCard } from "app/events/event/event-oportunity-card.model";
+import { CardItemType } from "app/shared/card-item/card-item.enum";
+import { EngagementStatus } from "app/events/shared/engagement-status.enum";
+
+
+let activatedRoute: MockActivatedRoute;
+let component: EventComponent;
+let fixture: ComponentFixture<EventComponent>;
+let opportunityService;
+let getUserEngagementsSpy;
+let inMemoryService = new InMemoryEventsService();
+let db = inMemoryService.createDb();
 
 describe('EventComponent', () => {
-  let component: EventComponent;
-  let fixture: ComponentFixture<EventComponent>;
+  beforeEach(() => {
+    activatedRoute = new MockActivatedRoute();
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventComponent, sharedComponents]
+      declarations: [
+        EventComponent,
+        EventSocialComponent,
+        EventAskOrganizerButtonComponent,
+        sharedComponents],
+      imports: [
+        HttpModule,
+        RouterModule,
+        RouterTestingModule
+      ],
+      providers: [
+        OpportunityService,
+        sharedServices,
+        {
+          provide: ActivatedRoute,
+          useValue: activatedRoute
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
+  describe("setup", eventComponetSetup)
+  describe("when navigating to event with only one opportunity", oneOpportunitySetup)
+  describe("when navigating to event with multiple opportunities", multipleOpportunitiesSetup)
+
+});
+
+function eventComponetSetup() {
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    activatedRoute.data = Observable.of({ event: db.eventdetails[0] });
+    createComponent();
+    console.log("test")
+    spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(db.userEngagements[0]));
   });
 
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
-});
+
+  it('should assign event details when route is resolved', (() => {
+    fixture.detectChanges();
+    expect(component.event).toBeTruthy();
+  }));
+}
+
+function oneOpportunitySetup() {
+  beforeEach(async(() => {
+    activatedRoute.data = Observable.of({ event: db.eventdetails[1] });
+    createComponent();
+    getUserEngagementsSpy = spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(false));
+  }));
+
+  it('should not get engagements', () => {
+    fixture.detectChanges();
+    expect(component.event).toEqual(db.eventdetails[1]);
+    expect(getUserEngagementsSpy.calls.count()).toBe(0, 'call to get engagement was made');
+  })
+}
+
+function multipleOpportunitiesSetup() {
+  beforeEach(async(() => {
+    activatedRoute.data = Observable.of({ event: db.eventdetails[0] });
+    createComponent();
+  }));
+
+  it('should enabled opportunities before getUserEngagements is called', () => {
+    getUserEngagementsSpy = spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(false));
+
+    fixture.detectChanges();
+    expect(component.opportunityCards.every(x => !x.type)).toEqual(true, 'not all opportunities are enabled');
+  });
+
+  it('should get engagements', fakeAsync(() => {
+    getUserEngagementsSpy = spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(false));
+
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    expect(getUserEngagementsSpy.calls.count()).toBe(1, 'no call made to engagements');
+  }))
+
+  it('should set oportunity cards type to disabled if one engagement is pending', fakeAsync(() => {
+    let engagements = [
+      {
+        opportunityId: 1,
+        status: EngagementStatus.Pending
+      },
+    ];
+
+    getUserEngagementsSpy = spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(engagements));
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    console.log(component)
+    expect(component.opportunityCards.filter(x => x.type == CardItemType.Disabled).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
+    expect(component.opportunityCards.find(x => x.id == 1).type).toEqual(CardItemType.Pending, "card item type not set to pending");
+  }));
+}
+
+function createComponent() {
+  fixture = TestBed.createComponent(EventComponent);
+  component = fixture.componentInstance;
+  opportunityService = fixture.debugElement.injector.get(OpportunityService);
+}
+
+
+
