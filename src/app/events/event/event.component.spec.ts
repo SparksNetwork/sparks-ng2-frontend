@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { EventComponent } from './event.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -7,8 +8,6 @@ import { HttpModule } from "@angular/http";
 
 import { sharedComponents, sharedServices } from "app/shared/shared.module";
 import { OpportunityService } from "app/events/shared/opportunity.service";
-import { EventSocialComponent } from "app/events/shared/event-social/event-social.component";
-import { EventAskOrganizerButtonComponent } from "app/events/shared/event-ask-organizer-button/event-ask-organizer-button.component";
 import { AddToCalendarService } from "app/shared/add-to-calendar/add-to-calendar.service";
 import { InMemoryEventsService } from "test/in-memory-events.service";
 import { Observable } from "rxjs/Observable";
@@ -35,11 +34,9 @@ describe('EventComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        EventComponent,
-        EventSocialComponent,
-        EventAskOrganizerButtonComponent,
-        OpportunityCommitmentsComponent,
-        sharedComponents],
+        EventComponent
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
       imports: [
         HttpModule,
         RouterModule,
