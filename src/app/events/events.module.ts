@@ -5,6 +5,7 @@ import { EventsRoutingModule, routedComponents } from './events-routing.module';
 import { SharedModule } from "app/shared/shared.module";
 import { EventSocialComponent } from './shared/event-social/event-social.component';
 import { EventAskOrganizerButtonComponent } from './shared/event-ask-organizer-button/event-ask-organizer-button.component';
+import { OpportunityService } from "app/events/shared/opportunity.service";
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { EventAskOrganizerButtonComponent } from './shared/event-ask-organizer-b
     EventsRoutingModule,
     SharedModule
   ],
-  declarations: [routedComponents, EventSocialComponent, EventAskOrganizerButtonComponent]
+  declarations: [routedComponents, EventSocialComponent, EventAskOrganizerButtonComponent],
+  providers: [OpportunityService]
 })
 export class EventsModule { }

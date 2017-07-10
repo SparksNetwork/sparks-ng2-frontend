@@ -6,6 +6,9 @@ import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { IScheduleItem } from "app/shared/schedule/schedule-item.interface";
 import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
 import { Observable } from "rxjs/Observable";
+import { EngagementStatus } from "app/events/shared/engagement-status.enum";
+import { EventOpportunityCard } from "app/events/event/event-oportunity-card.model";
+import { OpportunityService } from "app/events/shared/opportunity.service";
 
 @Component({
   selector: 'app-event',
@@ -15,17 +18,18 @@ import { Observable } from "rxjs/Observable";
 export class EventComponent implements OnInit {
 
   event: any;
-  joinedOpportunities: any[];
+  opportunityCards: EventOpportunityCard[];
   cardItemType = CardItemType;
   scheduleItems: IScheduleItem[];
   addToCalendarData: AddToCalendar;
 
-  constructor(private route: ActivatedRoute, private http: Http) {
+  constructor(private route: ActivatedRoute, private http: Http, private opportunityService: OpportunityService) {
   }
 
   ngOnInit() {
     this.route.data.subscribe((data: { event: any }) => {
       this.event = data.event;
+      this.opportunityCards = <EventOpportunityCard[]>data.event.opportunities
       this.addToCalendarData = {
         startDate: this.event.startDate,
         endDate: this.event.endDate,
@@ -34,10 +38,11 @@ export class EventComponent implements OnInit {
         description: this.event.description
       };
 
-      this.getJoinedOpportunities(1, this.event.id).subscribe(joinedOpportunities => {        
-          this.joinedOpportunities = joinedOpportunities;
-          //TODO map joined opportunities with event.oportunities to show status 
-      });
+      if (this.opportunityCards.length > 1) {
+        this.opportunityService.getUserEngagements(1, this.event.id).subscribe(engagements =>
+          this.setEventOpportunitiesCardType(engagements)
+        );
+      }
     });
 
     this.scheduleItems = [
@@ -47,31 +52,32 @@ export class EventComponent implements OnInit {
     ];
   }
 
-  /**
-   * @description Gets oppportunities on which user applied
-   */
-  getJoinedOpportunities(userId: number, eventId: number) {
-    return <Observable<any>>this.http.get(`api/userOpportunities?userId=${userId}&eventId=${eventId}`)
-      .map(res => {
-        let data = this.extractData<any>(res);
+  setEventOpportunitiesCardType(engagements: any) {
+    if (!engagements.length) return;
 
-        if (!data || !data.length)
-          return Observable.of(null);
+    let pendingEngagement = engagements.find(x => x.status == EngagementStatus.Pending);
 
-        return data[0].opportunities;
-      })
-      .catch(exception => {
-        //TODO treat exception;
-        console.log(exception);
-        return Observable.of(false);
-      });
+    for (let card of this.opportunityCards) {
+      if (pendingEngagement && pendingEngagement.opportunityId != card.id) {
+        //disable all other oportunities
+        card.type = CardItemType.Disabled;
+        continue;
+      }
+
+      let engagement = engagements.find(x => x.opportunityId == card.id);
+
+      if (engagement) {
+        card.type = this.getOportunityCardItemTypeByEngagementStatus(engagement.status);
+      }
+    }
   }
 
-  private extractData<T>(res: Response) {
-    if (res.status < 200 || res.status >= 300) {
-      throw new Error('Bad response status: ' + res.status);
+  private getOportunityCardItemTypeByEngagementStatus(engagementStatus) {
+    switch (engagementStatus) {
+      case EngagementStatus.Active:
+        return CardItemType.Active;
+      case EngagementStatus.Pending:
+        return CardItemType.Pending;
     }
-    let body = res.json ? res.json() : null;
-    return <T>(body && body.data || []);
   }
 }

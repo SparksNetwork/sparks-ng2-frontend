@@ -69,15 +69,25 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
                 startDate: "20190304T090000",
                 endDate: "20190304T210000",
                 location: "Battery Park City, New York, NY",
-                description: "Make Kellog Park Great Again! Help plant, paint, and beautify our community park. Si se puedes!"
+                description: "Make Kellog Park Great Again! Help plant, paint, and beautify our community park. Si se puedes!",
+                maxKarmaPoints: 2600,
+                opportunities: [
+                    {
+                        id: 1,
+                        title: "Volunteer",
+                        subtitle: "30 Days",
+                        description: "100% involvement",
+                        icon: "glyphicon-cog",
+                    }                    
+                ]
             }
         ];
 
-        let userOpportunities = [
+        let userEngagements = [
             {
                 userId: 1,
                 eventId: 1,
-                opportunities: [
+                engagements: [
                     {
                         opportunityId: 1,
                         status: 1
@@ -96,7 +106,7 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
             {
                 userId: 1,
                 eventId: 2,
-                opportunities: [
+                engagements: [
                     {
                         opportunityId: 1,
                         status: 2
@@ -115,6 +125,6 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
 
 
         ]
-        return { eventdetails, userOpportunities };
+        return { eventdetails, userEngagements };
     }
 }
