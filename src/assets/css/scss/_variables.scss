@@ -39,24 +39,34 @@
     content: "\E019";
 }
 
-.ic.ic-facebook-square:before {
+// FontAwesome
+.ic{
+    &.ic-facebook-square,
+    &.ic-google-plus,
+    &.ic-envelope-o,
+    &.ic-key,
+    &.ic-pencil{
     font-family: FontAwesome;
+    }
+}
+.ic.ic-facebook-square:before {
     content: "\F082";
 }
 
 .ic.ic-google-plus:before {
-    font-family: FontAwesome;
     content: "\F0D5";
 }
 
 .ic.ic-envelope-o::before {
-    font-family: FontAwesome;
     content: "\F003";
 }
 
 .ic.ic-key::before {
-    font-family: FontAwesome;
     content: "\F084";
+}
+
+.ic.ic-pencil::before {
+    content: "\F040";
 }
 
 // Colors
