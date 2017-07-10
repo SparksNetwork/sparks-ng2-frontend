@@ -10,12 +10,13 @@ import { OpportunityService } from "app/events/shared/opportunity.service";
 import { EventSocialComponent } from "app/events/shared/event-social/event-social.component";
 import { EventAskOrganizerButtonComponent } from "app/events/shared/event-ask-organizer-button/event-ask-organizer-button.component";
 import { AddToCalendarService } from "app/shared/add-to-calendar/add-to-calendar.service";
-import { InMemoryEventsService } from "api/in-memory-events.service";
+import { InMemoryEventsService } from "test/in-memory-events.service";
 import { Observable } from "rxjs/Observable";
-import { MockActivatedRoute } from "api/mock-activated-route";
+import { MockActivatedRoute } from "test/mock-activated-route";
 import { EventOpportunityCard } from "app/events/event/event-oportunity-card.model";
 import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { EngagementStatus } from "app/events/shared/engagement-status.enum";
+import { OpportunityCommitmentsComponent } from "app/events/shared/opportunity-commitments/opportunity-commitments.component";
 
 
 let activatedRoute: MockActivatedRoute;
@@ -37,6 +38,7 @@ describe('EventComponent', () => {
         EventComponent,
         EventSocialComponent,
         EventAskOrganizerButtonComponent,
+        OpportunityCommitmentsComponent,
         sharedComponents],
       imports: [
         HttpModule,
@@ -65,7 +67,6 @@ function eventComponetSetup() {
   beforeEach(() => {
     activatedRoute.data = Observable.of({ event: db.eventdetails[0] });
     createComponent();
-    console.log("test")
     spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(db.userEngagements[0]));
   });
 
@@ -80,23 +81,39 @@ function eventComponetSetup() {
 }
 
 function oneOpportunitySetup() {
+  let getOpportunityCommitmentsSpy;
+  let commitments = db.opportunityCommitments[0].commitments;
+
   beforeEach(async(() => {
     activatedRoute.data = Observable.of({ event: db.eventdetails[1] });
     createComponent();
     getUserEngagementsSpy = spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(false));
+    getOpportunityCommitmentsSpy = spyOn(opportunityService, "getCommitments").and.returnValue(Observable.of(commitments));
   }));
 
   it('should not get engagements', () => {
     fixture.detectChanges();
-    expect(component.event).toEqual(db.eventdetails[1]);
     expect(getUserEngagementsSpy.calls.count()).toBe(0, 'call to get engagement was made');
   })
+
+  it('should get opportunityCommitments', (() => {
+    fixture.detectChanges();
+    expect(getOpportunityCommitmentsSpy.calls.count()).toBe(1, 'was not called once');
+  }));
+
+  it('should assign opportunityCommitments', () => {
+    fixture.detectChanges();
+    expect(component.opportunityCommitments).toBe(commitments, 'commitments were not assigned');
+  });
 }
 
 function multipleOpportunitiesSetup() {
+  let getOpportunityCommitmentsSpy;
+
   beforeEach(async(() => {
     activatedRoute.data = Observable.of({ event: db.eventdetails[0] });
     createComponent();
+    getOpportunityCommitmentsSpy = spyOn(opportunityService, "getCommitments").and.returnValue(Observable.of(false));
   }));
 
   it('should enabled opportunities before getUserEngagements is called', () => {
@@ -130,6 +147,12 @@ function multipleOpportunitiesSetup() {
     console.log(component)
     expect(component.opportunityCards.filter(x => x.type == CardItemType.Disabled).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
     expect(component.opportunityCards.find(x => x.id == 1).type).toEqual(CardItemType.Pending, "card item type not set to pending");
+  }));
+
+  it('should no get opportunityCommitments', (() => {
+    fixture.detectChanges();
+    expect(getOpportunityCommitmentsSpy.calls.count()).toBe(0, 'was called');
+    expect(component.opportunityCommitments).not.toBeTruthy();
   }));
 }
 

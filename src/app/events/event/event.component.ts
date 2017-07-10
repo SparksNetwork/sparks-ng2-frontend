@@ -21,6 +21,7 @@ export class EventComponent implements OnInit {
   opportunityCards: EventOpportunityCard[];
   cardItemType = CardItemType;
   scheduleItems: IScheduleItem[];
+  opportunityCommitments: any[];
   addToCalendarData: AddToCalendar;
 
   constructor(private route: ActivatedRoute, private http: Http, private opportunityService: OpportunityService) {
@@ -29,7 +30,6 @@ export class EventComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe((data: { event: any }) => {
       this.event = data.event;
-      this.opportunityCards = <EventOpportunityCard[]>data.event.opportunities
       this.addToCalendarData = {
         startDate: this.event.startDate,
         endDate: this.event.endDate,
@@ -38,11 +38,15 @@ export class EventComponent implements OnInit {
         description: this.event.description
       };
 
-      if (this.opportunityCards.length > 1) {
+      if (data.event.opportunities.length == 1) {
+        this.getOpportunityCommitments(data.event.opportunities[0].id);
+      } else if (data.event.opportunities.length > 1) {
+        this.opportunityCards = <EventOpportunityCard[]>data.event.opportunities
         this.opportunityService.getUserEngagements(1, this.event.id).subscribe(engagements =>
           this.setEventOpportunitiesCardType(engagements)
         );
       }
+
     });
 
     this.scheduleItems = [
@@ -50,6 +54,16 @@ export class EventComponent implements OnInit {
       { title: "Security Crew", description: null, date: "june 2nd, 2017 - 2:00 PM", karmaPoints: null, shift: "Shift - 2" },
       { title: "Head Squad", description: null, date: "june 1st, 2017 - 2:00 PM", karmaPoints: null, shift: "Shift - 3" },
     ];
+  }
+
+  /**
+   * @description Gets the commitments for the given opportunity
+   * @param opportunityId 
+   */
+  getOpportunityCommitments(opportunityId: number) {
+    this.opportunityService.getCommitments(this.event.id, opportunityId).subscribe(opportunityCommitments => {
+      this.opportunityCommitments = opportunityCommitments;
+    });
   }
 
   setEventOpportunitiesCardType(engagements: any) {

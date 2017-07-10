@@ -30,6 +30,23 @@ export class OpportunityService {
             });
     }
 
+    getCommitments(eventId: number, oppportunityId: number) {
+        return <Observable<any>>this.http.get(`api/opportunityCommitments?eventId=${eventId}&opportunityId=${oppportunityId}`)
+            .map(res => {
+                let data = this.extractData<any>(res);
+
+                if (!data.length)
+                    return Observable.of(null);
+
+                return data[0].commitments;
+            })
+            .catch(exception => {
+                //TODO treat exception;
+                console.log(exception);
+                return Observable.of(false);
+            });
+    }
+
     private extractData<T>(res: Response) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);

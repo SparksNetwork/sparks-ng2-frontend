@@ -50,30 +50,7 @@
 </div>
 
 <!-- @TODO generate YOU WILL GET/ YOU WILL GIVE component -->
-<div class="row">
-  <div class="col-xs-12">
-    <div class="you-will-give-got segment">
-      <h3>You Will Get</h3>
-      <ul>
-        <li>
-          <app-card-item [icon]="'glyphicon-cog'" [title]="'20 Karma Points'" [subtitle]="'Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network'"></app-card-item>
-        </li>
-        <li>
-          <app-card-item [icon]="'glyphicon-cog'" [title]="'To help you community'" [subtitle]="'Serve your neightbors on the Avenue!'"></app-card-item>
-        </li>
-      </ul>
-    </div>
-
-    <div class="you-will-give-got segment">
-      <h3>You Will Give</h3>
-      <ul>
-        <li>
-          <app-card-item [icon]="'glyphicon-cog'" [title]="'Shift'" [subtitle]="'Serve your neightbors on the Avenue!'"></app-card-item>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+<app-opportunity-commitments *ngIf="opportunityCommitments" [commitments]="opportunityCommitments" ></app-opportunity-commitments>
 
 <!-- @TODO generate USER SCHEDULE component -->
 <div class="row">
@@ -95,7 +72,7 @@
 </div>
 
 <!-- @TODO generate EVENT BADGES component: normal, active, pending, disabled -->
-<div class="row">
+<div class="row" *ngIf="opportunityCards">
   <div class="col-xs-12">
     <div id="event-requirements" class="row">
       <div class="col-xs-12 event-req-row">
