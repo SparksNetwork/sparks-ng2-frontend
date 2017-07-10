@@ -15,6 +15,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
 .ic-calendar:before {
     content: "\E109";
 }
@@ -36,6 +37,26 @@
 
 .ic-cog:before {
     content: "\E019";
+}
+
+.ic.ic-facebook-square:before {
+    font-family: FontAwesome;
+    content: "\F082";
+}
+
+.ic.ic-google-plus:before {
+    font-family: FontAwesome;
+    content: "\F0D5";
+}
+
+.ic.ic-envelope-o::before {
+    font-family: FontAwesome;
+    content: "\F003";
+}
+
+.ic.ic-key::before {
+    font-family: FontAwesome;
+    content: "\F084";
 }
 
 // Colors

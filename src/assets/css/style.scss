@@ -110,7 +110,7 @@ h3 {
         margin: 0;
         font-size: 15px;
         font-weight: lighter;
-        span{
+        span {
             font-size: inherit;
             font-weight: lighter;
             opacity: 0.8;
@@ -132,8 +132,8 @@ h3 {
     font-weight: lighter;
 }
 
-.card-location{
-    a{
+.card-location {
+    a {
         display: block;
         font-size: 15px;
     }
@@ -154,6 +154,14 @@ h3 {
     }
     &.dropdown-toggle {
         border: none;
+    }
+    &.btn-social-login {
+        background: #F3F4F4;
+        border: none;
+        padding: 12px 12px;
+        &:hover{
+            background: #DEDFE0;
+        }
     }
 }
 
@@ -177,6 +185,12 @@ h3 {
 
 .icon {
     display: block;
+}
+
+.form-input{
+    display: block;
+    overflow: hidden;
+    margin-bottom: 15px;
 }
 
 
@@ -375,8 +389,8 @@ h3 {
 .page-social {
     padding-top: 15px;
     padding-bottom: 15px;
-    .requirements-link{
-        .ic{
+    .requirements-link {
+        .ic {
             float: right;
         }
     }
@@ -502,4 +516,10 @@ h3 {
 
 .profile-name {
     margin: 0;
+}
+
+.bottom-nav{
+    .btn-group{
+        width: 48%;
+    }
 }
