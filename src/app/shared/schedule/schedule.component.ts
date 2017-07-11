@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { IScheduleItem } from "app/shared/schedule/schedule-item.interface";
+import { ScheduleItem } from "app/shared/schedule/schedule-item.model";
 
 @Component({
   selector: 'app-schedule',
@@ -9,7 +9,7 @@ import { IScheduleItem } from "app/shared/schedule/schedule-item.interface";
 })
 export class ScheduleComponent implements OnInit {
 
-  @Input() items: IScheduleItem[];
+  @Input() items: ScheduleItem[];
 
   constructor() { }
 

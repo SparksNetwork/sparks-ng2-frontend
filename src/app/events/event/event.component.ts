@@ -3,12 +3,13 @@ import { ActivatedRoute } from "@angular/router";
 import { Http, Response } from "@angular/http";
 
 import { CardItemType } from "app/shared/card-item/card-item.enum";
-import { IScheduleItem } from "app/shared/schedule/schedule-item.interface";
+import { ScheduleItem } from "app/shared/schedule/schedule-item.model";
 import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
 import { Observable } from "rxjs/Observable";
 import { EngagementStatus } from "app/events/shared/engagement-status.enum";
 import { EventOpportunityCard } from "app/events/event/event-oportunity-card.model";
 import { OpportunityService } from "app/events/shared/opportunity.service";
+import { UserAssignmentService } from "app/shared/user-assignments.service";
 
 @Component({
   selector: 'app-event',
@@ -20,11 +21,11 @@ export class EventComponent implements OnInit {
   event: any;
   opportunityCards: EventOpportunityCard[];
   cardItemType = CardItemType;
-  scheduleItems: IScheduleItem[];
+  scheduleItems: ScheduleItem[];
   opportunityCommitments: any[];
   addToCalendarData: AddToCalendar;
 
-  constructor(private route: ActivatedRoute, private opportunityService: OpportunityService) {
+  constructor(private route: ActivatedRoute, private opportunityService: OpportunityService, private userAssignmentService: UserAssignmentService) {
   }
 
   ngOnInit() {
@@ -42,18 +43,12 @@ export class EventComponent implements OnInit {
         this.getOpportunityCommitments(data.event.opportunities[0].id);
       } else if (data.event.opportunities.length > 1) {
         this.opportunityCards = <EventOpportunityCard[]>data.event.opportunities
-        this.opportunityService.getUserEngagements(1, this.event.id).subscribe(engagements =>
-          this.setEventOpportunitiesCardType(engagements)
-        );
+        this.opportunityService.getUserEngagements(1, this.event.id).subscribe(engagements => {
+          this.getAssignments(engagements);
+          this.setEventOpportunitiesCardType(engagements);
+        });
       }
-
-    });
-
-    this.scheduleItems = [
-      { title: "Head Squad", description: null, date: "june 1st, 2017 - 2:00 PM", karmaPoints: null, shift: "Shift - 1" },
-      { title: "Security Crew", description: null, date: "june 2nd, 2017 - 2:00 PM", karmaPoints: null, shift: "Shift - 2" },
-      { title: "Head Squad", description: null, date: "june 1st, 2017 - 2:00 PM", karmaPoints: null, shift: "Shift - 3" },
-    ];
+    });    
   }
 
   /**
@@ -63,6 +58,27 @@ export class EventComponent implements OnInit {
   getOpportunityCommitments(opportunityId: number) {
     this.opportunityService.getCommitments(this.event.id, opportunityId).subscribe(opportunityCommitments => {
       this.opportunityCommitments = opportunityCommitments;
+    });
+  }
+
+  /**
+   * @description Gets user assignement for the first active engagement.
+   * @param engagements
+   */
+  getAssignments(engagements: any) {
+    if (!engagements.length) return;
+
+    let activeEngagement = engagements.find(x => x.status == EngagementStatus.Active);
+
+    if (!activeEngagement) return;
+
+    this.userAssignmentService.getForEngagement(1, activeEngagement.id).subscribe(assignments => {
+      this.scheduleItems = assignments.map(x => {
+        let schedule = new ScheduleItem();
+        schedule.date = x.startDate;
+        schedule.shift = x.shift.name;
+        return schedule;
+      })
     });
   }
 

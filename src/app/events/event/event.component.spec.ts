@@ -12,6 +12,8 @@ import { OpportunityServiceSpy } from "test/opportunity.service.spy";
 import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { EventsModule } from "app/events/events.module";
 import { ActivatedRouteStub } from "test/router-stubs";
+import { UsertAssignmentsServiceSpy } from "test/user-assignments.spy";
+import { UserAssignmentService } from "app/shared/user-assignments.service";
 
 
 let activatedRoute: ActivatedRouteStub;
@@ -29,7 +31,7 @@ describe('EventComponent', () => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       imports: [
-        EventsModule,         
+        EventsModule,
         RouterTestingModule
       ],
       providers: [
@@ -40,7 +42,8 @@ describe('EventComponent', () => {
       .overrideComponent(EventComponent, {
         set: {
           providers: [
-            { provide: OpportunityService, useClass: OpportunityServiceSpy }
+            { provide: OpportunityService, useClass: OpportunityServiceSpy },
+            { provide: UserAssignmentService, useClass: UsertAssignmentsServiceSpy }
           ]
         }
       })

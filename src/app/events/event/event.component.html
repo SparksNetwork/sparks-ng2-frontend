@@ -53,7 +53,7 @@
 <app-opportunity-commitments *ngIf="opportunityCommitments" [commitments]="opportunityCommitments" ></app-opportunity-commitments>
 
 <!-- @TODO generate USER SCHEDULE component -->
-<div class="row">
+<div class="row" *ngIf="scheduleItems">
   <div class="col-xs-12">
     <div class="row segment">
       <div class="col-xs-12">
