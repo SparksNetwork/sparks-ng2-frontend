@@ -34,4 +34,4 @@ export const sharedComponents = [
   PageNotFoundComponent, HeaderSimpleComponent, 
   HeaderCarouselComponent, NavComponent, CardItemComponent, 
   ScheduleComponent, AddToCalendarComponent];
-
+ export const sharedServices = [AddToCalendarService, DateService]

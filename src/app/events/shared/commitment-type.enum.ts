@@ -1,0 +1,1 @@
+export enum CommitmentType { Give, Get }

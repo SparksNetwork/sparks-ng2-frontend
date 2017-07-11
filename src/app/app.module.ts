@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from "app/app-routing.module";
 import { SharedModule } from "app/shared/shared.module";
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryEventsService } from "../api/in-memory-events.service";
+import { InMemoryEventsService } from "../test/in-memory-events.service";
 
 @NgModule({
   declarations: [AppComponent],

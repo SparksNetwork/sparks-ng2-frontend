@@ -1,4 +1,4 @@
-<app-header-carousel [images]="images"></app-header-carousel>
+<app-header-carousel [images]="event.images"></app-header-carousel>
 
 <div class="row">
   <div class="col-xs-12">
@@ -23,7 +23,9 @@
             <span class="ic ic-calendar"></span>
           </div>
           <div class="text">
-            july 5 - sept 15<br/><span>add to calendar</span>
+            july 5 - sept 15<br/><span>
+              <app-add-to-calendar [data]="addToCalendarData"></app-add-to-calendar>
+            </span>
           </div>
         </a>
       </div>
@@ -48,30 +50,7 @@
 </div>
 
 <!-- @TODO generate YOU WILL GET/ YOU WILL GIVE component -->
-<div class="row">
-  <div class="col-xs-12">
-    <div class="you-will-give-got segment">
-      <h3>You Will Get</h3>
-      <ul>
-        <li>
-          <app-card-item [icon]="'glyphicon-cog'" [title]="'20 Karma Points'" [subtitle]="'Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network'"></app-card-item>
-        </li>
-        <li>
-          <app-card-item [icon]="'glyphicon-cog'" [title]="'To help you community'" [subtitle]="'Serve your neightbors on the Avenue!'"></app-card-item>
-        </li>
-      </ul>
-    </div>
-
-    <div class="you-will-give-got segment">
-      <h3>You Will Give</h3>
-      <ul>
-        <li>
-          <app-card-item [icon]="'glyphicon-cog'" [title]="'Shift'" [subtitle]="'Serve your neightbors on the Avenue!'"></app-card-item>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+<app-opportunity-commitments *ngIf="opportunityCommitments" [commitments]="opportunityCommitments" ></app-opportunity-commitments>
 
 <!-- @TODO generate USER SCHEDULE component -->
 <div class="row">
@@ -93,15 +72,15 @@
 </div>
 
 <!-- @TODO generate EVENT BADGES component: normal, active, pending, disabled -->
-<div class="row">
+<div class="row" *ngIf="opportunityCards">
   <div class="col-xs-12">
     <div id="event-requirements" class="row">
       <div class="col-xs-12 event-req-row">
         <div class="row">
-          <ng-container *ngFor="let opportunity of event.opportunities; let i=index">
+          <ng-container *ngFor="let opportunity of opportunityCards; let i=index">
             <div class="col-xs-6">
               <a href="" [routerLink]="['packages', opportunity.id]">
-                <app-card-item [type]="cardItemType.Pending" [icon]="opportunity.icon" [title]="opportunity.title" [subtitle]="opportunity.subtitle"
+                <app-card-item [type]="opportunity.type" [icon]="opportunity.icon" [title]="opportunity.title" [subtitle]="opportunity.subtitle"
                   [description]="opportunity.description"></app-card-item>
               </a>
             </div>
