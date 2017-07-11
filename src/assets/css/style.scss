@@ -502,8 +502,6 @@ h3 {
         background-position: center center !important;
         @include background-size(cover !important);
         padding-top: 100px;
-        // display: table;
-        // padding: 0 15px;
         background: #DDD;
         position: relative;
         .profile-hero-content {
@@ -511,6 +509,10 @@ h3 {
         }
         .profile-img{
             position: relative;
+            min-width: 85px;
+            min-height: 85px;
+            display:inline-block;
+
             img{
                 border: 2px solid #FFF;
                 margin: 0 auto;
@@ -520,8 +522,8 @@ h3 {
                 @include border-radius(50%);
                 width: 20px;
                 position: absolute;
-                bottom: 0;
-                right: 15px;
+                bottom: 5px;
+                right: 0;
             }
             
         }
@@ -532,6 +534,8 @@ h3 {
             width: 100%;
             position: absolute;
             bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
         }
     }
 }
