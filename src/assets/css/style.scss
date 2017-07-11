@@ -38,6 +38,10 @@ h1 {
 
 h3 {
     font-size: 18px;
+    &.profile-name{
+        margin-top: 0;
+    }
+
 }
 
 .title-link {
@@ -490,34 +494,49 @@ h3 {
     }
 }
 
-#profileHero {
+.profile-hero {
     .item {
-        height: 250px;
+        height: 410px;
         width: 100%;
-        background: #DDD;
         background-repeat: no-repeat !important;
         background-position: center center !important;
-        -webkit-background-size: cover !important;
-        -moz-background-size: cover !important;
-        -o-background-size: cover !important;
-        background-size: cover !important;
+        @include background-size(cover !important);
         display: table;
-        padding: 40px 15px;
-        .package-title {
+        // padding: 0 15px;
+        background: #DDD;
+        .profile-hero-content {
             display: table-cell;
             vertical-align: middle;
             float: none;
+        }
+        .profile-img{
+            position: relative;
+            img{
+                border: 2px solid #FFF;
+            }
+            .profile-score{
+                background: #FFF;
+                @include border-radius(50%);
+                width: 20px;
+                position: absolute;
+                bottom: 0;
+                right: 15px;
+            }
+            
+        }
+        .badges-trophies-count{
+            font-weight: bold;
         }
     }
 }
 
 
 /* Profile */
-
-.profile-name {
-    margin: 0;
+.profile-bio{
+    padding-top: 15px;
 }
 
+/* Footer Nav */
 .bottom-nav{
     .btn-group{
         width: 48%;
