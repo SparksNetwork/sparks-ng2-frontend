@@ -1,18 +1,18 @@
 <div class="row">
   <div class="col-xs-12">
-    <div class="you-will-give-got segment">
+    <div class="you-will-give-got segment" *ngIf="organizerCommitments?.length">
       <h3>You Will Get</h3>
       <ul>
-        <li *ngFor="let commitment of commitmentsGet">
+        <li *ngFor="let commitment of organizerCommitments">
           <app-card-item [icon]="commitment.icon" [title]="commitment.title" [subtitle]="commitment.description"></app-card-item>
-        </li>       
+        </li>
       </ul>
     </div>
 
-    <div class="you-will-give-got segment">
+    <div class="you-will-give-got segment" *ngIf="volunteerCommitments?.length">
       <h3>You Will Give</h3>
       <ul>
-        <li *ngFor="let commitment of commitmentsGive">
+        <li *ngFor="let commitment of volunteerCommitments">
           <app-card-item [icon]="commitment.icon" [title]="commitment.title" [subtitle]="commitment.description"></app-card-item>
         </li>
       </ul>
