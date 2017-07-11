@@ -15,6 +15,13 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-search::before {
+    content: "\E003";
+}
+
+.ic-user::before {
+    content: "\E008";
+}
 
 .ic-calendar:before {
     content: "\E109";
