@@ -1,56 +1,49 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { EventComponent } from './event.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { RouterModule, ActivatedRoute } from '@angular/router';
-import { HttpModule } from "@angular/http";
-
-import { sharedComponents, sharedServices } from "app/shared/shared.module";
-import { OpportunityService } from "app/events/shared/opportunity.service";
-import { AddToCalendarService } from "app/shared/add-to-calendar/add-to-calendar.service";
-import { InMemoryEventsService } from "test/in-memory-events.service";
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from "rxjs/Observable";
-import { MockActivatedRoute } from "test/mock-activated-route";
-import { EventOpportunityCard } from "app/events/event/event-oportunity-card.model";
+
+import { EventComponent } from './event.component';
+import { OpportunityService } from "app/events/shared/opportunity.service";
+import { InMemoryEventsService } from "test/in-memory-events.service";
+import { OpportunityServiceSpy } from "test/opportunity.service.spy";
 import { CardItemType } from "app/shared/card-item/card-item.enum";
-import { EngagementStatus } from "app/events/shared/engagement-status.enum";
-import { OpportunityCommitmentsComponent } from "app/events/shared/opportunity-commitments/opportunity-commitments.component";
+import { EventsModule } from "app/events/events.module";
+import { ActivatedRouteStub } from "test/router-stubs";
 
 
-let activatedRoute: MockActivatedRoute;
+let activatedRoute: ActivatedRouteStub;
 let component: EventComponent;
 let fixture: ComponentFixture<EventComponent>;
-let opportunityService;
-let getUserEngagementsSpy;
 let inMemoryService = new InMemoryEventsService();
 let db = inMemoryService.createDb();
 
 describe('EventComponent', () => {
   beforeEach(() => {
-    activatedRoute = new MockActivatedRoute();
+    activatedRoute = new ActivatedRouteStub();
   });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        EventComponent
-      ],
       schemas: [NO_ERRORS_SCHEMA],
       imports: [
-        HttpModule,
-        RouterModule,
+        EventsModule,         
         RouterTestingModule
       ],
       providers: [
-        OpportunityService,
-        sharedServices,
-        {
-          provide: ActivatedRoute,
-          useValue: activatedRoute
-        }
+        { provide: ActivatedRoute, useValue: activatedRoute },
+        { provide: OpportunityService, useValue: {} }
       ]
-    })
+    })// Override component's own provider
+      .overrideComponent(EventComponent, {
+        set: {
+          providers: [
+            { provide: OpportunityService, useClass: OpportunityServiceSpy }
+          ]
+        }
+      })
       .compileComponents();
   }));
 
@@ -64,100 +57,70 @@ function eventComponetSetup() {
   beforeEach(() => {
     activatedRoute.data = Observable.of({ event: db.eventdetails[0] });
     createComponent();
-    spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(db.userEngagements[0]));
+    fixture.detectChanges();
   });
 
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should assign event details when route is resolved', (() => {
-    fixture.detectChanges();
+  it('should assign event details when route is resolved', () => {
     expect(component.event).toBeTruthy();
-  }));
+  });
 }
 
 function oneOpportunitySetup() {
-  let getOpportunityCommitmentsSpy;
-  let commitments = db.opportunityCommitments[0].commitments;
+  let osSpy;
 
   beforeEach(async(() => {
     activatedRoute.data = Observable.of({ event: db.eventdetails[1] });
     createComponent();
-    getUserEngagementsSpy = spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(false));
-    getOpportunityCommitmentsSpy = spyOn(opportunityService, "getCommitments").and.returnValue(Observable.of(commitments));
+    osSpy = fixture.debugElement.injector.get(OpportunityService) as any;
+    fixture.detectChanges();
   }));
 
   it('should not get engagements', () => {
-    fixture.detectChanges();
-    expect(getUserEngagementsSpy.calls.count()).toBe(0, 'call to get engagement was made');
+    expect(osSpy.getUserEngagements).not.toHaveBeenCalled();
   })
 
-  it('should get opportunityCommitments', (() => {
-    fixture.detectChanges();
-    expect(getOpportunityCommitmentsSpy.calls.count()).toBe(1, 'was not called once');
-  }));
+  it('should get opportunity commitments', () => {
+    expect(osSpy.getCommitments).toHaveBeenCalledTimes(1);
+  })
 
-  it('should assign opportunityCommitments', () => {
-    fixture.detectChanges();
-    expect(component.opportunityCommitments).toBe(commitments, 'commitments were not assigned');
-  });
+  it('should assign opportunity commitments', fakeAsync(() => {
+    expect(component.opportunityCommitments).toBe(osSpy.commitments, 'commitments were not assigned');
+  }))
 }
 
 function multipleOpportunitiesSetup() {
   let getOpportunityCommitmentsSpy;
+  let osSpy: OpportunityServiceSpy;
 
   beforeEach(async(() => {
     activatedRoute.data = Observable.of({ event: db.eventdetails[0] });
     createComponent();
-    getOpportunityCommitmentsSpy = spyOn(opportunityService, "getCommitments").and.returnValue(Observable.of(false));
+    osSpy = fixture.debugElement.injector.get(OpportunityService) as any;
+    fixture.detectChanges();
   }));
 
-  it('should enabled opportunities before getUserEngagements is called', () => {
-    getUserEngagementsSpy = spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(false));
-
-    fixture.detectChanges();
-    expect(component.opportunityCards.every(x => !x.type)).toEqual(true, 'not all opportunities are enabled');
+  it('should get engagements', () => {
+    expect(osSpy.getUserEngagements).toHaveBeenCalledTimes(1);
   });
 
-  it('should get engagements', fakeAsync(() => {
-    getUserEngagementsSpy = spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(false));
-
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    expect(getUserEngagementsSpy.calls.count()).toBe(1, 'no call made to engagements');
-  }))
-
   it('should set oportunity cards type to disabled if one engagement is pending', fakeAsync(() => {
-    let engagements = [
-      {
-        opportunityId: 1,
-        status: EngagementStatus.Pending
-      },
-    ];
-
-    getUserEngagementsSpy = spyOn(opportunityService, "getUserEngagements").and.returnValue(Observable.of(engagements));
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    console.log(component)
     expect(component.opportunityCards.filter(x => x.type == CardItemType.Disabled).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
     expect(component.opportunityCards.find(x => x.id == 1).type).toEqual(CardItemType.Pending, "card item type not set to pending");
   }));
 
   it('should no get opportunityCommitments', (() => {
-    fixture.detectChanges();
-    expect(getOpportunityCommitmentsSpy.calls.count()).toBe(0, 'was called');
+    expect(osSpy.getCommitments).not.toHaveBeenCalled();
     expect(component.opportunityCommitments).not.toBeTruthy();
   }));
+
+  //TODO should set corect card item type
 }
 
 function createComponent() {
   fixture = TestBed.createComponent(EventComponent);
   component = fixture.componentInstance;
-  opportunityService = fixture.debugElement.injector.get(OpportunityService);
 }
-
-
-

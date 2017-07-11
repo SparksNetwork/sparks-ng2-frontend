@@ -24,7 +24,7 @@ export class EventComponent implements OnInit {
   opportunityCommitments: any[];
   addToCalendarData: AddToCalendar;
 
-  constructor(private route: ActivatedRoute, private http: Http, private opportunityService: OpportunityService) {
+  constructor(private route: ActivatedRoute, private opportunityService: OpportunityService) {
   }
 
   ngOnInit() {
