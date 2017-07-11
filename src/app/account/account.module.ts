@@ -5,11 +5,14 @@ import { RegisterLoginComponent } from './register-login/register-login.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AccountRoutingModule } from "app/account/account-routing.module";
+import { SharedModule } from "app/shared/shared.module";
+
 
 @NgModule({
   imports: [
     CommonModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    SharedModule
   ],
   declarations: [AccountComponent, RegisterLoginComponent, ForgotPasswordComponent, ResetPasswordComponent]
 })
