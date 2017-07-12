@@ -1,21 +1,23 @@
 import { Observable } from "rxjs/Observable";
 import { CommitmentParty } from "app/events/shared/commitment-party.enum";
+import { EngagementStatus } from "app/shared/engagement-status.enum";
 
 export class OpportunityServiceSpy {
-  engagements = [
-    {
-      opportunityId: 1,
-      status: 1
-    },
-    {
-      opportunityId: 2,
-      status: 2
-    },
-    {
-      opportunityId: 3,
-      status: 3
-    }
-  ];
+  pendingEngagement = {
+    id: 1,
+    userId: 1,
+    eventId: 1,
+    opportunityId: 1,
+    status: EngagementStatus.Applyed
+  };
+
+  activeEngagement = {
+    id: 1,
+    userId: 1,
+    eventId: 1,
+    opportunityId: 1,
+    status: EngagementStatus.Confirmed
+  };
 
   commitments = [
     {
@@ -44,8 +46,8 @@ export class OpportunityServiceSpy {
     }
   ];
 
-  getUserEngagements = jasmine.createSpy('getUserEngagements').and.callFake(
-    () => Observable.of(this.engagements)
+  getUserEngagement = jasmine.createSpy('getUserEngagement').and.callFake(
+    () => Observable.of(this.pendingEngagement)
   );
 
   getCommitments = jasmine.createSpy('getCommitments').and.callFake(

@@ -1,5 +1,6 @@
 import { InMemoryDbService, InMemoryBackendConfig } from "angular-in-memory-web-api";
 import { CommitmentParty } from "app/events/shared/commitment-party.enum";
+import { EngagementStatus } from "app/shared/engagement-status.enum";
 
 export class InMemoryEventsService implements InMemoryDbService, InMemoryBackendConfig {
     /**
@@ -81,47 +82,61 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
                         icon: "glyphicon-cog",
                     }
                 ]
+            },
+            {
+                id: 3,
+                title: "Park Cleanup Oradea",
+                images: [
+                    "https://placeimg.com/1140/411/animals/grayscale",
+                    "https://placeimg.com/1140/411/people/grayscale",
+                    "https://placeimg.com/1140/411/nature/grayscale"
+                ],
+                startDate: "20190304T090000",
+                endDate: "20190304T210000",
+                location: "Battery Park City, New York, NY",
+                description: "Make Kellog Park Great Again! Help plant, paint, and beautify our community park. Si se puedes!",
+                maxKarmaPoints: 2600,
+                opportunities: [
+                    {
+                        id: 1,
+                        title: "Volunteer",
+                        subtitle: "30 Days",
+                        description: "100% involvement",
+                        icon: "glyphicon-cog",
+                    },
+                    {
+                        id: 2,
+                        title: "Volunteer",
+                        subtitle: "30 Days",
+                        description: "100% involvement",
+                        icon: "glyphicon-cog",
+                    }
+                ]
             }
         ];
 
         let userEngagements = [
             {
+                id: 1,
                 userId: 1,
                 eventId: 1,
-                engagements: [
-                    {
-                        opportunityId: 1,
-                        status: 1
-                    },
-                    {
-                        opportunityId: 2,
-                        status: 2
-                    },
-                    {
-                        opportunityId: 3,
-                        status: 3
-                    },
-                ]
+                opportunityId: 1,
+                status: EngagementStatus.Applyed
+            },
+            {
+                id: 2,
+                userId: 1,
+                eventId: 2,
+                opportunityId: 1,
+                status: EngagementStatus.Accepted
 
             },
             {
+                id: 3,
                 userId: 1,
-                eventId: 2,
-                engagements: [
-                    {
-                        opportunityId: 1,
-                        status: 2
-                    },
-                    {
-                        opportunityId: 2,
-                        status: 2
-                    },
-                    {
-                        opportunityId: 3,
-                        status: 1
-                    },
-                ]
-
+                eventId: 3,
+                opportunityId: 1,
+                status: EngagementStatus.Confirmed
             },
         ]
 
@@ -162,7 +177,7 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
         let userAssignments = [
             {
                 userId: 1,
-                engagementId: 1,
+                engagementId: 3,
                 assignments: [
                     {
                         team: {
@@ -172,7 +187,7 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
                         shift: {
                             id: 1,
                             name: "Shift 1",
-                            startDate: "20180704T190000",
+                            startDate: "20170711T190000",
                             endDate: "20180704T220000"
                         }
                     },
@@ -184,7 +199,7 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
                         shift: {
                             id: 2,
                             name: "Shift 2",
-                            startDate: "20180704T160000",
+                            startDate: "20170717T160000",
                             endDate: "20180704T180000"
                         }
                     },
@@ -202,7 +217,7 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
                     },
                 ]
 
-            }            
+            }
         ]
 
         return { eventdetails, userEngagements, opportunityCommitments, userAssignments };

@@ -7,20 +7,18 @@ import { Observable } from "rxjs/Observable";
 
 import { EventComponent } from './event.component';
 import { OpportunityService } from "app/events/shared/opportunity.service";
-import { InMemoryEventsService } from "test/in-memory-events.service";
 import { OpportunityServiceSpy } from "test/opportunity.service.spy";
 import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { EventsModule } from "app/events/events.module";
 import { ActivatedRouteStub } from "test/router-stubs";
 import { UsertAssignmentsServiceSpy } from "test/user-assignments.spy";
 import { UserAssignmentService } from "app/shared/user-assignments.service";
+import { eventDetails } from "test/event-details.mock";
 
 
 let activatedRoute: ActivatedRouteStub;
 let component: EventComponent;
 let fixture: ComponentFixture<EventComponent>;
-let inMemoryService = new InMemoryEventsService();
-let db = inMemoryService.createDb();
 
 describe('EventComponent', () => {
   beforeEach(() => {
@@ -58,7 +56,7 @@ describe('EventComponent', () => {
 
 function eventComponetSetup() {
   beforeEach(() => {
-    activatedRoute.data = Observable.of({ event: db.eventdetails[0] });
+    activatedRoute.data = Observable.of({ event: eventDetails.multipleOpps });
     createComponent();
     fixture.detectChanges();
   });
@@ -76,17 +74,13 @@ function oneOpportunitySetup() {
   let osSpy;
 
   beforeEach(async(() => {
-    activatedRoute.data = Observable.of({ event: db.eventdetails[1] });
+    activatedRoute.data = Observable.of({ event: eventDetails.oneOpp });
     createComponent();
     osSpy = fixture.debugElement.injector.get(OpportunityService) as any;
     fixture.detectChanges();
   }));
 
-  it('should not get engagements', () => {
-    expect(osSpy.getUserEngagements).not.toHaveBeenCalled();
-  })
-
-  it('should get opportunity commitments', () => {
+  it('should get opportunity commitments', () => {    
     expect(osSpy.getCommitments).toHaveBeenCalledTimes(1);
   })
 
@@ -100,25 +94,31 @@ function multipleOpportunitiesSetup() {
   let osSpy: OpportunityServiceSpy;
 
   beforeEach(async(() => {
-    activatedRoute.data = Observable.of({ event: db.eventdetails[0] });
+    activatedRoute.data = Observable.of({ event: eventDetails.multipleOpps });
     createComponent();
     osSpy = fixture.debugElement.injector.get(OpportunityService) as any;
     fixture.detectChanges();
+    console.log(component);
   }));
 
-  it('should get engagements', () => {
-    expect(osSpy.getUserEngagements).toHaveBeenCalledTimes(1);
+  it('should get engagement', () => {
+    expect(osSpy.getUserEngagement).toHaveBeenCalledTimes(1);
   });
 
-  it('should set oportunity cards type to disabled if one engagement is pending', fakeAsync(() => {
+  it('should set oportunity cards type to disabled if one engagement is pending', () => {
+    component.setEventOpportunitiesCardType(osSpy.pendingEngagement);    
     expect(component.opportunityCards.filter(x => x.type == CardItemType.Disabled).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
-    expect(component.opportunityCards.find(x => x.id == 1).type).toEqual(CardItemType.Pending, "card item type not set to pending");
-  }));
+  });
 
-  it('should no get opportunityCommitments', (() => {
+  it('should set oportunity cards type to null if one engagement is active', () => {
+    component.setEventOpportunitiesCardType(osSpy.activeEngagement);    
+    expect(component.opportunityCards.filter(x => !x.type).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
+  });
+
+  it('should no get opportunityCommitments', () => {
     expect(osSpy.getCommitments).not.toHaveBeenCalled();
     expect(component.opportunityCommitments).not.toBeTruthy();
-  }));
+  });
 
   //TODO should set corect card item type
 }

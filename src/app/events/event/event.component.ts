@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Http, Response } from "@angular/http";
 
+import * as moment from 'moment';
+
 import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { ScheduleItem } from "app/shared/schedule/schedule-item.model";
 import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
 import { Observable } from "rxjs/Observable";
-import { EngagementStatus } from "app/events/shared/engagement-status.enum";
+import { EngagementStatus } from "app/shared/engagement-status.enum";
 import { EventOpportunityCard } from "app/events/event/event-oportunity-card.model";
 import { OpportunityService } from "app/events/shared/opportunity.service";
 import { UserAssignmentService } from "app/shared/user-assignments.service";
@@ -39,16 +41,41 @@ export class EventComponent implements OnInit {
         description: this.event.description
       };
 
-      if (data.event.opportunities.length == 1) {
-        this.getOpportunityCommitments(data.event.opportunities[0].id);
-      } else if (data.event.opportunities.length > 1) {
-        this.opportunityCards = <EventOpportunityCard[]>data.event.opportunities
-        this.opportunityService.getUserEngagements(1, this.event.id).subscribe(engagements => {
-          this.getAssignments(engagements);
-          this.setEventOpportunitiesCardType(engagements);
-        });
+      this.processOpportunities(data.event.opportunities);
+      this.getUserEngagement()
+    });
+  }
+
+  /**
+   * @description Processes opportunities by:
+   * - getting commitments if only one opportunity available
+   * - poppulating opportunity cards 
+   * @param opportunities 
+   */
+  processOpportunities(opportunities) {
+    if (!opportunities || !opportunities.length) return;
+
+    if (opportunities.length == 1) {
+      this.getOpportunityCommitments(opportunities[0].id);
+    } else {
+      this.opportunityCards = <EventOpportunityCard[]>opportunities;
+    }
+  }
+
+  /**
+   * @description Gets and processes the engagement by getting engagement's assignments 
+   * and setting opportunity card type
+   */
+  getUserEngagement() {
+    this.opportunityService.getUserEngagement(1, this.event.id).subscribe(engagement => {
+      if (!engagement) return;
+
+      this.getAssignments(engagement);
+
+      if (this.opportunityCards && this.opportunityCards.length) {
+        this.setEventOpportunitiesCardType(engagement);
       }
-    });    
+    });
   }
 
   /**
@@ -62,52 +89,50 @@ export class EventComponent implements OnInit {
   }
 
   /**
-   * @description Gets user assignement for the first active engagement.
-   * @param engagements
+   * @description Gets user assignement for the specified engagement.
+   * @param engagement
    */
-  getAssignments(engagements: any) {
-    if (!engagements.length) return;
+  getAssignments(engagement: any) {
+    if (!engagement || engagement.status !== EngagementStatus.Confirmed) return;
 
-    let activeEngagement = engagements.find(x => x.status == EngagementStatus.Active);
-
-    if (!activeEngagement) return;
-
-    this.userAssignmentService.getForEngagement(1, activeEngagement.id).subscribe(assignments => {
+    this.userAssignmentService.getAssignments(1, engagement.id).subscribe((assignments: Array<any>) => {
+      console.log(assignments);
       this.scheduleItems = assignments.map(x => {
         let schedule = new ScheduleItem();
-        schedule.date = x.startDate;
+        schedule.title = x.team.name;
+        schedule.date = moment(x.shift.startDate).calendar(null, {
+          sameElse: 'LLL'
+        });
         schedule.shift = x.shift.name;
         return schedule;
       })
     });
   }
 
-  setEventOpportunitiesCardType(engagements: any) {
-    if (!engagements.length) return;
+  /**
+   * @description Sets the ooportunity card status based on engagement provided
+   * @param engagement 
+   */
+  setEventOpportunitiesCardType(engagement: any) {   
+    if (!engagement) return;
 
-    let pendingEngagement = engagements.find(x => x.status == EngagementStatus.Pending);
-
-    for (let card of this.opportunityCards) {
-      if (pendingEngagement && pendingEngagement.opportunityId != card.id) {
-        //disable all other oportunities
-        card.type = CardItemType.Disabled;
+    for (let card of this.opportunityCards) {      
+      //is engagement's opportunity
+      if (engagement.opportunityId == card.id) {
+        card.type = engagement.status == EngagementStatus.Confirmed ? CardItemType.Active : CardItemType.Pending;
+        console.log("continue");
         continue;
       }
 
-      let engagement = engagements.find(x => x.opportunityId == card.id);
-
-      if (engagement) {
-        card.type = this.getOportunityCardItemTypeByEngagementStatus(engagement.status);
+      switch (<EngagementStatus>engagement.status) {
+        case EngagementStatus.Accepted:
+        case EngagementStatus.Applyed:
+        console.log("disabling");
+          card.type = CardItemType.Disabled;
+          break;
+        default:
+          card.type = null;
       }
-    }
-  }
-
-  private getOportunityCardItemTypeByEngagementStatus(engagementStatus) {
-    switch (engagementStatus) {
-      case EngagementStatus.Active:
-        return CardItemType.Active;
-      case EngagementStatus.Pending:
-        return CardItemType.Pending;
     }
   }
 }

@@ -8,7 +8,7 @@ export class UserAssignmentService {
     /**
      * @description Gets oppportunities on which user applied
      */
-    getForEngagement(userId: number, engagementId: number) {
+    getAssignments(userId: number, engagementId: number) {
         return <Observable<any>>this.http.get(`api/userAssignments?userId=${userId}&engagementId=${engagementId}`)
             .map(res => {
                 let data = this.extractData<any>(res);

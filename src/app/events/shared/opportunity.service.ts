@@ -13,7 +13,7 @@ export class OpportunityService {
     /**
      * @description Gets oppportunities on which user applied
      */
-    getUserEngagements(userId: number, eventId: number) {
+    getUserEngagement(userId: number, eventId: number) {
         return <Observable<any>>this.http.get(`api/userEngagements?userId=${userId}&eventId=${eventId}`)
             .map(res => {
                 let data = this.extractData<any>(res);
@@ -21,7 +21,7 @@ export class OpportunityService {
                 if (!data.length)
                     return Observable.of(null);
 
-                return data[0].engagements;
+                return data[0];
             })
             .catch(exception => {
                 //TODO treat exception;
