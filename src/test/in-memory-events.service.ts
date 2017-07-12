@@ -19,7 +19,11 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
                 ],
                 startDate: "20180704T190000",
                 endDate: "20180704T210000",
-                location: "Battery Park City, New York, NY",
+                location: {
+                    name:"Battery Park City, New York, NY",
+                   latitude:"40.706304",
+                    longitude:"-74.012657"
+                },
                 description: "Celebrate the independence of the United States with fireworks in one of the greatest cities in the world. New line",
                 maxKarmaPoints: 2600,
                 opportunities: [
@@ -70,7 +74,11 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
                 ],
                 startDate: "20190304T090000",
                 endDate: "20190304T210000",
-                location: "Battery Park City, New York, NY",
+                location: {
+                    name:"Battery Park City, New York, NY",
+                    latitude:"40.706304",
+                    longitude:"-74.012657"
+                },
                 description: "Make Kellog Park Great Again! Help plant, paint, and beautify our community park. Si se puedes!",
                 maxKarmaPoints: 2600,
                 opportunities: [
@@ -93,7 +101,11 @@ export class InMemoryEventsService implements InMemoryDbService, InMemoryBackend
                 ],
                 startDate: "20190304T090000",
                 endDate: "20190304T210000",
-                location: "Battery Park City, New York, NY",
+                location: {
+                    name:"Battery Park City, New York, NY",
+                    latitude:"40.706304",
+                    longitude:"-74.012657"
+                },
                 description: "Make Kellog Park Great Again! Help plant, paint, and beautify our community park. Si se puedes!",
                 maxKarmaPoints: 2600,
                 opportunities: [
