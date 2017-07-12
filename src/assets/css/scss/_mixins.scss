@@ -10,3 +10,8 @@
 	   -moz-border-radius: $border;
 			border-radius: $border;
 }
+
+@mixin block-nooverflow {
+  display: block;
+  overflow: hidden;
+}

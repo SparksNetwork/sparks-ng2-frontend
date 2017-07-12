@@ -501,31 +501,41 @@ h3 {
         background-repeat: no-repeat !important;
         background-position: center center !important;
         @include background-size(cover !important);
-        display: table;
-        // padding: 0 15px;
+        padding-top: 100px;
         background: #DDD;
+        position: relative;
         .profile-hero-content {
-            display: table-cell;
-            vertical-align: middle;
-            float: none;
+           @include block-nooverflow;
         }
         .profile-img{
             position: relative;
+            min-width: 85px;
+            min-height: 85px;
+            display:inline-block;
+
             img{
                 border: 2px solid #FFF;
+                margin: 0 auto;
             }
             .profile-score{
                 background: #FFF;
                 @include border-radius(50%);
                 width: 20px;
                 position: absolute;
-                bottom: 0;
-                right: 15px;
+                bottom: 5px;
+                right: 0;
             }
             
         }
         .badges-trophies-count{
             font-weight: bold;
+        }
+        .profile-progress{
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
         }
     }
 }
