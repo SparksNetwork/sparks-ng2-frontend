@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Http, Response } from "@angular/http";
 
-import * as moment from 'moment';
-
 import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { ScheduleItem } from "app/shared/schedule/schedule-item.model";
 import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
@@ -95,14 +93,11 @@ export class EventComponent implements OnInit {
   getAssignments(engagement: any) {
     if (!engagement || engagement.status !== EngagementStatus.Confirmed) return;
 
-    this.userAssignmentService.getAssignments(1, engagement.id).subscribe((assignments: Array<any>) => {
-      console.log(assignments);
+    this.userAssignmentService.getAssignments(1, engagement.id).subscribe((assignments: Array<any>) => {      
       this.scheduleItems = assignments.map(x => {
         let schedule = new ScheduleItem();
         schedule.title = x.team.name;
-        schedule.date = moment(x.shift.startDate).calendar(null, {
-          sameElse: 'LLL'
-        });
+        schedule.date = x.shift.startDate;
         schedule.shift = x.shift.name;
         return schedule;
       })
@@ -119,15 +114,13 @@ export class EventComponent implements OnInit {
     for (let card of this.opportunityCards) {      
       //is engagement's opportunity
       if (engagement.opportunityId == card.id) {
-        card.type = engagement.status == EngagementStatus.Confirmed ? CardItemType.Active : CardItemType.Pending;
-        console.log("continue");
+        card.type = engagement.status == EngagementStatus.Confirmed ? CardItemType.Active : CardItemType.Pending;       
         continue;
       }
 
       switch (<EngagementStatus>engagement.status) {
         case EngagementStatus.Accepted:
-        case EngagementStatus.Applyed:
-        console.log("disabling");
+        case EngagementStatus.Applyed:        
           card.type = CardItemType.Disabled;
           break;
         default:
