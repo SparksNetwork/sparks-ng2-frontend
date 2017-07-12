@@ -30,9 +30,9 @@
         </a>
       </div>
       <div class="event-location col-xs-6">
-        <a href="#">
+        <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr={{event.location?.latitude}},{{event.location?.longitude}}">
           <div class="text">
-            {{event.location}}<br/><span>get directions</span>
+            {{event.location?.name}}<br/><span>get directions</span>
           </div>
           <div class="icon">
             <span class="ic ic-map-marker"></span>
