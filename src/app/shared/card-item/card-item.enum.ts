@@ -1,1 +1,1 @@
-export enum CardItemType { Active, Disabled, Pending }
+export enum CardItemType { Active = 1, Disabled, Pending }

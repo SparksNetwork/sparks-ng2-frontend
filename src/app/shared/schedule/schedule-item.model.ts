@@ -1,4 +1,4 @@
-export interface IScheduleItem {
+export class ScheduleItem {
     title: string;
     shift: string;
     description: string;

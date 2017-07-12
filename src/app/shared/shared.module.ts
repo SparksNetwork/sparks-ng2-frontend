@@ -10,7 +10,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { AddToCalendarComponent } from './add-to-calendar/add-to-calendar.component';
 import { AddToCalendarService } from "./add-to-calendar/add-to-calendar.service";
 import { DateService } from "app/core/date.service";
-
+import { UserAssignmentService } from "app/shared/user-assignments.service";
+import { CalendarPipe } from "app/shared/pipes/calendar.pipe";
 
 @NgModule({
   imports: [
@@ -19,13 +20,13 @@ import { DateService } from "app/core/date.service";
   declarations: [
     PageNotFoundComponent, HeaderSimpleComponent,
     HeaderCarouselComponent, NavComponent, CardItemComponent,
-    ScheduleComponent, AddToCalendarComponent],
+    ScheduleComponent, AddToCalendarComponent, CalendarPipe],
   exports: [
     PageNotFoundComponent, HeaderSimpleComponent,
     HeaderCarouselComponent, NavComponent, CardItemComponent,
-    ScheduleComponent, AddToCalendarComponent
+    ScheduleComponent, AddToCalendarComponent, CalendarPipe
   ],
-  providers: [AddToCalendarService, DateService]
+  providers: [AddToCalendarService, DateService, UserAssignmentService]
 
 })
 export class SharedModule { }
