@@ -1,0 +1,125 @@
+<app-header-carousel [images]="event.images"></app-header-carousel>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="event-head segment">
+      <h1 class="event-title">Department of Public Works</h1>
+      <div class="event-karma">
+        <div class="event-karma-count">{{event.maxKarmaPoints}}
+          <p>up to</p>
+        </div>
+        <div class="icon-karma">
+          <span class="ic ic-star"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12">
+    <div class="event-date-location segment">
+      <div class="event-date col-xs-6 text-right">
+        <a href="#">
+          <div class="icon">
+            <span class="ic ic-calendar"></span>
+          </div>
+          <div class="text">
+            july 5 - sept 15<br/><span>
+              <app-add-to-calendar [data]="addToCalendarData"></app-add-to-calendar>
+            </span>
+          </div>
+        </a>
+      </div>
+      <div class="event-location col-xs-6">
+        <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr={{event.location?.latitude}},{{event.location?.longitude}}">
+          <div class="text">
+            {{event.location?.name}}<br/><span>get directions</span>
+          </div>
+          <div class="icon">
+            <span class="ic ic-map-marker"></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12">
+    <div class="event-description segment">
+      <p class="card-text">{{event.description}}</p>
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate YOU WILL GET/ YOU WILL GIVE component -->
+<app-opportunity-commitments *ngIf="opportunityCommitments" [commitments]="opportunityCommitments" ></app-opportunity-commitments>
+
+<!-- @TODO generate USER SCHEDULE component -->
+<div class="row" *ngIf="scheduleItems">
+  <div class="col-xs-12">
+    <div class="row segment">
+      <div class="col-xs-12">
+        <div class="col-xs-6">
+          <h3>Your Schedule</h3>
+        </div>
+        <div class="col-xs-6">
+          <a class="title-link" href="#">add to calendar <span class="glyphicon glyphicon-calendar"></span></a>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <app-schedule [items]="scheduleItems"></app-schedule>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate EVENT BADGES component: normal, active, pending, disabled -->
+<div class="row" *ngIf="opportunityCards">
+  <div class="col-xs-12">
+    <div id="event-requirements" class="row">
+      <div class="col-xs-12 event-req-row">
+        <div class="row">
+          <ng-container *ngFor="let opportunity of opportunityCards; let i=index">
+            <div class="col-xs-6">
+              <a href="" [routerLink]="['packages', opportunity.id]">
+                <app-card-item [type]="opportunity.type" [icon]="opportunity.icon" [title]="opportunity.title" [subtitle]="opportunity.subtitle"
+                  [description]="opportunity.description"></app-card-item>
+              </a>
+            </div>
+            <div class="clearfix" *ngIf="i%2==1"></div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate EVENT ORGANIZER component -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="event-organizer segment">
+      <h3>Organized by</h3>
+      <div class="row">
+        <div class="col-xs-9">Cobra Commander from The Burning Man Project</div>
+        <div class="col-xs-3"><img class="img-circle" src="https://placeimg.com/40/40/people/grayscale" /></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <app-event-social></app-event-social>
+  </div>
+</div>
+
+<!-- @TODO generate EVENT CONTACT component -->
+<div class="row segment">
+
+  <div class="col-xs-5">
+    <div id="event-contact" class="row">
+      <app-event-ask-organizer-button></app-event-ask-organizer-button>
+    </div>
+  </div>
+  <div class="col-xs-7">
+    <a href="#" class="btn btn-primary btn-block" title="Join Now" *ngIf="!opportunityCards">Join Now</a>
+  </div>
+</div>
