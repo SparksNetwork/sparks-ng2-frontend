@@ -15,7 +15,6 @@ import { UsertAssignmentsServiceSpy } from "test/user-assignments.spy";
 import { UserAssignmentService } from "app/shared/user-assignments.service";
 import { eventDetails } from "test/event-details.mock";
 
-
 let activatedRoute: ActivatedRouteStub;
 let component: EventComponent;
 let fixture: ComponentFixture<EventComponent>;
@@ -29,7 +28,7 @@ describe('EventComponent', () => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       imports: [
-        EventsModule,
+        EventsModule,        
         RouterTestingModule
       ],
       providers: [
@@ -97,8 +96,7 @@ function multipleOpportunitiesSetup() {
     activatedRoute.data = Observable.of({ event: eventDetails.multipleOpps });
     createComponent();
     osSpy = fixture.debugElement.injector.get(OpportunityService) as any;
-    fixture.detectChanges();
-    console.log(component);
+    fixture.detectChanges();   
   }));
 
   it('should get engagement', () => {
