@@ -7,6 +7,7 @@ import { EventSocialComponent } from './shared/event-social/event-social.compone
 import { EventAskOrganizerButtonComponent } from './shared/event-ask-organizer-button/event-ask-organizer-button.component';
 import { OpportunityService } from "app/events/shared/opportunity.service";
 import { OpportunityCommitmentsComponent } from './shared/opportunity-commitments/opportunity-commitments.component';
+import { CalendarPipe } from "app/shared/pipes/calendar.pipe";
 
 @NgModule({
   imports: [

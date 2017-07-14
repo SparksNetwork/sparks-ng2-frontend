@@ -1,0 +1,26 @@
+<div class="row" style="padding-top:20px;">
+    <div class="col-xs-12">
+        <div class="opportunity-head segment">
+            <div class="col-xs-6">
+                <div class="row">
+                    <h3>Regular</h3>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="dropdown opportunity-selector">
+                    <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenuOpportunity" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                        85% discount <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
+                        <li *ngFor="let opp of opps">
+                            <a href="#" [routerLink]="[opp.id]">{{opp.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
