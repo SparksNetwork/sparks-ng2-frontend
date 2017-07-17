@@ -631,5 +631,8 @@ h3 {
 .bottom-nav {
     .btn-group {
         width: 48%;
+        &:only-child {
+         float: right;
+        }
     }
 }
