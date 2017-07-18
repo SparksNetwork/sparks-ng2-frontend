@@ -18,12 +18,12 @@ export class ProjectResolver implements Resolve<any> {
 
         //this is just to remember to validate id or name
         if (isNaN(+id)) {
-            console.log(`Event id was not a number: ${id}`);
+            console.log(`Project id was not a number: ${id}`);
             this.router.navigate(['/projects']);
             return Observable.of(null);
         }
         //TODO user Stevo service and models
-        return <Observable<any[]>>this.http.get(`api/eventdetails/${id}`)
+        return <Observable<any[]>>this.http.get(`api/projectdetails/${id}`)
             .map(res => this.extractData<any[]>(res))
             .catch(error => {
                 console.log(`Retrieval error: ${error}`);

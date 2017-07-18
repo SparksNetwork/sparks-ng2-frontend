@@ -13,8 +13,8 @@ export class OpportunityService {
     /**
      * @description Gets oppportunities on which user applied
      */
-    getUserEngagement(userId: number, eventId: number) {
-        return <Observable<any>>this.http.get(`api/userEngagements?userId=${userId}&eventId=${eventId}`)
+    getUserEngagement(userId: number, projectId: number) {
+        return <Observable<any>>this.http.get(`api/userEngagements?userId=${userId}&projectId=${projectId}`)
             .map(res => {
                 let data = this.extractData<any>(res);
 
@@ -30,8 +30,8 @@ export class OpportunityService {
             });
     }
 
-    getCommitments(eventId: number, oppportunityId: number) {
-        return <Observable<any>>this.http.get(`api/opportunityCommitments?eventId=${eventId}&opportunityId=${oppportunityId}`)
+    getCommitments(projectId: number, oppportunityId: number) {
+        return <Observable<any>>this.http.get(`api/opportunityCommitments?projectId=${projectId}&opportunityId=${oppportunityId}`)
             .map(res => {
                 let data = this.extractData<any>(res);
 

@@ -8,7 +8,7 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
     * Safe for consuming service to morph arrays and objects.
     */
     createDb() {
-        let eventdetails = [
+        let projectdetails = [
             {
                 id: 1,
                 title: "Department of Public Works",
@@ -238,6 +238,6 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
             { id: 3, eventId: 1, name: "45% discount" },
         ]
 
-        return { eventdetails, userEngagements, opportunityCommitments, userAssignments, opps };
+        return { projectdetails, userEngagements, opportunityCommitments, userAssignments, opps };
     }
 }

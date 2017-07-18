@@ -48,15 +48,15 @@ describe('ProjectComponent', () => {
       .compileComponents();
   }));
 
-  describe("setup", eventComponetSetup)
-  describe("when navigating to event with only one opportunity", oneOpportunitySetup)
-  describe("when navigating to event with multiple opportunities", multipleOpportunitiesSetup)
+  describe("setup", projectComponetSetup)
+  describe("when navigating to project with only one opportunity", oneOpportunitySetup)
+  describe("when navigating to project with multiple opportunities", multipleOpportunitiesSetup)
 
 });
 
-function eventComponetSetup() {
+function projectComponetSetup() {
   beforeEach(() => {
-    activatedRoute.data = Observable.of({ event: projectDetails.multipleOpps });
+    activatedRoute.data = Observable.of({ project: projectDetails.multipleOpps });
     createComponent();
     fixture.detectChanges();
   });
@@ -65,7 +65,7 @@ function eventComponetSetup() {
     expect(component).toBeTruthy();
   });
 
-  it('should assign event details when route is resolved', () => {
+  it('should assign project details when route is resolved', () => {
     expect(component.project).toBeTruthy();
   });
 }
@@ -74,7 +74,7 @@ function oneOpportunitySetup() {
   let osSpy;
 
   beforeEach(async(() => {
-    activatedRoute.data = Observable.of({ event: projectDetails.oneOpp });
+    activatedRoute.data = Observable.of({ project: projectDetails.oneOpp });
     createComponent();
     osSpy = fixture.debugElement.injector.get(OpportunityService) as any;
     fixture.detectChanges();
@@ -94,7 +94,7 @@ function multipleOpportunitiesSetup() {
   let osSpy: OpportunityServiceSpy;
 
   beforeEach(async(() => {
-    activatedRoute.data = Observable.of({ event: projectDetails.multipleOpps });
+    activatedRoute.data = Observable.of({ project: projectDetails.multipleOpps });
     createComponent();
     osSpy = fixture.debugElement.injector.get(OpportunityService) as any;
     fixture.detectChanges();
@@ -106,12 +106,12 @@ function multipleOpportunitiesSetup() {
   });
 
   it('should set oportunity cards type to disabled if one engagement is pending', () => {
-    component.setEventOpportunitiesCardType(osSpy.pendingEngagement);    
+    component.setProjectOpportunitiesCardType(osSpy.pendingEngagement);    
     expect(component.opportunityCards.filter(x => x.type == CardItemType.Disabled).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
   });
 
   it('should set oportunity cards type to null if one engagement is active', () => {
-    component.setEventOpportunitiesCardType(osSpy.activeEngagement);    
+    component.setProjectOpportunitiesCardType(osSpy.activeEngagement);    
     expect(component.opportunityCards.filter(x => !x.type).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
   });
 
