@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { RegisterLoginComponent } from './register-login.component';
 
@@ -8,9 +9,10 @@ describe('RegisterLoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterLoginComponent ]
+      schemas: [NO_ERRORS_SCHEMA],
+      declarations: [RegisterLoginComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

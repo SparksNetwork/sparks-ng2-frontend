@@ -2,9 +2,9 @@ import { Component } from "@angular/core";
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouterModule, Routes, provideRoutes } from '@angular/router';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { sharedComponents } from "app/shared/shared.module";
 
 @Component({
   selector: 'as-test-cmp',
@@ -22,10 +22,10 @@ let config: Routes = [
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [
         TestRouterComponent,
-        AppComponent,
-        sharedComponents
+        AppComponent        
       ],
       imports: [
         RouterModule,

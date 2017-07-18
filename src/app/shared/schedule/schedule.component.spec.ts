@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { ScheduleComponent } from './schedule.component';
+import { CalendarPipe } from "app/shared/pipes/calendar.pipe";
 
 describe('ScheduleComponent', () => {
   let component: ScheduleComponent;
@@ -8,7 +10,8 @@ describe('ScheduleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScheduleComponent ]
+       schemas: [NO_ERRORS_SCHEMA],
+      declarations: [ ScheduleComponent, CalendarPipe ]
     })
     .compileComponents();
   }));

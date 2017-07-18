@@ -34,5 +34,5 @@ export class SharedModule { }
 export const sharedComponents = [
   PageNotFoundComponent, HeaderSimpleComponent, 
   HeaderCarouselComponent, NavComponent, CardItemComponent, 
-  ScheduleComponent, AddToCalendarComponent];
+  ScheduleComponent, AddToCalendarComponent, CalendarPipe];
  export const sharedServices = [AddToCalendarService, DateService]

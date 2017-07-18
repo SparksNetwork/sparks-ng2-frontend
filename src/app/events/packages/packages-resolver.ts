@@ -8,26 +8,25 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
 @Injectable()
-export class EventResolver implements Resolve<any> {
+export class PackagesResolver implements Resolve<any>{
 
     constructor(private http: Http, private router: Router) { }
 
-    resolve(route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): Observable<any> {
-        let id = route.paramMap.get('id');
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        let eventId = route.paramMap.get("id");
 
-        //this is just to remember to validate id or name
-        if (isNaN(+id)) {
-            console.log(`Event id was not a number: ${id}`);
+        if (isNaN(+eventId)) {
+            console.log(`Event id was not a number: ${eventId}`);
             this.router.navigate(['/events']);
             return Observable.of(null);
         }
+
         //TODO user Stevo service and models
-        return <Observable<any[]>>this.http.get(`api/eventdetails/${id}`)
+        return <Observable<any[]>>this.http.get(`api/opps?eventId=${eventId}`)
             .map(res => this.extractData<any[]>(res))
             .catch(error => {
                 console.log(`Retrieval error: ${error}`);
-                this.router.navigate(['/events']);
+                this.router.navigate(['/events', eventId]);
                 return Observable.of(null);
             });
     }

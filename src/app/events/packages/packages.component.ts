@@ -1,6 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
-@Component({ 
-  template: `<router-outlet></router-outlet>`,  
+@Component({
+  templateUrl: './packages.component.html',
 })
-export class PackagesComponent  {}
+export class PackagesComponent implements OnInit {
+
+  opps: any[];
+
+  constructor(private route: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
+    this.route.data.subscribe((data: { opps: any[] }) => {
+      this.opps = data.opps;
+    });
+  }
+}
