@@ -60,8 +60,13 @@ h3 {
 }
 
 .text h3,
+.description h3,
 .timeline h3 {
     margin: 0;
+}
+
+*[data-toggle="collapse"] {
+    cursor: pointer;
 }
 
 
@@ -69,6 +74,12 @@ h3 {
 
 .segment-title {
     margin: 0;
+}
+
+.component-segment {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    @include block-nooverflow;
 }
 
 .segment {
@@ -94,6 +105,27 @@ h3 {
     margin: 0 !important;
 }
 
+.bottom-links{
+    border-top: 2px solid $light-gray;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    &:before,
+    &:after {
+        display: table;
+        content: " ";
+    }
+    &:after {
+        clear: both;
+    }
+    .col-xs-9{
+        padding-left: 0;
+    }
+    .col-xs-3{
+        padding-right: 0;
+        text-align: right;
+    }
+}
+
 .lineabove {
     &:before {
         content: '';
@@ -105,6 +137,20 @@ h3 {
     }
 }
 
+.icon-desc-container {
+    width: 75%;
+    float: left;
+    @include block-nooverflow;
+}
+
+.karma-point-container {
+    text-align: right;
+    width: 25%;
+    float: left;
+    padding-left: 15px;
+    @include block-nooverflow;
+}
+
 .icon {
     width: 50px;
     float: left;
@@ -114,7 +160,8 @@ h3 {
     }
 }
 
-.text {
+.text,
+.description {
     width: calc(100% - 60px);
     float: right;
     font-size: 14px;
@@ -312,7 +359,8 @@ h3 {
         float: left;
         text-align: center;
     }
-    .text {
+    .text,
+    .description {
         width: calc(100% - 60px);
         float: right;
     }
@@ -321,7 +369,8 @@ h3 {
         .icon {
             float: right;
         }
-        .text {
+        .text,
+        .description {
             float: left;
         }
     }
@@ -367,13 +416,15 @@ h3 {
         float: left;
         text-align: center;
     }
-    .text {
+    .text,
+    .description {
         width: calc(100% - 60px);
         float: right;
     }
 }
 
-.you-will-give-got {
+.you-will-give-got,
+.quests{
     ul {
         margin: 0;
         padding: 0;
@@ -382,9 +433,14 @@ h3 {
             display: block;
             overflow: hidden;
             margin-bottom: 15px;
+            .profile-badges & {
+                width: 25%;
+                float: left;
+            }
             &.list-other {
                 cursor: pointer;
-                .text {
+                .text,
+                .description {
                     &:before {
                         content: '';
                         width: 120px;
@@ -400,9 +456,31 @@ h3 {
             width: 30px;
             float: left;
         }
-        .text {
+        .text,
+        .description {
             width: calc(100% - 40px);
             float: right;
+        }
+    }
+}
+
+.profile-reward {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            width: 25%;
+            float: left;
+            padding: 0 5px;
+            text-align: center;
+            .icon-desc-container{
+                width: 100%;
+                .icon,
+                .description{
+                    width: 100%;
+                }
+            }
         }
     }
 }
