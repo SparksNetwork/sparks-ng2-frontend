@@ -79,7 +79,7 @@
         <div class="row">
           <ng-container *ngFor="let opportunity of opportunityCards; let i=index">
             <div class="col-xs-6">
-              <a href="" [routerLink]="['packages', opportunity.id]">
+              <a href="" [routerLink]="['opportunities', opportunity.id]">
                 <app-card-item [type]="opportunity.type" [icon]="opportunity.icon" [title]="opportunity.title" [subtitle]="opportunity.subtitle"
                   [description]="opportunity.description"></app-card-item>
               </a>
