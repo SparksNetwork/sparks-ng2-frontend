@@ -7,7 +7,7 @@ import { ScheduleItem } from "app/shared/schedule/schedule-item.model";
 import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
 import { Observable } from "rxjs/Observable";
 import { EngagementStatus } from "app/shared/engagement-status.enum";
-import { ProjectOpportunityCard } from "app/projects/project/project-oportunity-card.model";
+import { ProjectOpportunityCard } from "app/projects/project/project-opportunity-card.model";
 import { OpportunityService } from "app/projects/shared/opportunity.service";
 import { UserAssignmentService } from "app/shared/user-assignments.service";
 

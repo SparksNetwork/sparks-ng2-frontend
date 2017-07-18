@@ -13,20 +13,20 @@ export class OpportunitiesResolver implements Resolve<any>{
     constructor(private http: Http, private router: Router) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        let eventId = route.paramMap.get("id");
+        let projectId = route.paramMap.get("id");
 
-        if (isNaN(+eventId)) {
-            console.log(`Event id was not a number: ${eventId}`);
+        if (isNaN(+projectId)) {
+            console.log(`Project id was not a number: ${projectId}`);
             this.router.navigate(['/projects']);
             return Observable.of(null);
         }
 
         //TODO user Stevo service and models
-        return <Observable<any[]>>this.http.get(`api/opps?eventId=${eventId}`)
+        return <Observable<any[]>>this.http.get(`api/opps?projectId=${projectId}`)
             .map(res => this.extractData<any[]>(res))
             .catch(error => {
                 console.log(`Retrieval error: ${error}`);
-                this.router.navigate(['/projects', eventId]);
+                this.router.navigate(['/projects', projectId]);
                 return Observable.of(null);
             });
     }

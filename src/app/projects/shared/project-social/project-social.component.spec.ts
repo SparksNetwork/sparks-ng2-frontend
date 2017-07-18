@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventSocialComponent } from './event-social.component';
+import { ProjectSocialComponent } from './project-social.component';
 
-describe('EventSocialComponent', () => {
-  let component: EventSocialComponent;
-  let fixture: ComponentFixture<EventSocialComponent>;
+describe('ProjectSocialComponent', () => {
+  let component: ProjectSocialComponent;
+  let fixture: ComponentFixture<ProjectSocialComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventSocialComponent ]
+      declarations: [ ProjectSocialComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventSocialComponent);
+    fixture = TestBed.createComponent(ProjectSocialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
