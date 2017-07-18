@@ -1,5 +1,5 @@
 import { Observable } from "rxjs/Observable";
-import { CommitmentParty } from "app/events/shared/commitment-party.enum";
+import { CommitmentParty } from "app/projects/shared/commitment-party.enum";
 import { EngagementStatus } from "app/shared/engagement-status.enum";
 
 export class OpportunityServiceSpy {

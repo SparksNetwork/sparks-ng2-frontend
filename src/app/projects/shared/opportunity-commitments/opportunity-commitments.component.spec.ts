@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OpportunityCommitmentsComponent } from './opportunity-commitments.component';
 import { sharedComponents } from "app/shared/shared.module";
-import { InMemoryEventsService } from "test/in-memory-events.service";
-import { CommitmentParty } from "app/events/shared/commitment-party.enum";
+import { InMemoryProjectsService } from "test/in-memory-projects.service";
+import { CommitmentParty } from "app/projects/shared/commitment-party.enum";
 
 let commitmentsMock = [
   {

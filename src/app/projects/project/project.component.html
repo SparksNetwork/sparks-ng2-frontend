@@ -1,11 +1,11 @@
-<app-header-carousel [images]="event.images"></app-header-carousel>
+<app-header-carousel [images]="project.images"></app-header-carousel>
 
 <div class="row">
   <div class="col-xs-12">
     <div class="event-head segment">
       <h1 class="event-title">Department of Public Works</h1>
       <div class="event-karma">
-        <div class="event-karma-count">{{event.maxKarmaPoints}}
+        <div class="event-karma-count">{{project.maxKarmaPoints}}
           <p>up to</p>
         </div>
         <div class="icon-karma">
@@ -30,9 +30,9 @@
         </a>
       </div>
       <div class="event-location col-xs-6">
-        <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr={{event.location?.latitude}},{{event.location?.longitude}}">
+        <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr={{project.location?.latitude}},{{project.location?.longitude}}">
           <div class="text">
-            {{event.location?.name}}<br/><span>get directions</span>
+            {{project.location?.name}}<br/><span>get directions</span>
           </div>
           <div class="icon">
             <span class="ic ic-map-marker"></span>
@@ -44,7 +44,7 @@
 
   <div class="col-xs-12">
     <div class="event-description segment">
-      <p class="card-text">{{event.description}}</p>
+      <p class="card-text">{{project.description}}</p>
     </div>
   </div>
 </div>

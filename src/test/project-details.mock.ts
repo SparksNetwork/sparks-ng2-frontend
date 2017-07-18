@@ -1,4 +1,4 @@
-export const eventDetails = {
+export const projectDetails = {
     multipleOpps: {
         id: 1,
         title: "Department of Public Works",

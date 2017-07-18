@@ -7,19 +7,19 @@ import { ScheduleItem } from "app/shared/schedule/schedule-item.model";
 import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
 import { Observable } from "rxjs/Observable";
 import { EngagementStatus } from "app/shared/engagement-status.enum";
-import { EventOpportunityCard } from "app/events/event/event-oportunity-card.model";
-import { OpportunityService } from "app/events/shared/opportunity.service";
+import { ProjectOpportunityCard } from "app/projects/project/project-oportunity-card.model";
+import { OpportunityService } from "app/projects/shared/opportunity.service";
 import { UserAssignmentService } from "app/shared/user-assignments.service";
 
 @Component({
-  selector: 'app-event',
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  selector: 'app-project',
+  templateUrl: './project.component.html',
+  styleUrls: ['./project.component.css']
 })
-export class EventComponent implements OnInit {
+export class ProjectComponent implements OnInit {
 
-  event: any;
-  opportunityCards: EventOpportunityCard[];
+  project: any;
+  opportunityCards: ProjectOpportunityCard[];
   cardItemType = CardItemType;
   scheduleItems: ScheduleItem[];
   opportunityCommitments: any[];
@@ -29,17 +29,17 @@ export class EventComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.data.subscribe((data: { event: any }) => {
-      this.event = data.event;
+    this.route.data.subscribe((data: { project: any }) => {
+      this.project = data.project;
       this.addToCalendarData = {
-        startDate: this.event.startDate,
-        endDate: this.event.endDate,
-        title: this.event.title,
-        location: this.event.location,
-        description: this.event.description
+        startDate: this.project.startDate,
+        endDate: this.project.endDate,
+        title: this.project.title,
+        location: this.project.location,
+        description: this.project.description
       };
 
-      this.processOpportunities(data.event.opportunities);
+      this.processOpportunities(data.project.opportunities);
       this.getUserEngagement()
     });
   }
@@ -56,7 +56,7 @@ export class EventComponent implements OnInit {
     if (opportunities.length == 1) {
       this.getOpportunityCommitments(opportunities[0].id);
     } else {
-      this.opportunityCards = <EventOpportunityCard[]>opportunities;
+      this.opportunityCards = <ProjectOpportunityCard[]>opportunities;
     }
   }
 
@@ -65,13 +65,13 @@ export class EventComponent implements OnInit {
    * and setting opportunity card type
    */
   getUserEngagement() {
-    this.opportunityService.getUserEngagement(1, this.event.id).subscribe(engagement => {
+    this.opportunityService.getUserEngagement(1, this.project.id).subscribe(engagement => {
       if (!engagement) return;
 
       this.getAssignments(engagement);
 
       if (this.opportunityCards && this.opportunityCards.length) {
-        this.setEventOpportunitiesCardType(engagement);
+        this.setProjectOpportunitiesCardType(engagement);
       }
     });
   }
@@ -81,7 +81,7 @@ export class EventComponent implements OnInit {
    * @param opportunityId 
    */
   getOpportunityCommitments(opportunityId: number) {
-    this.opportunityService.getCommitments(this.event.id, opportunityId).subscribe(opportunityCommitments => {
+    this.opportunityService.getCommitments(this.project.id, opportunityId).subscribe(opportunityCommitments => {
       this.opportunityCommitments = opportunityCommitments;
     });
   }
@@ -108,7 +108,7 @@ export class EventComponent implements OnInit {
    * @description Sets the ooportunity card status based on engagement provided
    * @param engagement 
    */
-  setEventOpportunitiesCardType(engagement: any) {   
+  setProjectOpportunitiesCardType(engagement: any) {   
     if (!engagement) return;
 
     for (let card of this.opportunityCards) {      

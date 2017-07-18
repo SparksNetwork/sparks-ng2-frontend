@@ -5,22 +5,22 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from "rxjs/Observable";
 
-import { EventComponent } from './event.component';
-import { OpportunityService } from "app/events/shared/opportunity.service";
+import { ProjectComponent } from './project.component';
+import { OpportunityService } from "app/projects/shared/opportunity.service";
 import { OpportunityServiceSpy } from "test/opportunity.service.spy";
 import { CardItemType } from "app/shared/card-item/card-item.enum";
-import { EventsModule } from "app/events/events.module";
+import { ProjectsModule } from "app/projects/projects.module";
 import { ActivatedRouteStub } from "test/router-stubs";
 import { UsertAssignmentsServiceSpy } from "test/user-assignments.spy";
 import { UserAssignmentService } from "app/shared/user-assignments.service";
-import { eventDetails } from "test/event-details.mock";
+import { projectDetails } from "test/project-details.mock";
 
 
 let activatedRoute: ActivatedRouteStub;
-let component: EventComponent;
-let fixture: ComponentFixture<EventComponent>;
+let component: ProjectComponent;
+let fixture: ComponentFixture<ProjectComponent>;
 
-describe('EventComponent', () => {
+describe('ProjectComponent', () => {
   beforeEach(() => {
     activatedRoute = new ActivatedRouteStub();
   });
@@ -29,7 +29,7 @@ describe('EventComponent', () => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       imports: [
-        EventsModule,
+        ProjectsModule,
         RouterTestingModule
       ],
       providers: [
@@ -37,7 +37,7 @@ describe('EventComponent', () => {
         { provide: OpportunityService, useValue: {} }
       ]
     })// Override component's own provider
-      .overrideComponent(EventComponent, {
+      .overrideComponent(ProjectComponent, {
         set: {
           providers: [
             { provide: OpportunityService, useClass: OpportunityServiceSpy },
@@ -56,7 +56,7 @@ describe('EventComponent', () => {
 
 function eventComponetSetup() {
   beforeEach(() => {
-    activatedRoute.data = Observable.of({ event: eventDetails.multipleOpps });
+    activatedRoute.data = Observable.of({ event: projectDetails.multipleOpps });
     createComponent();
     fixture.detectChanges();
   });
@@ -66,7 +66,7 @@ function eventComponetSetup() {
   });
 
   it('should assign event details when route is resolved', () => {
-    expect(component.event).toBeTruthy();
+    expect(component.project).toBeTruthy();
   });
 }
 
@@ -74,7 +74,7 @@ function oneOpportunitySetup() {
   let osSpy;
 
   beforeEach(async(() => {
-    activatedRoute.data = Observable.of({ event: eventDetails.oneOpp });
+    activatedRoute.data = Observable.of({ event: projectDetails.oneOpp });
     createComponent();
     osSpy = fixture.debugElement.injector.get(OpportunityService) as any;
     fixture.detectChanges();
@@ -94,7 +94,7 @@ function multipleOpportunitiesSetup() {
   let osSpy: OpportunityServiceSpy;
 
   beforeEach(async(() => {
-    activatedRoute.data = Observable.of({ event: eventDetails.multipleOpps });
+    activatedRoute.data = Observable.of({ event: projectDetails.multipleOpps });
     createComponent();
     osSpy = fixture.debugElement.injector.get(OpportunityService) as any;
     fixture.detectChanges();
@@ -124,6 +124,6 @@ function multipleOpportunitiesSetup() {
 }
 
 function createComponent() {
-  fixture = TestBed.createComponent(EventComponent);
+  fixture = TestBed.createComponent(ProjectComponent);
   component = fixture.componentInstance;
 }

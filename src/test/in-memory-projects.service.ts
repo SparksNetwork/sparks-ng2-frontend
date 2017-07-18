@@ -1,8 +1,8 @@
 import { InMemoryDbService, InMemoryBackendConfig } from "angular-in-memory-web-api";
-import { CommitmentParty } from "app/events/shared/commitment-party.enum";
+import { CommitmentParty } from "app/projects/shared/commitment-party.enum";
 import { EngagementStatus } from "app/shared/engagement-status.enum";
 
-export class InMemoryEventsService implements InMemoryDbService, InMemoryBackendConfig {
+export class InMemoryProjectsService implements InMemoryDbService, InMemoryBackendConfig {
     /**
     * Creates fresh copy of data each time.
     * Safe for consuming service to morph arrays and objects.

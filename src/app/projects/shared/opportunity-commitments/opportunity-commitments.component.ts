@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { CommitmentParty } from "app/events/shared/commitment-party.enum";
+import { CommitmentParty } from "app/projects/shared/commitment-party.enum";
 
 @Component({
   selector: 'app-opportunity-commitments',

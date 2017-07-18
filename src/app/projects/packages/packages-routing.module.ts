@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { PackageComponent } from './package/package.component';
-import { PackagesComponent } from "app/events/packages/packages.component";
+import { PackagesComponent } from "app/projects/packages/packages.component";
 import { SharedModule } from "app/shared/shared.module";
 
 @NgModule({
