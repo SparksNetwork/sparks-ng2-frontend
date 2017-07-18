@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { PackageComponent } from './package/package.component';
-import { PackagesComponent } from "app/projects/packages/packages.component";
+import { OpportunityComponent } from './opportunity/opportunity.component';
+import { OpportunitiesComponent } from "app/projects/opportunities/opportunities.component";
 import { SharedModule } from "app/shared/shared.module";
 
 @NgModule({
@@ -11,11 +11,11 @@ import { SharedModule } from "app/shared/shared.module";
         RouterModule.forChild([
             {
                 path: '',
-                component: PackagesComponent,
+                component: OpportunitiesComponent,
                 children: [
                     {
-                        path: ':packageId',
-                        component: PackageComponent
+                        path: ':opportunityId',
+                        component: OpportunityComponent
                     },
                 ]
             }
@@ -24,6 +24,6 @@ import { SharedModule } from "app/shared/shared.module";
     ], exports: [RouterModule],
 
 })
-export class PackagesRoutingModule { }
+export class OpportunitiesRoutingModule { }
 
-export const routedComponents = [PackageComponent, PackagesComponent]
+export const routedComponents = [OpportunityComponent, OpportunitiesComponent]

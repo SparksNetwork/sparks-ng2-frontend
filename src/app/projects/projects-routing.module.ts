@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectComponent } from './project/project.component';
 import { ProjectsComponent } from "./projects.component";
-import { PackagesModule } from "app/projects/packages/packages.module";
+import { OpportunitiesModule } from "app/projects/opportunities/opportunities.module";
 import { ProjectResolver } from "app/projects/project/project-resolver.service";
 
 const routes: Routes = [
@@ -19,8 +19,8 @@ const routes: Routes = [
         },
       },
       {
-        path: ':id/packages',
-        loadChildren: 'app/projects/packages/packages.module#PackagesModule'
+        path: ':id/opportunities',
+        loadChildren: 'app/projects/opportunities/opportunities.module#OpportunitiesModule'
       }
     ]
   },

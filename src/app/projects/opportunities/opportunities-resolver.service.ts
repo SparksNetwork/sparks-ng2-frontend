@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
 @Injectable()
-export class PackagesResolver implements Resolve<any>{
+export class OpportunitiesResolver implements Resolve<any>{
 
     constructor(private http: Http, private router: Router) { }
 
@@ -17,7 +17,7 @@ export class PackagesResolver implements Resolve<any>{
 
         if (isNaN(+eventId)) {
             console.log(`Event id was not a number: ${eventId}`);
-            this.router.navigate(['/events']);
+            this.router.navigate(['/projects']);
             return Observable.of(null);
         }
 
@@ -26,7 +26,7 @@ export class PackagesResolver implements Resolve<any>{
             .map(res => this.extractData<any[]>(res))
             .catch(error => {
                 console.log(`Retrieval error: ${error}`);
-                this.router.navigate(['/events', eventId]);
+                this.router.navigate(['/projects', eventId]);
                 return Observable.of(null);
             });
     }

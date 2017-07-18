@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
-  templateUrl: './packages.component.html',
+  templateUrl: './opportunities.component.html',
 })
-export class PackagesComponent implements OnInit {
+export class OpportunitiesComponent implements OnInit {
 
   opps: any[];
 

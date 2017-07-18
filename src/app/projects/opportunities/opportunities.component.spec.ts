@@ -1,15 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { PackagesComponent } from './packages.component';
+import { OpportunitiesComponent } from './opportunities.component';
 import { sharedComponents } from "app/shared/shared.module";
 import { ActivatedRouteStub } from "test/router-stubs";
 import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 
-describe('PackagesComponent', () => {
-  let component: PackagesComponent;
-  let fixture: ComponentFixture<PackagesComponent>;
+describe('OpportunitiesComponent', () => {
+  let component: OpportunitiesComponent;
+  let fixture: ComponentFixture<OpportunitiesComponent>;
   let activatedRoute: ActivatedRouteStub;
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('PackagesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
-      declarations: [PackagesComponent, sharedComponents],
+      declarations: [OpportunitiesComponent, sharedComponents],
       providers: [
         { provide: ActivatedRoute, useValue: activatedRoute },        
       ]
@@ -30,7 +30,7 @@ describe('PackagesComponent', () => {
   beforeEach(() => {
     activatedRoute.data = Observable.of({ opps: [] });
 
-    fixture = TestBed.createComponent(PackagesComponent);
+    fixture = TestBed.createComponent(OpportunitiesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
