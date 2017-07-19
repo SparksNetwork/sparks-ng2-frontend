@@ -56,10 +56,17 @@
     &.ic-google-plus,
     &.ic-envelope-o,
     &.ic-key,
-    &.ic-pencil{
+    &.ic-pencil,
+    &.ic-circle{
     font-family: FontAwesome;
     }
 }
+
+.ic.ic-circle::before {
+    content: "\f1db";
+}
+
+
 .ic.ic-facebook-square:before {
     content: "\F082";
 }
