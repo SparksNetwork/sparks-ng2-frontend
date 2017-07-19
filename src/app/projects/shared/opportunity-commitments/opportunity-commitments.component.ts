@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { CommitmentParty } from "app/projects/shared/commitment-party.enum";
+import { CommitmentType } from "app/projects/shared/commitment-type.enum";
 
 @Component({
   selector: 'app-opportunity-commitments',
@@ -10,8 +10,8 @@ export class OpportunityCommitmentsComponent implements OnChanges {
 
   @Input() commitments: any[]
 
-  organizerCommitments: any[];
-  volunteerCommitments: any[];
+  contributions: any[];
+  benefits: any[];
   constructor() { }
 
   ngOnChanges() {
@@ -23,7 +23,7 @@ export class OpportunityCommitmentsComponent implements OnChanges {
    */
   assignCommitments() {
     if (!this.commitments) return;
-    this.organizerCommitments = this.commitments.filter(x => x.type == CommitmentParty.Organizer);
-    this.volunteerCommitments = this.commitments.filter(x => x.type == CommitmentParty.Volunteer);
+    this.contributions = this.commitments.filter(x => x.type == CommitmentType.Contribution);
+    this.benefits = this.commitments.filter(x => x.type == CommitmentType.Benefit);
   }
 }

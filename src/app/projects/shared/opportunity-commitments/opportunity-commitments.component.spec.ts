@@ -3,23 +3,23 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { OpportunityCommitmentsComponent } from './opportunity-commitments.component';
 import { sharedComponents } from "app/shared/shared.module";
 import { InMemoryProjectsService } from "test/in-memory-projects.service";
-import { CommitmentParty } from "app/projects/shared/commitment-party.enum";
+import { CommitmentType } from "app/projects/shared/commitment-type.enum";
 
 let commitmentsMock = [
   {
-    type: CommitmentParty.Volunteer,
+    type: CommitmentType.Benefit,
     title: '20 Karma Points',
     icon: 'glyphicon-cd',
     description: "Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network"
   }, 
   {
-    type: CommitmentParty.Organizer,
+    type: CommitmentType.Contribution,
     title: 'To help you community',
     icon: 'glyphicon-globe',
     description: "Serve your neightbors on the Avenue!"
   },
   {
-    type: CommitmentParty.Organizer,
+    type: CommitmentType.Contribution,
     title: 'Shift',
     icon: 'glyphicon-tower',
     description: "Serve your neightbors on the Avenue!"
