@@ -384,18 +384,20 @@ h3 {
     }
 }
 
-#event-requirements {
-    padding-top: 0;
-    padding-bottom: 0;
+.event-requirements {
     .event-req-row {
         border-bottom: 1px solid $light-gray;
     }
+    .clearfix{
+        border-bottom: 1px solid $light-gray;
+    }
+    
     .col-xs-6 {
         padding-top: 15px;
         padding-bottom: 15px;
-        &:nth-child(odd) {
-            border-right: 1px solid $light-gray;
-        } // &:last-child {
+    
+        border-right: 1px solid $light-gray;
+         // &:last-child {
         //     border-bottom: none;
         // }
         /* only two items */
