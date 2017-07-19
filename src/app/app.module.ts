@@ -8,14 +8,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from "app/app-routing.module";
 import { SharedModule } from "app/shared/shared.module";
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryEventsService } from "../test/in-memory-events.service";
+import { InMemoryProjectsService } from "../test/in-memory-projects.service";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryEventsService, { delay: 600 }),
+    InMemoryWebApiModule.forRoot(InMemoryProjectsService, { delay: 600 }),
 
 
     // Routes get loaded in order. It is important that login

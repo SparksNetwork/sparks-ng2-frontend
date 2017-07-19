@@ -11,7 +11,7 @@ import { AddToCalendarComponent } from './add-to-calendar/add-to-calendar.compon
 import { AddToCalendarService } from "./add-to-calendar/add-to-calendar.service";
 import { DateService } from "app/core/date.service";
 import { UserAssignmentService } from "app/shared/user-assignments.service";
-import { CalendarPipe } from "app/shared/pipes/calendar.pipe";
+import { CalendarPipe } from "app/core/pipes/calendar.pipe";
 
 @NgModule({
   imports: [

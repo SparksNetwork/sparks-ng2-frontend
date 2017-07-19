@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { EventCardComponent } from './event-card/event-card.component';
+import { DashboardProjectsComponent } from './dashboard-projects/dashboard-projects.component';
 import { DashboardRoutingModule, routedComponents } from './dashboard-routing.module';
 import { UserHeaderComponent } from './user-header/user-header.component';
 import { SharedModule } from "app/shared/shared.module";
@@ -10,6 +10,6 @@ import { SharedModule } from "app/shared/shared.module";
         DashboardRoutingModule,
         SharedModule
     ],
-    declarations: [EventCardComponent, UserHeaderComponent, routedComponents]
+    declarations: [DashboardProjectsComponent, UserHeaderComponent, routedComponents]
 })
 export class DashboardModule { }
