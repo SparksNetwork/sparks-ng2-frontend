@@ -8,9 +8,9 @@ import { NavComponent } from './nav/nav.component';
 import { CardItemComponent } from './card-item/card-item.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { AddToCalendarComponent } from './add-to-calendar/add-to-calendar.component';
-import { AddToCalendarService } from "./add-to-calendar/add-to-calendar.service";
-import { DateService } from "app/core/date.service";
-import { UserAssignmentService } from "app/shared/user-assignments.service";
+import { AddToCalendarService } from "app/core/services/add-to-calendar.service";
+import { DateService } from "app/core/services/date.service";
+import { UserAssignmentService } from "app/core/services/user-assignments.service";
 import { CalendarPipe } from "app/core/pipes/calendar.pipe";
 
 @NgModule({

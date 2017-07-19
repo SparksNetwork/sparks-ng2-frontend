@@ -5,7 +5,7 @@ import { ProjectsRoutingModule, routedComponents } from './projects-routing.modu
 import { SharedModule } from "app/shared/shared.module";
 import { ProjectSocialComponent } from './shared/project-social/project-social.component';
 import { ProjectAskOrganizerButtonComponent } from './shared/project-ask-organizer-button/project-ask-organizer-button.component';
-import { OpportunityService } from "app/projects/shared/opportunity.service";
+import { OpportunityService } from "app/core/services/opportunity.service";
 import { OpportunityCommitmentsComponent } from './shared/opportunity-commitments/opportunity-commitments.component';
 import { CalendarPipe } from "app/core/pipes/calendar.pipe";
 

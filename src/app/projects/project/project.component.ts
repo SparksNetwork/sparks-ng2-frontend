@@ -8,8 +8,8 @@ import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model"
 import { Observable } from "rxjs/Observable";
 import { EngagementStatus } from "app/core/enums/engagement-status.enum";
 import { ProjectOpportunityCard } from "app/core/models/project-opportunity-card.model";
-import { OpportunityService } from "app/projects/shared/opportunity.service";
-import { UserAssignmentService } from "app/shared/user-assignments.service";
+import { OpportunityService } from "app/core/services/opportunity.service";
+import { UserAssignmentService } from "app/core/services/user-assignments.service";
 
 @Component({
   selector: 'app-project',

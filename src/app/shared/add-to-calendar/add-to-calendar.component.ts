@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import FileSaver from 'file-saver';
 
-import { AddToCalendarService } from "./add-to-calendar.service";
+import { AddToCalendarService } from "app/core/services/add-to-calendar.service";
 import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
 
 @Component({
