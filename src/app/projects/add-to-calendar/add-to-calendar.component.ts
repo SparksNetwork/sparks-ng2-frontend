@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import FileSaver from 'file-saver';
+import { AddToCalendar } from "app/projects/add-to-calendar/add-to-calendar.model";
+import { AddToCalendarService } from "app/projects/add-to-calendar/add-to-calendar.service";
 
-import { AddToCalendarService } from "app/core/services/add-to-calendar.service";
-import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
 
 @Component({
   selector: 'app-add-to-calendar',

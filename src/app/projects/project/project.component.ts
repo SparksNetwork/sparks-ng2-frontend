@@ -4,12 +4,12 @@ import { Http, Response } from "@angular/http";
 
 import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { ScheduleItem } from "app/shared/schedule/schedule-item.model";
-import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
 import { Observable } from "rxjs/Observable";
-import { EngagementStatus } from "app/core/enums/engagement-status.enum";
-import { ProjectOpportunityCard } from "app/core/models/project-opportunity-card.model";
+import { ProjectOpportunityCard } from "app/projects/shared/project-opportunity-card.model";
 import { OpportunityService } from "app/core/services/opportunity.service";
 import { UserAssignmentService } from "app/core/services/user-assignments.service";
+import { AddToCalendar } from "app/projects/add-to-calendar/add-to-calendar.model";
+import { EngagementStatus } from "app/projects/shared/engagement-status.enum";
 
 @Component({
   selector: 'app-project',

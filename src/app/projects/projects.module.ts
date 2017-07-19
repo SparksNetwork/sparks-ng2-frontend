@@ -7,7 +7,8 @@ import { ProjectSocialComponent } from './shared/project-social/project-social.c
 import { ProjectAskOrganizerButtonComponent } from './shared/project-ask-organizer-button/project-ask-organizer-button.component';
 import { OpportunityService } from "app/core/services/opportunity.service";
 import { OpportunityCommitmentsComponent } from './shared/opportunity-commitments/opportunity-commitments.component';
-import { CalendarPipe } from "app/core/pipes/calendar.pipe";
+import { AddToCalendarComponent } from "app/projects/add-to-calendar/add-to-calendar.component";
+import { AddToCalendarService } from "app/projects/add-to-calendar/add-to-calendar.service";
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { CalendarPipe } from "app/core/pipes/calendar.pipe";
     ProjectsRoutingModule,
     SharedModule
   ],
-  declarations: [routedComponents, ProjectSocialComponent, ProjectAskOrganizerButtonComponent, OpportunityCommitmentsComponent],
-  providers: [OpportunityService]
+  declarations: [routedComponents, ProjectSocialComponent, ProjectAskOrganizerButtonComponent, OpportunityCommitmentsComponent, AddToCalendarComponent],
+  providers: [OpportunityService, AddToCalendarService]
 })
 export class ProjectsModule { }

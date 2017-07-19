@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import * as moment from 'moment';
 
-import { AddToCalendar } from "app/shared/add-to-calendar/add-to-calendar.model";
 import { DateService } from 'app/core/services/date.service';
+import { AddToCalendar } from "app/projects/add-to-calendar/add-to-calendar.model";
 
 @Injectable()
 export class AddToCalendarService {
