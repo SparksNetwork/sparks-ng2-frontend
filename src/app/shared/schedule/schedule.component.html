@@ -1,14 +1,23 @@
-<ul class="timeline">
+<ul>
   <li *ngFor="let item of items">
-    <div class="timeline-info">
-      <div class="timeline-title">
+    <div class="icon-desc-container">
+      <div class="icon">
+        <span class="ic ic-circle"></span>
+      </div>
+      <div class="description">
         <h4>{{item.title}}
           <ng-container> - <span>{{item.shift}}</span></ng-container>
         </h4>
-      </div>
-      <div class="timeline-when">
-        <p>{{item.date | calendar}}</p>
+        <!-- <div class="timeline-where">
+          <p>Security Crew, Heath Squad</p>
+        </div> -->
+        <div class="timeline-when">
+          <p>{{item.date | calendar}}</p>
+        </div>
       </div>
     </div>
+    <!-- <div class="karma-point-container">
+      100 <span class="ic ic-star"></span>
+    </div> -->
   </li>
 </ul>
