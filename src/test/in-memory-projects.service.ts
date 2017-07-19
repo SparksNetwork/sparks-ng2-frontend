@@ -1,5 +1,5 @@
 import { InMemoryDbService, InMemoryBackendConfig } from "angular-in-memory-web-api";
-import { CommitmentParty } from "app/projects/shared/commitment-party.enum";
+import { CommitmentType } from "app/projects/shared/commitment-type.enum";
 import { EngagementStatus } from "app/projects/shared/engagement-status.enum";
 
 export class InMemoryProjectsService implements InMemoryDbService, InMemoryBackendConfig {
@@ -123,7 +123,7 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
                         description: "100% involvement",
                         icon: "glyphicon-cog",
                     }
-                ]
+                ]               
             }
         ];
 
@@ -131,14 +131,14 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
             {
                 id: 1,
                 userId: 1,
-                eventId: 1,
+                projectId: 1,
                 opportunityId: 1,
                 status: EngagementStatus.Applyed
             },
             {
                 id: 2,
                 userId: 1,
-                eventId: 2,
+                projectId: 2,
                 opportunityId: 1,
                 status: EngagementStatus.Accepted
 
@@ -146,7 +146,7 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
             {
                 id: 3,
                 userId: 1,
-                eventId: 3,
+                projectId: 3,
                 opportunityId: 1,
                 status: EngagementStatus.Confirmed
             },
@@ -154,29 +154,29 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
 
         let opportunityCommitments = [
             {
-                eventId: 2,
+                projectId: 2,
                 opportunityId: 1,
                 commitments: [
                     {
-                        type: CommitmentParty.Volunteer,
+                        type: CommitmentType.Benefit,
                         title: '20 Karma Points',
                         icon: 'glyphicon-cd',
                         description: "Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network"
                     },
                     {
-                        type: CommitmentParty.Volunteer,
+                        type: CommitmentType.Benefit,
                         title: 'To help you community',
                         icon: 'glyphicon-globe',
                         description: "Serve your neightbors on the Avenue!"
                     },
                     {
-                        type: CommitmentParty.Organizer,
+                        type: CommitmentType.Contribution,
                         title: 'To help you community',
                         icon: 'glyphicon-globe',
                         description: "Serve your neightbors on the Avenue!"
                     },
                     {
-                        type: CommitmentParty.Organizer,
+                        type: CommitmentType.Contribution,
                         title: 'Shift',
                         icon: 'glyphicon-tower',
                         description: "Serve your neightbors on the Avenue!"
@@ -233,9 +233,9 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
         ];
 
         let opps = [
-            { id: 1, eventId: 1, name: "1 shift" },
-            { id: 2, eventId: 1, name: "july 21 - sep 19" },
-            { id: 3, eventId: 1, name: "45% discount" },
+            { id: 1, projectId: 1, name: "1 shift" },
+            { id: 2, projectId: 1, name: "july 21 - sep 19" },
+            { id: 3, projectId: 1, name: "45% discount" },
         ]
 
         return { projectdetails, userEngagements, opportunityCommitments, userAssignments, opps };

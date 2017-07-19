@@ -1,1 +1,0 @@
-export enum CommitmentParty { Organizer, Volunteer }

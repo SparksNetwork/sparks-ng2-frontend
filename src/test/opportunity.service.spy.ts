@@ -1,5 +1,5 @@
 import { Observable } from "rxjs/Observable";
-import { CommitmentParty } from "app/projects/shared/commitment-party.enum";
+import { CommitmentType } from "app/projects/shared/commitment-type.enum";
 import { EngagementStatus } from "app/projects/shared/engagement-status.enum";
 
 export class OpportunityServiceSpy {
@@ -21,25 +21,25 @@ export class OpportunityServiceSpy {
 
   commitments = [
     {
-      type: CommitmentParty.Volunteer,
+      type: CommitmentType.Benefit,
       title: '20 Karma Points',
       icon: 'glyphicon-cd',
       description: "Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network"
     },
     {
-      type: CommitmentParty.Volunteer,
+      type: CommitmentType.Benefit,
       title: 'To help you community',
       icon: 'glyphicon-globe',
       description: "Serve your neightbors on the Avenue!"
     },
     {
-      type: CommitmentParty.Organizer,
+      type: CommitmentType.Contribution,
       title: 'To help you community',
       icon: 'glyphicon-globe',
       description: "Serve your neightbors on the Avenue!"
     },
     {
-      type: CommitmentParty.Organizer,
+      type: CommitmentType.Contribution,
       title: 'Shift',
       icon: 'glyphicon-tower',
       description: "Serve your neightbors on the Avenue!"
