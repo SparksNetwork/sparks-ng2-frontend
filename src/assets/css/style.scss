@@ -76,9 +76,13 @@ h3 {
     margin: 0;
 }
 
+.segment-title-link-container {
+    padding-left: 0;
+    text-align: right;
+}
+
 .component-segment {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 30px;
     @include block-nooverflow;
 }
 
@@ -105,7 +109,7 @@ h3 {
     margin: 0 !important;
 }
 
-.bottom-links{
+.bottom-links {
     border-top: 2px solid $light-gray;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -117,10 +121,10 @@ h3 {
     &:after {
         clear: both;
     }
-    .col-xs-9{
+    .col-xs-9 {
         padding-left: 0;
     }
-    .col-xs-3{
+    .col-xs-3 {
         padding-right: 0;
         text-align: right;
     }
@@ -424,7 +428,8 @@ h3 {
 }
 
 .you-will-give-got,
-.quests{
+.quests,
+.timeline {
     ul {
         margin: 0;
         padding: 0;
@@ -474,11 +479,49 @@ h3 {
             float: left;
             padding: 0 5px;
             text-align: center;
-            .icon-desc-container{
+            .icon-desc-container {
                 width: 100%;
                 .icon,
-                .description{
+                .description {
                     width: 100%;
+                }
+            }
+        }
+    }
+}
+
+/* -----------------------------------------------
+ * Timeline
+ * --------------------------------------------- */
+.timeline {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    ul {
+        li {
+            position: relative;
+            margin-bottom: 0;
+            padding-bottom: 15px;
+            .icon-desc-container {
+                &:before {
+                    content: '';
+                    border-left: 2px solid #B8BABA;
+                    position: absolute;
+                    top: 2px;
+                    left: 15px;
+                    height: 100%;
+                }
+                .icon {
+                    color: #B8BABA;
+                    .ic {
+                        background: #FFF;
+                    }
+                }
+            }
+            &:last-child {
+                .icon-desc-container {
+                    &:before {
+                        border: none;
+                    }
                 }
             }
         }
@@ -518,51 +561,6 @@ h3 {
         }
     }
 }
-
-
-/* -----------------------------------------------
- * Timeline
- * --------------------------------------------- */
-
-.timeline {
-    padding-left: 30px;
-    position: relative;
-    padding-bottom: 20px;
-    margin-bottom: 15px;
-    list-style: none;
-    li {
-        display: block;
-        border-left: 1px solid #B8BABA;
-        padding-bottom: 10px;
-        &:last-child {
-            border-left: none;
-        }
-        &:before {
-            content: '';
-            width: 20px;
-            height: 20px;
-            ;
-            text-align: center;
-            line-height: 2em;
-            border-radius: 1em;
-            border: 1px solid #B8BABA;
-            display: inline-block;
-            background: #FFF;
-            position: relative;
-            left: -10px;
-            float: left;
-        }
-        .timeline-info {
-            display: inline-block;
-            .timeline-title {
-                h4 {
-                    margin-top: 0;
-                }
-            }
-        }
-    }
-}
-
 
 /* Opportunity, Page Details */
 
