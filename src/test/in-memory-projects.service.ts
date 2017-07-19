@@ -1,6 +1,6 @@
 import { InMemoryDbService, InMemoryBackendConfig } from "angular-in-memory-web-api";
 import { CommitmentParty } from "app/projects/shared/commitment-party.enum";
-import { EngagementStatus } from "app/core/enums/engagement-status.enum";
+import { EngagementStatus } from "app/projects/shared/engagement-status.enum";
 
 export class InMemoryProjectsService implements InMemoryDbService, InMemoryBackendConfig {
     /**

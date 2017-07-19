@@ -9,6 +9,7 @@ import { AppRoutingModule } from "app/app-routing.module";
 import { SharedModule } from "app/shared/shared.module";
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryProjectsService } from "../test/in-memory-projects.service";
+import { CoreModule } from "app/core/core.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,7 @@ import { InMemoryProjectsService } from "../test/in-memory-projects.service";
     AppRoutingModule,
     //AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    SharedModule
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
