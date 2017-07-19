@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { ScheduleComponent } from './schedule.component';
-import { CalendarPipe } from "app/shared/pipes/calendar.pipe";
+import { CalendarPipe } from "app/core/pipes/calendar.pipe";
 
 describe('ScheduleComponent', () => {
   let component: ScheduleComponent;

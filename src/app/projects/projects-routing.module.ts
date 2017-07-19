@@ -19,7 +19,7 @@ const routes: Routes = [
         },
       },
       {
-        path: ':id/opportunities',
+        path: ':id/opportunity',
         loadChildren: 'app/projects/opportunities/opportunities.module#OpportunitiesModule'
       }
     ]
