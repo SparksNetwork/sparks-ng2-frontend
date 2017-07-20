@@ -22,7 +22,7 @@ export class ProjectResolver implements Resolve<any> {
             this.router.navigate(['/projects']);
             return Observable.of(null);
         }
-        //TODO user Stevo service and models
+        //TODO use Stevo's service and models
         return <Observable<any[]>>this.http.get(`api/projectdetails/${id}`)
             .map(res => this.extractData<any[]>(res))
             .catch(error => {

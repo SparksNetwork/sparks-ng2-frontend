@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="event-head segment">
-      <h1 class="event-title">Department of Public Works</h1>
+      <h1 class="event-title">{{project.title}}</h1>
       <div class="event-karma">
         <div class="event-karma-count">{{project.maxKarmaPoints}}
           <p>up to</p>
@@ -22,8 +22,8 @@
           <div class="icon">
             <span class="ic ic-calendar"></span>
           </div>
-          <div class="text">
-            july 5 - sept 15<br/><span>
+          <div class="text">{{projectStart}}{{projectEnd ? " - " + projectEnd : ""}}<br/>
+            <span>
               <app-add-to-calendar [data]="addToCalendarData"></app-add-to-calendar>
             </span>
           </div>

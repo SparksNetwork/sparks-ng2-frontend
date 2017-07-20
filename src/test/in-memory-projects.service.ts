@@ -124,7 +124,63 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
                         icon: "glyphicon-cog",
                     }
                 ]               
-            }
+            },
+            {
+                id: 4,
+                title: "Lucidity Crossroads",
+                images: [
+                    "https://placeimg.com/1140/410/animals/grayscale",
+                    "https://placeimg.com/1140/410/people/grayscale",
+                    "https://placeimg.com/1140/410/nature/grayscale"
+                ],
+                startDate: "20180202T190000",
+                endDate: "20180412T210000",
+                location: {
+                    name: "Santa Barbara, CA",
+                    latitude: "40.706304",
+                    longitude: "-74.012657"
+                },
+                description: "Hello my magical unicorns! Come work and play with us at Lucidity Festival this year by joining the Dream Makers!",
+                maxKarmaPoints: 1519,
+                ticketPrice: 374,
+                opportunities: [
+                    {
+                        id: 7,
+                        title: "Regular $59",
+                        subtitle: "$394 in value",
+                        description: "85% discount",
+                        icon: "glyphicon-cog"
+                    },
+                    {
+                        id: 8,
+                        title: "1-Shift $209",
+                        subtitle: "$374 in value",
+                        description: "45% discount",
+                        icon: "glyphicon-glass"
+                    },
+                    {
+                        id: 9,
+                        title: "Pre-Event Builders",
+                        subtitle: "$364 in value",
+                        description: "",
+                        icon: "glyphicon-music",
+                    },
+                    {
+                        id: 10,
+                        title: "Setup $59",
+                        subtitle: "$444 in value",
+                        description: "87% discount",
+                        icon: "glyphicon-film"
+                    },
+                    {
+                        id: 11,
+                        title: "Teardown $59",
+                        subtitle: "$444 in value",
+                        description: "87% discount",
+                        icon: "glyphicon-camera"
+                    },
+                ]
+            },
         ];
 
         let userEngagements = [
@@ -161,7 +217,7 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
                         type: CommitmentType.Benefit,
                         title: '20 Karma Points',
                         icon: 'glyphicon-cd',
-                        description: "Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network"
+                        description: "Get Badges, Accolades, and more by volunteering throuh the Sparks.Network"
                     },
                     {
                         type: CommitmentType.Benefit,
@@ -182,8 +238,67 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
                         description: "Serve your neightbors on the Avenue!"
                     }
                 ]
+            },
+            {
+                projectId: 4,
+                opportunityId: 7,
+                benefits: [
+                    {
+                        title: "Karma Points",
+                        icon: 'glyphicon-star',
+                        count: 1419,
+                        description: "Get Badges, Accolades, and more by volunteering throuh the Sparks.Network"
+                    },
+                    {
+                        title: "Ticket",
+                        icon: 'glyphicon-certificate',
+                        value: 339,
+                        count: 1,
+                        description: "Full Camping Pass Plus Thursday Early Early to Lucidity Festival"
+                    },
+                    {
+                        title: "Gifts",
+                        icon: 'glyphicon-thrash',
+                        value: 25,
+                        description: "Exclusive Dream Maker T-shirt, Water Bottle and Mapdana"
+                    },
+                    {
+                        title: "Food Ticket",
+                        icon: 'glyphicon-cutlery',
+                        value: 10,
+                        count: 1,
+                        description: "Exclusive Dream Maker T-shirt, Water Bottle and Mapdana"
+                    },
+                ],
+                contributions: [
+                    {
+                        title: "Shift",
+                        icon: 'glyphicon-dashboard',
+                        count: 1,
+                        description: "From four to six hours long"
+                    },
+                    {
+                        title: "Payment",
+                        icon: 'glyphicon-barcode',
+                        value: 209,
+                        description: "Nonrefundable ticket purchase"
+                    },
+                    {
+                        title: "Deposit",
+                        icon: 'glyphicon-piggy-bank',
+                        value: 165,
+                        description: "Charged only if you do not complete your commitments"
+                    },
+                ]
             }
-
+        ]
+        let teams = [
+            {
+                teamId: 1,
+                opportunityId: 7,
+                title: "Dirt",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper, odio et hendrerit condimentum, arcu."
+            }
         ]
 
         let userAssignments = [
@@ -233,9 +348,24 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
         ];
 
         let opps = [
-            { id: 1, projectId: 1, name: "1 shift" },
-            { id: 2, projectId: 1, name: "july 21 - sep 19" },
-            { id: 3, projectId: 1, name: "45% discount" },
+            { id: 1, projectId: 1, name: "1-Shift", summary: "45% discount" },
+            { id: 2, projectId: 1, name: "Regular", summary: "85% discount" },
+            { id: 3, projectId: 1, name: "Pre-Event Builders", summary: "$364 in value" },
+            { id: 4, projectId: 1, name: "Setup", summary: "87% discount" },
+            { id: 5, projectId: 1, name: "Teardown", summary: "87% discount" },
+
+            { id: 6, projectId: 2, name: "Volunteer", summary: "july 21 - sep 19" },
+
+            { id: 7, projectId: 4, name: "1-Shift", summary: "45% discount", price: 374, discountPercent: 45, 
+                description: "Dip your toe in the Dream Makers. A small discount for working a signle shift." },
+            { id: 8, projectId: 4, name: "Regular", summary: "85% discount", price: 59, discountPercent: 85, 
+                description: "Work a few shifts during the event and get a massive ticket discount, special shwag, and meals from out delicious commissary." },
+            { id: 9, projectId: 4, name: "Pre-Event Builders", summary: "$364 in value",
+                description: "Pre-Event Builders description" },
+            { id: 10, projectId: 4, name: "Setup", summary: "87% discount", price: 59, discountPercent: 87,
+                description: "Setup opportunity description" },
+            { id: 11, projectId: 4, name: "Teardown", summary: "87% discount", price: 59, discountPercent: 87,
+                description: "Teardown opportunity description" },
         ]
 
         return { projectdetails, userEngagements, opportunityCommitments, userAssignments, opps };

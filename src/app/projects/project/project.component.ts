@@ -10,6 +10,7 @@ import { OpportunityService } from "app/core/services/opportunity.service";
 import { UserAssignmentService } from "app/core/services/user-assignments.service";
 import { AddToCalendar } from "app/projects/add-to-calendar/add-to-calendar.model";
 import { EngagementStatus } from "app/projects/shared/engagement-status.enum";
+import { DateService } from "app/core/services/date.service";
 
 @Component({
   selector: 'app-project',
@@ -19,18 +20,23 @@ import { EngagementStatus } from "app/projects/shared/engagement-status.enum";
 export class ProjectComponent implements OnInit {
 
   project: any;
+  projectStart: string;
+  projectEnd: string;
   opportunityCards: ProjectOpportunityCard[];
   cardItemType = CardItemType;
   scheduleItems: ScheduleItem[];
   opportunityCommitments: any[];
   addToCalendarData: AddToCalendar;
 
-  constructor(private route: ActivatedRoute, private opportunityService: OpportunityService, private userAssignmentService: UserAssignmentService) {
+  constructor(private route: ActivatedRoute, private opportunityService: OpportunityService, private userAssignmentService: UserAssignmentService, private dateSerivce: DateService) {
   }
 
   ngOnInit() {
     this.route.data.subscribe((data: { project: any }) => {
       this.project = data.project;
+      this.projectStart = this.dateSerivce.toDisplayFormat(this.project.startDate);
+      this.projectEnd = this.dateSerivce.toDisplayFormat(this.project.endDate);
+
       this.addToCalendarData = {
         startDate: this.project.startDate,
         endDate: this.project.endDate,

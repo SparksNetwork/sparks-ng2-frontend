@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectComponent } from './project/project.component';
 import { ProjectsComponent } from "./projects.component";
-import { OpportunitiesModule } from "app/projects/opportunities/opportunities.module";
 import { ProjectResolver } from "app/projects/project/project-resolver.service";
+import { OpportunityResolver } from "app/projects/opportunity/opportunity-resolver.service";
+import { OpportunityComponent } from "app/projects/opportunity/opportunity.component";
 
 const routes: Routes = [
   {
@@ -18,18 +19,34 @@ const routes: Routes = [
           project: ProjectResolver
         },
       },
-      {
-        path: ':id/opportunity',
-        loadChildren: 'app/projects/opportunities/opportunities.module#OpportunitiesModule'
-      }
+      // {
+      //   path: ':id/opportunity',
+      //   loadChildren: 'app/projects/opportunities/opportunities.module#OpportunitiesModule'
+      // },
+       {
+          path: ':id/opportunity',
+          component: OpportunityComponent,
+          resolve: {
+            opportunity: OpportunityResolver
+          }
+        },
+        {
+          path: ':id/opportunity/:oppId',
+          component: OpportunityComponent,
+          resolve: {
+            opportunity: OpportunityResolver
+          }
+        }
+      
     ]
   },
 ];
 
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [ProjectResolver]
+  providers: [ProjectResolver, OpportunityResolver]
 })
 export class ProjectsRoutingModule { }
 

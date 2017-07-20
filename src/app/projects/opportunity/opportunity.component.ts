@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-opportunity',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpportunityComponent implements OnInit {
 
-  constructor() { }
+  private opportunity: any;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe((data: { opportunity: any }) => {
+      this.opportunity = data.opportunity;
+    });
   }
 
 }
