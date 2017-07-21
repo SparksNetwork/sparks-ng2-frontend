@@ -1,11 +1,11 @@
-<app-header-simple></app-header-simple>
+<!-- <app-header-simple></app-header-simple>
 
 <div class="row">
   <div class="col-xs-12">
     <div class="opportunity-head segment">
       <div class="col-xs-6">
         <div class="row">
-          <h3>Regular</h3>
+          <h3>{{opportunity.name}}</h3>
         </div>
       </div>
 
@@ -13,21 +13,19 @@
         <div class="dropdown opportunity-selector">
           <button class="btn btn-default btn-lg dropdown-toggle" type="button" id="dropdownMenuOpportunity" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="true">
-    85% discount
-    <span class="caret"></span>
-  </button>
+            {{opportunity.summary}}
+            <span class="caret"></span>
+          </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuOpportunity">
-            <li><a href="" [routerLink]="['../', 3]">45% discount</a></li>
-            <li><a href="" [routerLink]="['../', 2]">july 21 - sep 19</a></li>
-            <li><a href="" [routerLink]="['../', 1]">1 shift</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="" [routerLink]="['../', 4]">Separated link</a></li>
-          </ul>
+            <li *ngFor="let oppHeaderItem of opportunityHeader"><a href="" [routerLink]="['../', oppHeaderItem.opportunityId]">{{oppHeaderItem.summary}}</a></li>
+            <!-- <li role="separator" class="divider"></li>
+            <li><a href="" [routerLink]="['../', 4]">Separated link</a></li> -->
+          <!-- </ul>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="row">
   <div class="col-xs-12">
@@ -35,9 +33,9 @@
       <div class="icon">
         <span class="ic ic-calendar"></span>
       </div>
-      <div class="text">
-        <h4>$394 value form $59</h4>
-        <p><span>The regular ticket price is reduced to the price of $59</span></p>
+      <div class="text" *ngIf="opportunity.price">
+        <h4>${{projectTicketPrice}} value for ${{opportunity.price}}</h4>
+        <p><span>The regular ticket price is reduced to the price of ${{opportunity.price}}</span></p>
       </div>
     </div>
   </div>
@@ -46,10 +44,10 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="opportunity-description segment">
-      <p class="card-text">Cras at tempus metus. Sed mattis non neque tincidunt pretium. Nunc a dui interdum, condimentum erat sit amet, auctor
-        quam. Quisque vel blandit eros. Phasellus eu interdum odio, vitae sodales leo. Vivamus rhoncus commodo justo nec
-        interdum. Integer a molestie ipsum, eget cursus urna. Quisque consectetur nisl ut aliquam sollicitudin.</p>
-      <p class="card-text card-location lineabove">Letiste Rokycany, Bdul Alexandru Cel Bun <a href="#">Get directions</a></p>
+      <p class="card-text">{{opportunity.description}}</p>
+      <p class="card-text card-location lineabove" *ngIf="opportunity.location">{{opportunity.location.address}}, {{opportunity.location.city}}, {{opportunity.location.state}} 
+        <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr={{opportunity.location.address}}, {{opportunity.location.city}}, {{opportunity.location.state}}">Get directions</a>
+      </p>
     </div>
   </div>
 </div>

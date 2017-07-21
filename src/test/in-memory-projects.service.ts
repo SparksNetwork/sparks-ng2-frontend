@@ -145,18 +145,20 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
                 ticketPrice: 374,
                 opportunities: [
                     {
-                        id: 7,
+                        id: 8,
                         title: "Regular $59",
                         subtitle: "$394 in value",
                         description: "85% discount",
-                        icon: "glyphicon-cog"
+                        icon: "glyphicon-cog",
+                        name: "Regular"
                     },
                     {
-                        id: 8,
+                        id: 7,
                         title: "1-Shift $209",
                         subtitle: "$374 in value",
                         description: "45% discount",
-                        icon: "glyphicon-glass"
+                        icon: "glyphicon-glass",
+                        name: "1-Shift"
                     },
                     {
                         id: 9,
@@ -164,20 +166,23 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
                         subtitle: "$364 in value",
                         description: "",
                         icon: "glyphicon-music",
+                        name: "Pre-Event Builders"
                     },
                     {
                         id: 10,
                         title: "Setup $59",
                         subtitle: "$444 in value",
                         description: "87% discount",
-                        icon: "glyphicon-film"
+                        icon: "glyphicon-film",
+                        name: "Setup"
                     },
                     {
                         id: 11,
                         title: "Teardown $59",
                         subtitle: "$444 in value",
                         description: "87% discount",
-                        icon: "glyphicon-camera"
+                        icon: "glyphicon-camera",
+                        name: "Teardown"
                     },
                 ]
             },
@@ -356,10 +361,17 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
 
             { id: 6, projectId: 2, name: "Volunteer", summary: "july 21 - sep 19" },
 
-            { id: 7, projectId: 4, name: "1-Shift", summary: "45% discount", price: 374, discountPercent: 45, 
+            { id: 7, projectId: 4, name: "1-Shift", summary: "45% discount", price: 209, discountPercent: 45, 
                 description: "Dip your toe in the Dream Makers. A small discount for working a signle shift." },
             { id: 8, projectId: 4, name: "Regular", summary: "85% discount", price: 59, discountPercent: 85, 
-                description: "Work a few shifts during the event and get a massive ticket discount, special shwag, and meals from out delicious commissary." },
+                description: "Work a few shifts during the event and get a massive ticket discount, special shwag, and meals from out delicious commissary.",
+                location: {
+                    address: "1 Buftea Street",
+                    city: "Cluj",
+                    state: "RO"
+                    // "latitude": "string",
+                    // "longitude": "string"
+                    } },
             { id: 9, projectId: 4, name: "Pre-Event Builders", summary: "$364 in value",
                 description: "Pre-Event Builders description" },
             { id: 10, projectId: 4, name: "Setup", summary: "87% discount", price: 59, discountPercent: 87,
