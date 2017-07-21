@@ -12,7 +12,7 @@ export class OpportunityHeaderComponent implements OnInit, OnDestroy {
 
   private opportunityHeaderData: any[];
   private opportunity: any;
-  private opportunityIdSubscribtion: Subscription;
+  private opportunityIdSubscription: Subscription;
 
   constructor(private route: ActivatedRoute, private opportunityHeaderService: OpportunityHeaderService) { }
 
@@ -22,18 +22,16 @@ export class OpportunityHeaderComponent implements OnInit, OnDestroy {
         this.opportunityHeaderService.projectTicketPrice = data.opportunityHeader.projectTicketPrice;
         this.opportunityHeaderData = data.opportunityHeader.opportunities;
       }
-      
-      console.log(this.opportunityHeaderData);
     });
 
     // If property is updated outside parent
-    this.opportunityIdSubscribtion = this.opportunityHeaderService.getSelectedOpportunityId().subscribe(id => {
+    this.opportunityIdSubscription = this.opportunityHeaderService.getSelectedOpportunityId().subscribe(id => {
         this.opportunity = this.opportunityHeaderData.find((data) => data.opportunityId == id);
     });
   }
 
   ngOnDestroy() {
-    this.opportunityIdSubscribtion.unsubscribe();
+    this.opportunityIdSubscription.unsubscribe();
   }
 
 }

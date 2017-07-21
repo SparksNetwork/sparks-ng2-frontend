@@ -19,13 +19,13 @@ import { DateService } from "app/core/services/date.service";
 })
 export class ProjectComponent implements OnInit {
 
-  private project: any;
-  private projectStart: string;
-  private projectEnd: string;
-  private opportunityCards: ProjectOpportunityCard[];
-  private scheduleItems: ScheduleItem[];
-  private opportunityCommitments: any[];
-  private addToCalendarData: AddToCalendar;
+  project: any;
+  projectStart: string;
+  projectEnd: string;
+  opportunityCards: ProjectOpportunityCard[];
+  scheduleItems: ScheduleItem[];
+  opportunityCommitments: any[];
+  addToCalendarData: AddToCalendar;
 
   constructor(private route: ActivatedRoute, private opportunityService: OpportunityService, private userAssignmentService: UserAssignmentService, private dateSerivce: DateService) {
   }
@@ -113,7 +113,7 @@ export class ProjectComponent implements OnInit {
    * @description Sets the ooportunity card status based on engagement provided
    * @param engagement 
    */
-  private setProjectOpportunitiesCardType(engagement: any) : void {   
+  public setProjectOpportunitiesCardType(engagement: any) : void {   
     if (!engagement) return;
 
     for (let card of this.opportunityCards) {      

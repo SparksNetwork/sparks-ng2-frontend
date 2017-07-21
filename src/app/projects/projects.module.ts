@@ -11,6 +11,8 @@ import { AddToCalendarComponent } from "app/projects/add-to-calendar/add-to-cale
 import { AddToCalendarService } from "app/projects/add-to-calendar/add-to-calendar.service";
 import { OpportunityComponent } from "app/projects/opportunity/opportunity.component";
 import { OpportunityHeaderComponent } from './opportunity-header/opportunity-header.component';
+import { OpportunityTeamsComponent } from './shared/opportunity-teams/opportunity-teams.component';
+import { ProjectJoinComponent } from './shared/project-join/project-join.component';
 
 @NgModule({
   imports: [
@@ -18,7 +20,7 @@ import { OpportunityHeaderComponent } from './opportunity-header/opportunity-hea
     ProjectsRoutingModule,
     SharedModule
   ],
-  declarations: [routedComponents, ProjectSocialComponent, ProjectAskOrganizerButtonComponent, OpportunityCommitmentsComponent, AddToCalendarComponent, OpportunityComponent, OpportunityHeaderComponent],
+  declarations: [routedComponents, ProjectSocialComponent, ProjectAskOrganizerButtonComponent, OpportunityCommitmentsComponent, AddToCalendarComponent, OpportunityComponent, OpportunityHeaderComponent, OpportunityTeamsComponent, ProjectJoinComponent],
   providers: [OpportunityService, AddToCalendarService]
 })
 export class ProjectsModule { }

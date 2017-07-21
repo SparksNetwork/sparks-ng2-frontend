@@ -26,126 +26,8 @@
 <!-- YOU WILL GET/ YOU WILL GIVE -->
 <app-opportunity-commitments *ngIf="opportunityCommitments" [benefits]="opportunityCommitments.benefits" [contributions]="opportunityCommitments.contributions"></app-opportunity-commitments>
 
-<!-- @TODO generate YOU WILL GET/ YOU WILL GIVE component -->
-<div class="row">
-  <div class="col-xs-12">
-    <div class="you-will-give-got segment">
-      <h3>Some Of The Teams Could Join</h3>
-      <ul>
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4><span class="shiftcount">1</span> Shift</h4>
-            <p>Serve your neightbors on the Avenue!</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4>Nam efficitur dignissim mattis</h4>
-            <p>In quis lacinia dolor.</p>
-          </div>
-        </li>
-        <li class="list-other" data-toggle="collapse" data-target="#list-other">
-          <div class="icon">
-            <div class="list-other-counter">+9</div>
-            <div>more</div>
-          </div>
-          <div class="text">
-            <p>Boneyard, dIRT, Media Monkeys, Autoflow, Technocrats, Shuttleguides, Hubquarters, Stage Hands, Site Ops</p>
-          </div>
-        </li>
-      </ul>
-      <ul id="list-other" class="collapse">
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4>Boneyard</h4>
-            <p>In quis lacinia dolor.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4>dIRT</h4>
-            <p>In quis lacinia dolor.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4>Media Monkeys</h4>
-            <p>In quis lacinia dolor.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4>Autoflow</h4>
-            <p>In quis lacinia dolor.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4>Technocrats</h4>
-            <p>In quis lacinia dolor.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4>Shuttleguides</h4>
-            <p>In quis lacinia dolor.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4>Hubquarters</h4>
-            <p>In quis lacinia dolor.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4>Stage Hands</h4>
-            <p>In quis lacinia dolor.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <span class="ic ic-cog"></span>
-          </div>
-          <div class="text">
-            <h4>Site Ops</h4>
-            <p>In quis lacinia dolor.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+<!-- TEAMS -->
+<app-opportunity-teams *ngIf="opportunity.teams" [teams]="opportunity.teams"></app-opportunity-teams>
 
 <!-- @TODO generate VISIT REQUIREMENTS component - similar to project-social  -->
 <div class="row">
@@ -161,19 +43,20 @@
 <div class="row segment">
   <div class="col-xs-5">
     <div id="event-contact" class="row">
+      <app-project-ask-organizer-button></app-project-ask-organizer-button>
       <!--<app-project-ask-organizer-button></app-project-ask-organizer-button>-->
-      <a href="#">
+      <!-- <a href="#">
         <div class="icon">
           <span class="ic ic-question-sign"></span>
         </div>
         <div class="text">
           Ask The Organizer
         </div>
-      </a>
+      </a> -->
     </div>
   </div>
 
   <div class="col-xs-7">
-    <a href="#" class="btn btn-primary btn-block" title="Join Now">Join Now</a>
+     <app-project-join></app-project-join>
   </div>
 </div>

@@ -401,7 +401,45 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
                     state: "RO"
                     // "latitude": "string",
                     // "longitude": "string"
-                    }
+                    },
+                teams: [
+                    {
+                        teamId: 1,
+                        name: "Mindful Feeding",
+                        icon: "glyphicon-glass",
+                        description: "Feed hundreds of dreamers in the most amazing kitchen ever. Add a little..."
+                    },
+                    {
+                        teamId: 2,
+                        name: "Gatekeepers",
+                        icon: "glyphicon-align-justify",
+                        description: "Take tickets and give people a big warm welkome! Work the face of the festival..."
+                    },
+                    {
+                        teamId: 3,
+                        name: "Artist Hospitality",
+                        icon: "glyphicon-picture",
+                        description: "Take care of the amazing artists that are performing at Lucidity. You'll do..."
+                    },
+                    {
+                        teamId: 4,
+                        name: "Boneyard",
+                        icon: "glyphicon-bitcoin",
+                        description: "Boneyard description"
+                    },
+                    {
+                        teamId: 5,
+                        name: "Media Monkeys",
+                        icon: "glyphicon-film",
+                        description: "Media Monkeys description"
+                    },
+                    {
+                        teamId: 6,
+                        name: "Technocrats",
+                        icon: "glyphicon-apple",
+                        description: "Technocrats description"
+                    },
+                ]
             },
             { id: 9, projectId: 4, name: "Pre-Event Builders", summary: "$364 in value",
                 description: "Pre-Event Builders description" },
