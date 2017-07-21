@@ -86,8 +86,8 @@ export class ProjectComponent implements OnInit {
    * @param opportunityId 
    */
   private getOpportunityCommitments(opportunityId: number) : void {
-    this.opportunityService.getCommitments(this.project.id, opportunityId).subscribe(opportunityCommitments => {
-      this.opportunityCommitments = opportunityCommitments;
+    this.opportunityService.getCommitments(opportunityId).subscribe(data => {
+      this.opportunityCommitments = data;
     });
   }
 

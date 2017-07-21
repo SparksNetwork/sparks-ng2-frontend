@@ -50,7 +50,7 @@
 </div>
 
 <!-- YOU WILL GET/ YOU WILL GIVE -->
-<app-opportunity-commitments *ngIf="opportunityCommitments" [commitments]="opportunityCommitments"></app-opportunity-commitments>
+<app-opportunity-commitments *ngIf="opportunityCommitments" [benefits]="opportunityCommitments.benefits" [contributions]="opportunityCommitments.contributions"></app-opportunity-commitments>
 
 <!-- USER SCHEDULE -->
 <div class="row" *ngIf="scheduleItems">

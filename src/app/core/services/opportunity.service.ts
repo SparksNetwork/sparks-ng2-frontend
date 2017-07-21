@@ -30,15 +30,18 @@ export class OpportunityService {
             });
     }
 
-    public getCommitments(projectId: number, oppportunityId: number) : Observable<any> {
-        return <Observable<any>>this.http.get(`api/opportunityCommitments?projectId=${projectId}&opportunityId=${oppportunityId}`)
+    public getCommitments(oppportunityId: number) : Observable<any> {
+        return <Observable<any>>this.http.get(`api/opportunityCommitments?opportunityId=${oppportunityId}`)
             .map(res => {
                 let data = this.extractData<any>(res);
 
                 if (!data.length)
                     return Observable.of(null);
 
-                return data[0].commitments;
+                return {
+                    benefits: data[0].benefits,
+                    contributions: data[0].contributions
+                };
             })
             .catch(exception => {
                 //TODO treat exception;

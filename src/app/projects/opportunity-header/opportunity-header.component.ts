@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs/Subscription";
 import { OpportunityHeaderService } from "app/projects/opportunity-header/opportunity-header.service";
@@ -8,7 +8,7 @@ import { OpportunityHeaderService } from "app/projects/opportunity-header/opport
   templateUrl: './opportunity-header.component.html',
   styleUrls: ['./opportunity-header.component.css']
 })
-export class OpportunityHeaderComponent implements OnInit {
+export class OpportunityHeaderComponent implements OnInit, OnDestroy {
 
   private opportunityHeaderData: any[];
   private opportunity: any;

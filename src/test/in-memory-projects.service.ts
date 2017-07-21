@@ -215,29 +215,26 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
 
         let opportunityCommitments = [
             {
-                projectId: 2,
                 opportunityId: 1,
-                commitments: [
+                benefits: [
                     {
-                        type: CommitmentType.Benefit,
                         title: '20 Karma Points',
                         icon: 'glyphicon-cd',
                         description: "Get Badges, Accolades, and more by volunteering throuh the Sparks.Network"
                     },
                     {
-                        type: CommitmentType.Benefit,
+                        title: 'To help you community',
+                        icon: 'glyphicon-globe',
+                        description: "Serve your neightbors on the Avenue!"
+                    }
+                ],
+                contributions: [
+                    {
                         title: 'To help you community',
                         icon: 'glyphicon-globe',
                         description: "Serve your neightbors on the Avenue!"
                     },
                     {
-                        type: CommitmentType.Contribution,
-                        title: 'To help you community',
-                        icon: 'glyphicon-globe',
-                        description: "Serve your neightbors on the Avenue!"
-                    },
-                    {
-                        type: CommitmentType.Contribution,
                         title: 'Shift',
                         icon: 'glyphicon-tower',
                         description: "Serve your neightbors on the Avenue!"
@@ -245,58 +242,91 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
                 ]
             },
             {
-                projectId: 4,
                 opportunityId: 7,
                 benefits: [
                     {
-                        title: "Karma Points",
+                        title: "1419 Karma Points",
                         icon: 'glyphicon-star',
-                        count: 1419,
                         description: "Get Badges, Accolades, and more by volunteering throuh the Sparks.Network"
                     },
                     {
-                        title: "Ticket",
+                        title: "1 Ticket - $339 value",
                         icon: 'glyphicon-certificate',
-                        value: 339,
-                        count: 1,
                         description: "Full Camping Pass Plus Thursday Early Early to Lucidity Festival"
                     },
                     {
-                        title: "Gifts",
+                        title: "Gifts - $25 value",
                         icon: 'glyphicon-thrash',
-                        value: 25,
                         description: "Exclusive Dream Maker T-shirt, Water Bottle and Mapdana"
                     },
                     {
-                        title: "Food Ticket",
+                        title: "1 Food Ticket - $10 value",
                         icon: 'glyphicon-cutlery',
-                        value: 10,
-                        count: 1,
-                        description: "Exclusive Dream Maker T-shirt, Water Bottle and Mapdana"
-                    },
+                        description: "For Meals at out Organic Commissary"
+                    }
                 ],
                 contributions: [
                     {
-                        title: "Shift",
+                        title: "1 Shift",
                         icon: 'glyphicon-dashboard',
-                        count: 1,
                         description: "From four to six hours long"
                     },
                     {
-                        title: "Payment",
+                        title: "$209 Payment",
                         icon: 'glyphicon-barcode',
-                        value: 209,
                         description: "Nonrefundable ticket purchase"
                     },
                     {
-                        title: "Deposit",
+                        title: "$165 Deposit",
                         icon: 'glyphicon-piggy-bank',
-                        value: 165,
                         description: "Charged only if you do not complete your commitments"
+                    }
+                ]
+            },
+            {
+                opportunityId: 8,
+                benefits: [
+                    {
+                        title: "1519 Karma Points",
+                        icon: 'glyphicon-star',
+                        description: "Get Badges, Accolades, and more by volunteering throuh the Sparks.Network"
                     },
+                    {
+                        title: "1 Ticket - $339 value",
+                        icon: 'glyphicon-certificate',
+                        description: "Full Camping Pass Plus Thursday Early Early to Lucidity Festival"
+                    },
+                    {
+                        title: "Gifts - $25 value",
+                        icon: 'glyphicon-thrash',
+                        description: "Exclusive Dream Maker T-shirt, Water Bottle and Mapdana"
+                    },
+                    {
+                        title: "3 Food Tickets - $30 value",
+                        icon: 'glyphicon-cutlery',
+                        description: "For Meals at out Organic Commissary"
+                    }
+                ],
+                contributions: [
+                    {
+                        title: "4 Shifts",
+                        icon: 'glyphicon-dashboard',
+                        description: "From four to six hours long"
+                    },
+                    {
+                        title: "$59 Payment",
+                        icon: 'glyphicon-barcode',
+                        description: "Nonrefundable ticket purchase"
+                    },
+                    {
+                        title: "$335 Deposit",
+                        icon: 'glyphicon-piggy-bank',
+                        description: "Charged only if you do not complete your commitments"
+                    }
                 ]
             }
         ]
+        
         let teams = [
             {
                 teamId: 1,
@@ -371,7 +401,8 @@ export class InMemoryProjectsService implements InMemoryDbService, InMemoryBacke
                     state: "RO"
                     // "latitude": "string",
                     // "longitude": "string"
-                    } },
+                    }
+            },
             { id: 9, projectId: 4, name: "Pre-Event Builders", summary: "$364 in value",
                 description: "Pre-Event Builders description" },
             { id: 10, projectId: 4, name: "Setup", summary: "87% discount", price: 59, discountPercent: 87,
