@@ -1,0 +1,105 @@
+{
+  "Projects": [
+    {
+      "projectKey1": {
+        "projectType": "Simple, MultiDay, LongTerm, Donor (check if it help performance - optional field)",
+        "title": "string",
+        "description": "string",
+        "startDateTime": "dateTime (automatic based on shifts config)",
+        "endDateTime": "dateTime (automatic based on shifts config)",
+        "location": {
+          "address": "string",
+          "city": "string",
+          "state": "string",
+          "latitude": "string",
+          "longitude": "string"
+        },
+        "images": [
+          {
+            "imageUrl": "string (use FB storage for images, store the url)"
+          }
+        ],
+        "ticketPrice": "decimal",
+        "maxKarmaPoints": "int",
+        "organizer": {
+          "organizerKey": "string",
+          "name": "string",
+          "organization": "string",
+          "imageUrl": "string"
+        },
+        "projectPageUrl": "string",
+        "opportunities": [
+          {
+            "opportunityKey": {
+              "title": "string",
+              "icon": "string",
+              "subtitle": "string e.g. $374 in value, 30 Days, 1 Shift",
+              "summary": "string e.f. 85% discount, 100% involvement, 4 hours long",
+              "price": "decimal"
+            },
+            "opportunityKey2": {}
+          }
+        ]
+      }
+    }
+  ],
+  "Opportunities": [
+    {
+      "opportunityKey1": {
+        "title": "string e.g. Regular, 1-Shift, Volunteer",
+        "description": "string",
+        "summary": "string e.g. 85% discount, july21 - sep 19, 1 shift (automatic from benefits and contributions)",
+        "icon": "string",
+        "price": "decimal (automatic from contributions)",
+        "startDateTime": "string (automatic, like in projects)",
+        "endDateTime": "string (automatic, like in projects)"
+      }
+    }
+  ],
+  "OpportunityCommitments": [
+    {
+      "opportunityKey": {
+        "benefits": [
+          {
+            "benefitKey": "string",
+            "title": "string (auto-generated e.g. 1419 Karma Points)",
+            "description": "string",
+            "icon": "string"
+          }
+        ],
+        "contributions": [
+          {
+            "contributionKey": "string",
+            "title": "string (auto-generated e.g. 1Food Tickets - $10 value)",
+            "description": "string",
+            "icon": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "Benefits": [
+    {
+      "benefitKey1": {
+        "type": "FoodTicket, EventTicket, Gifts, FoodDrink, HelpNonProfit",
+        "title": "string (custom)",
+        "description": "string",
+        "icon": "string",
+        "count": "int",
+        "value": "decimal"
+      }
+    }
+  ],
+  "Contributions": [
+    {
+      "contributionKey1": {
+        "type": "PrePayment, Shift, Deposit, Donation",
+        "title": "string",
+        "description": "string",
+        "icon": "string",
+        "count": "int",
+        "value": "decimal"
+      }
+    }
+  ]
+}
