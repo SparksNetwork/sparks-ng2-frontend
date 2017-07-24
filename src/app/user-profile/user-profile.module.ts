@@ -23,6 +23,11 @@ import { EventsHistoryComponent } from './shared/events-history/events-history.c
 import { BadgeListDetailsComponent } from './badges/badge-list-details/badge-list-details.component';
 import { AccoladeListDetailsComponent } from './accolades/accolade-list-details/accolade-list-details.component';
 import { TrophyListDetailsComponent } from './trophies/trophy-list-details/trophy-list-details.component';
+import { CongratsTrophyComponent } from './trophies/congrats-trophy/congrats-trophy.component';
+import { CongratsAccoladesComponent } from './accolades/congrats-accolades/congrats-accolades.component';
+import { SelectBadgeComponent } from './badges/select-badge/select-badge.component';
+import { ConfirmBadgeComponent } from './badges/confirm-badge/confirm-badge.component';
+import { CongratsBadgeComponent } from './badges/congrats-badge/congrats-badge.component';
 
 @NgModule({
   imports: [
@@ -30,6 +35,6 @@ import { TrophyListDetailsComponent } from './trophies/trophy-list-details/troph
     UserProfileRoutingModule,
     SharedModule
   ],
-  declarations: [UserProfileComponent, UserHeaderComponent, ProfileInfoComponent, BadgesComponent, TrophiesComponent, AccoladesComponent, ProfileActivityDetailsComponent, EditProfileDetailsComponent, EditContactInfoComponent, ChangePasswordComponent, ConfirmChangesComponent, PublicProfileComponent, BadgeListComponent, TrophyListComponent, AccoladeListComponent, QuestsComponent, EventsHistoryComponent, BadgeListDetailsComponent, AccoladeListDetailsComponent, TrophyListDetailsComponent]
+  declarations: [UserProfileComponent, UserHeaderComponent, ProfileInfoComponent, BadgesComponent, TrophiesComponent, AccoladesComponent, ProfileActivityDetailsComponent, EditProfileDetailsComponent, EditContactInfoComponent, ChangePasswordComponent, ConfirmChangesComponent, PublicProfileComponent, BadgeListComponent, TrophyListComponent, AccoladeListComponent, QuestsComponent, EventsHistoryComponent, BadgeListDetailsComponent, AccoladeListDetailsComponent, TrophyListDetailsComponent, CongratsTrophyComponent, CongratsAccoladesComponent, SelectBadgeComponent, ConfirmBadgeComponent, CongratsBadgeComponent]
 })
 export class UserProfileModule { }
