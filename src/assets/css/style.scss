@@ -85,22 +85,6 @@ h3 {
     padding-top: 30px;
     @include block-nooverflow;
 }
-.segment-table{
-    border-bottom: 1px solid $light-gray;
-    @include block-nooverflow;
-
-    .profile-social-links{
-        border-left: 1px solid $light-gray;
-    }
-    h3{
-        margin: 15px 0;
-        display: inline-block;
-    }
-    a{
-       display: inline-block;
-       padding: 0 3px;
-    }
-}
 
 .segment {
     border-bottom: 1px solid $light-gray;
@@ -636,8 +620,7 @@ h3 {
                 right: 0;
             }
         }
-        .badges-trophies-count,
-        .karma-count {
+        .badges-trophies-count {
             font-weight: bold;
         }
         .profile-progress {
@@ -646,10 +629,6 @@ h3 {
             bottom: 0;
             font-size: 14px;
             font-weight: normal;
-        }
-        .profile-karma-public{
-            text-align: center;
-            margin-bottom: 20px;
         }
     }
 }
