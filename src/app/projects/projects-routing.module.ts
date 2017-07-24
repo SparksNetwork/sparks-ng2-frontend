@@ -38,22 +38,6 @@ const routes: Routes = [
           }
         ]
       }
-      // {
-      //   path: ':id/opportunity',
-      //   component: OpportunityComponent,
-      //   resolve: {
-      //     opportunity: OpportunityResolver
-      //   }
-      // },
-      // {
-      //   path: ':id/opportunity/:oppId',
-      //   component: OpportunityComponent,
-      //   resolve: {
-      //     opportunity: OpportunityResolver,
-      //     opportunityHeader: OpportunityHeaderResolver
-      //   }
-      // }
-
     ]
   },
 ];
