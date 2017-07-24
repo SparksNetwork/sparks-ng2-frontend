@@ -13,6 +13,9 @@ import { ChangePasswordComponent } from "app/user-profile/change-password/change
 import { ConfirmChangesComponent } from "app/user-profile/confirm-changes/confirm-changes.component";
 import { CongratsTrophyComponent } from "app/user-profile/trophies/congrats-trophy/congrats-trophy.component";
 import { CongratsAccoladesComponent } from "app/user-profile/accolades/congrats-accolades/congrats-accolades.component";
+import { SelectBadgeComponent } from "app/user-profile/badges/select-badge/select-badge.component";
+import { ConfirmBadgeComponent } from "app/user-profile/badges/confirm-badge/confirm-badge.component";
+import { CongratsBadgeComponent } from "app/user-profile/badges/congrats-badge/congrats-badge.component";
 
 const routes: Routes = [
   {
@@ -30,6 +33,18 @@ const routes: Routes = [
       {
         path: 'badges',
         component: BadgesComponent
+      },
+      {
+        path: 'select-badge',
+        component: SelectBadgeComponent
+      },
+      {
+        path: 'confirm-badge',
+        component: ConfirmBadgeComponent
+      },
+      {
+        path: 'congrats-badge',
+        component: CongratsBadgeComponent
       },
       {
         path: 'trophies',
