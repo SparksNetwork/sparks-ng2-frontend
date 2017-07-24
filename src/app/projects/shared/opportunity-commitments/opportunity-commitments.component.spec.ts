@@ -50,7 +50,7 @@ describe('OpportunityCommitmentsComponent', () => {
 
   it('should assign commitments based on commitment party', () => {
     component.ngOnChanges();
-    expect(component.organizerCommitments.length).toEqual(2);
-    expect(component.volunteerCommitments.length).toEqual(1);
+    expect(component.benefits.length).toEqual(2);
+    expect(component.commitments.length).toEqual(1);
   });
 });
