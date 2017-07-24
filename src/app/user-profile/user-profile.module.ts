@@ -24,6 +24,7 @@ import { BadgeListDetailsComponent } from './badges/badge-list-details/badge-lis
 import { AccoladeListDetailsComponent } from './accolades/accolade-list-details/accolade-list-details.component';
 import { TrophyListDetailsComponent } from './trophies/trophy-list-details/trophy-list-details.component';
 import { CongratsTrophyComponent } from './trophies/congrats-trophy/congrats-trophy.component';
+import { CongratsAccoladesComponent } from './accolades/congrats-accolades/congrats-accolades.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,6 @@ import { CongratsTrophyComponent } from './trophies/congrats-trophy/congrats-tro
     UserProfileRoutingModule,
     SharedModule
   ],
-  declarations: [UserProfileComponent, UserHeaderComponent, ProfileInfoComponent, BadgesComponent, TrophiesComponent, AccoladesComponent, ProfileActivityDetailsComponent, EditProfileDetailsComponent, EditContactInfoComponent, ChangePasswordComponent, ConfirmChangesComponent, PublicProfileComponent, BadgeListComponent, TrophyListComponent, AccoladeListComponent, QuestsComponent, EventsHistoryComponent, BadgeListDetailsComponent, AccoladeListDetailsComponent, TrophyListDetailsComponent, NewTrophyComponent, CongratsTrophyComponent]
+  declarations: [UserProfileComponent, UserHeaderComponent, ProfileInfoComponent, BadgesComponent, TrophiesComponent, AccoladesComponent, ProfileActivityDetailsComponent, EditProfileDetailsComponent, EditContactInfoComponent, ChangePasswordComponent, ConfirmChangesComponent, PublicProfileComponent, BadgeListComponent, TrophyListComponent, AccoladeListComponent, QuestsComponent, EventsHistoryComponent, BadgeListDetailsComponent, AccoladeListDetailsComponent, TrophyListDetailsComponent, CongratsTrophyComponent, CongratsAccoladesComponent]
 })
 export class UserProfileModule { }

@@ -12,6 +12,7 @@ import { EditContactInfoComponent } from "app/user-profile/edit-contact-info/edi
 import { ChangePasswordComponent } from "app/user-profile/change-password/change-password.component";
 import { ConfirmChangesComponent } from "app/user-profile/confirm-changes/confirm-changes.component";
 import { CongratsTrophyComponent } from "app/user-profile/trophies/congrats-trophy/congrats-trophy.component";
+import { CongratsAccoladesComponent } from "app/user-profile/accolades/congrats-accolades/congrats-accolades.component";
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'accolades',
         component: AccoladesComponent
+      },
+      {
+        path: 'congrats-accolades',
+        component: CongratsAccoladesComponent
       },
       {
         path: 'profile-info',
