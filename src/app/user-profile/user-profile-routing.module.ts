@@ -11,9 +11,10 @@ import { EditProfileDetailsComponent } from "app/user-profile/edit-profile-detai
 import { EditContactInfoComponent } from "app/user-profile/edit-contact-info/edit-contact-info.component";
 import { ChangePasswordComponent } from "app/user-profile/change-password/change-password.component";
 import { ConfirmChangesComponent } from "app/user-profile/confirm-changes/confirm-changes.component";
+import { CongratsTrophyComponent } from "app/user-profile/trophies/congrats-trophy/congrats-trophy.component";
 
 const routes: Routes = [
-   {
+  {
     path: '',
     component: UserProfileComponent,
     children: [
@@ -21,7 +22,7 @@ const routes: Routes = [
         path: '',
         component: ProfileActivityDetailsComponent
       },
-     {
+      {
         path: 'public',
         component: PublicProfileComponent
       },
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'trophies',
         component: TrophiesComponent
+      },
+      {
+        path: 'congrats-trophy',
+        component: CongratsTrophyComponent
       },
       {
         path: 'accolades',
@@ -58,7 +63,7 @@ const routes: Routes = [
         component: ConfirmChangesComponent
       },
     ]
-   }
+  }
 ];
 
 @NgModule({
