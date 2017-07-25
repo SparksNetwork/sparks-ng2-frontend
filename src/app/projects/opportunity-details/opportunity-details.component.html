@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="segment">
+      <div class="icon">
+        <span class="ic ic-calendar"></span>
+      </div>
+      <div class="text" *ngIf="opportunity.price">
+        <h4>${{projectTicketPrice}} value for ${{opportunity.price}}</h4>
+        <p><span>The regular ticket price is reduced to the price of ${{opportunity.price}}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="opportunity-description segment">
+      <p class="card-text">{{opportunity.description}}</p>
+      <p class="card-text card-location lineabove" *ngIf="opportunity.location">{{opportunity.location.address}}, {{opportunity.location.city}}, {{opportunity.location.state}} 
+        <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr={{opportunity.location.address}}, {{opportunity.location.city}}, {{opportunity.location.state}}">Get directions</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- YOU WILL GET/ YOU WILL GIVE -->
+<app-opportunity-commitments *ngIf="opportunityCommitments" [benefits]="opportunityCommitments.benefits" [contributions]="opportunityCommitments.contributions"></app-opportunity-commitments>
+
+<!-- TEAMS -->
+<app-opportunity-teams *ngIf="opportunity.teams" [teams]="opportunity.teams"></app-opportunity-teams>
+
+<!-- @TODO generate VISIT REQUIREMENTS component - similar to project-social  -->
+<div class="row">
+  <div class="col-xs-12">
+    <!--similar to <app-project-social></app-project-social>-->
+    <div class="page-social segment">
+      <a href="#" class="requirements-link">Visit the requirements page <span class="ic ic-link"></span></a>
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate OPPORTUNITY/PROJECT CONTACT component -->
+<div class="row segment">
+  <div class="col-xs-5">
+    <div id="event-contact" class="row">
+      <app-project-ask-organizer-button></app-project-ask-organizer-button>
+    </div>
+  </div>
+
+  <div class="col-xs-7">
+     <app-project-join></app-project-join>
+  </div>
+</div>

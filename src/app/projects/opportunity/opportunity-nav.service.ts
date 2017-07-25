@@ -3,7 +3,7 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
-export class OpportunityHeaderService {
+export class OpportunityNavService {
     public projectTicketPrice: number;
     private _selectedOpportunityId: BehaviorSubject<number>;
 

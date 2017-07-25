@@ -1,42 +1,37 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { OpportunityHeaderService } from "app/projects/opportunity-header/opportunity-header.service";
-import { OpportunityService } from "app/core/services/opportunity.service";
 import { Subscription } from "rxjs/Subscription";
+import { OpportunityNavService } from "app/projects/opportunity/opportunity-nav.service";
 
 @Component({
   selector: 'app-opportunity',
   templateUrl: './opportunity.component.html',
   styleUrls: ['./opportunity.component.css']
 })
-export class OpportunityComponent implements OnInit {
+export class OpportunityComponent implements OnInit, OnDestroy {
 
+  private opportunityHeaderData: any[];
   private opportunity: any;
-  private projectTicketPrice: number;
-  private opportunityCommitments: any;
+  private opportunityIdSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private opportunityHeaderService: OpportunityHeaderService, private opportunityService: OpportunityService) { 
-  }
+  constructor(private route: ActivatedRoute, private opportunityNavService: OpportunityNavService) { }
 
   ngOnInit() {
-    this.route.data.subscribe((data: { opportunity: any }) => {
-      this.opportunity = data.opportunity;
-      this.projectTicketPrice = this.opportunityHeaderService.projectTicketPrice;
+    this.route.data.subscribe((data: { opportunityHeader: any }) => {
+      if (data && data.opportunityHeader) {
+        this.opportunityNavService.projectTicketPrice = data.opportunityHeader.projectTicketPrice;
+        this.opportunityHeaderData = data.opportunityHeader.opportunities;
+      }
+    });
 
-      this.opportunityHeaderService.selectedOpportunityId = this.opportunity.id;
-      
-      this.getOpportunityCommitments(this.opportunity.id);
+    // If property is updated outside parent
+    this.opportunityIdSubscription = this.opportunityNavService.getSelectedOpportunityId().subscribe(id => {
+        this.opportunity = this.opportunityHeaderData.find((data) => data.opportunityId == id);
     });
   }
 
-  /**
-   * @description Gets the commitments for the given opportunity
-   * @param opportunityId 
-   */
-  private getOpportunityCommitments(opportunityId: number) : void {
-    this.opportunityService.getCommitments(opportunityId).subscribe(data => {
-      this.opportunityCommitments = data;
-    });
+  ngOnDestroy() {
+    this.opportunityIdSubscription.unsubscribe();
   }
 
 }

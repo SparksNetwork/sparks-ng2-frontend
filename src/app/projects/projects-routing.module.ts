@@ -4,11 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProjectComponent } from './project/project.component';
 import { ProjectsComponent } from "./projects.component";
 import { ProjectResolver } from "app/projects/project/project-resolver.service";
+import { OpportunityDetailsComponent } from "app/projects/opportunity-details/opportunity-details.component";
 import { OpportunityResolver } from "app/projects/opportunity/opportunity-resolver.service";
 import { OpportunityComponent } from "app/projects/opportunity/opportunity.component";
-import { OpportunityHeaderResolver } from "app/projects/opportunity-header/opportunity-header-resolver.service.1";
-import { OpportunityHeaderComponent } from "app/projects/opportunity-header/opportunity-header.component";
-import { OpportunityHeaderService } from "app/projects/opportunity-header/opportunity-header.service";
+import { OpportunityNavService } from "app/projects/opportunity/opportunity-nav.service";
+import { OpportunityDetailsResolver } from "app/projects/opportunity-details/opportunity-details-resolver.service";
 
 const routes: Routes = [
   {
@@ -24,16 +24,16 @@ const routes: Routes = [
       },
       {
         path: ':id/opportunity',
-        component: OpportunityHeaderComponent,
+        component: OpportunityComponent,
         resolve: {
-          opportunityHeader: OpportunityHeaderResolver
+          opportunityHeader: OpportunityResolver
         },
         children: [
           {
             path: ':oppId',
-            component: OpportunityComponent,
+            component: OpportunityDetailsComponent,
             resolve: {
-              opportunity: OpportunityResolver
+              opportunity: OpportunityDetailsResolver
             }
           }
         ]
@@ -46,8 +46,8 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [ProjectResolver, OpportunityResolver, OpportunityHeaderResolver, OpportunityHeaderService]
+  providers: [ProjectResolver, OpportunityDetailsResolver, OpportunityResolver, OpportunityNavService]
 })
 export class ProjectsRoutingModule { }
 
-export const routedComponents = [ProjectsComponent, ProjectComponent, OpportunityHeaderComponent, OpportunityComponent];
+export const routedComponents = [ProjectsComponent, ProjectComponent, OpportunityComponent, OpportunityDetailsComponent];
