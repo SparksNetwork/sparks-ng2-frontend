@@ -1,0 +1,11 @@
+diff a/src/assets/css/style.scss b/src/assets/css/style.scss	(rejected hunks)
+@@ -620,8 +620,7 @@
+                 right: 0;
+             }
+         }
+-        .badges-trophies-count,
+-        .karma-count {
++        .badges-trophies-count {
+             font-weight: bold;
+         }
+         .profile-progress {
