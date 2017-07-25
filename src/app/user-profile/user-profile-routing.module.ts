@@ -11,9 +11,14 @@ import { EditProfileDetailsComponent } from "app/user-profile/edit-profile-detai
 import { EditContactInfoComponent } from "app/user-profile/edit-contact-info/edit-contact-info.component";
 import { ChangePasswordComponent } from "app/user-profile/change-password/change-password.component";
 import { ConfirmChangesComponent } from "app/user-profile/confirm-changes/confirm-changes.component";
+import { CongratsTrophyComponent } from "app/user-profile/trophies/congrats-trophy/congrats-trophy.component";
+import { CongratsAccoladesComponent } from "app/user-profile/accolades/congrats-accolades/congrats-accolades.component";
+import { SelectBadgeComponent } from "app/user-profile/badges/select-badge/select-badge.component";
+import { ConfirmBadgeComponent } from "app/user-profile/badges/confirm-badge/confirm-badge.component";
+import { CongratsBadgeComponent } from "app/user-profile/badges/congrats-badge/congrats-badge.component";
 
 const routes: Routes = [
-   {
+  {
     path: '',
     component: UserProfileComponent,
     children: [
@@ -21,7 +26,7 @@ const routes: Routes = [
         path: '',
         component: ProfileActivityDetailsComponent
       },
-     {
+      {
         path: 'public',
         component: PublicProfileComponent
       },
@@ -30,12 +35,32 @@ const routes: Routes = [
         component: BadgesComponent
       },
       {
+        path: 'select-badge',
+        component: SelectBadgeComponent
+      },
+      {
+        path: 'confirm-badge',
+        component: ConfirmBadgeComponent
+      },
+      {
+        path: 'congrats-badge',
+        component: CongratsBadgeComponent
+      },
+      {
         path: 'trophies',
         component: TrophiesComponent
       },
       {
+        path: 'congrats-trophy',
+        component: CongratsTrophyComponent
+      },
+      {
         path: 'accolades',
         component: AccoladesComponent
+      },
+      {
+        path: 'congrats-accolades',
+        component: CongratsAccoladesComponent
       },
       {
         path: 'profile-info',
@@ -58,7 +83,7 @@ const routes: Routes = [
         component: ConfirmChangesComponent
       },
     ]
-   }
+  }
 ];
 
 @NgModule({

@@ -6,15 +6,15 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from "rxjs/Observable";
 
 import { ProjectComponent } from './project.component';
+import { OpportunityService } from "app/core/services/opportunity.service";
 import { OpportunityServiceSpy } from "test/opportunity.service.spy";
 import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { ProjectsModule } from "app/projects/projects.module";
 import { ActivatedRouteStub } from "test/router-stubs";
 import { UsertAssignmentsServiceSpy } from "test/user-assignments.spy";
-import { projectDetails } from "test/project-details.mock";
-import { OpportunityService } from "app/core/services/opportunity.service";
 import { UserAssignmentService } from "app/core/services/user-assignments.service";
-
+import { projectDetails } from "test/project-details.mock";
+import { DateService } from "app/core/services/date.service";
 
 let activatedRoute: ActivatedRouteStub;
 let component: ProjectComponent;
@@ -34,7 +34,8 @@ describe('ProjectComponent', () => {
       ],
       providers: [
         { provide: ActivatedRoute, useValue: activatedRoute },
-        { provide: OpportunityService, useValue: {} }
+        { provide: OpportunityService, useValue: {} },
+        DateService
       ]
     })// Override component's own provider
       .overrideComponent(ProjectComponent, {
