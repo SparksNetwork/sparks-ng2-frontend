@@ -6,6 +6,7 @@ import { HeaderCarouselComponent } from './header-carousel/header-carousel.compo
 import { CardItemComponent } from './card-item/card-item.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { CalendarPipe } from "app/shared/pipes/calendar.pipe";
+import { QuestionComponent } from './question/question.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { CalendarPipe } from "app/shared/pipes/calendar.pipe";
   declarations: [
     HeaderSimpleComponent,
     HeaderCarouselComponent, CardItemComponent,
-    ScheduleComponent, CalendarPipe],
+    ScheduleComponent, CalendarPipe, QuestionComponent],
   exports: [
     HeaderSimpleComponent,
     HeaderCarouselComponent, CardItemComponent,

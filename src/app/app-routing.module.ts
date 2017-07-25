@@ -8,7 +8,8 @@ const routes: Routes = [
     { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
     { path: 'project', loadChildren: 'app/projects/projects.module#ProjectsModule' },  
     { path: 'profile', loadChildren: 'app/user-profile/user-profile.module#UserProfileModule' },
-    { path: 'account', loadChildren: 'app/account/account.module#AccountModule' },    
+    { path: 'account', loadChildren: 'app/account/account.module#AccountModule' }, 
+    { path: 'team', loadChildren: 'app/teams/teams.module#TeamsModule' },    
     { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ]
 
