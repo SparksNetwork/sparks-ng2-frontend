@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OpportunityComponent } from './opportunity.component';
+import { OpportunityDetailsComponent } from './opportunity-details.component';
 import { sharedComponents } from "app/shared/shared.module";
 
 describe('OpportunityComponent', () => {
-  let component: OpportunityComponent;
-  let fixture: ComponentFixture<OpportunityComponent>;
+  let component: OpportunityDetailsComponent;
+  let fixture: ComponentFixture<OpportunityDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OpportunityComponent, sharedComponents ]
+      declarations: [ OpportunityDetailsComponent, sharedComponents ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OpportunityComponent);
+    fixture = TestBed.createComponent(OpportunityDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

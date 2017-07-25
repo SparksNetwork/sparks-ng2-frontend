@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommitmentType } from "app/projects/shared/commitment-type.enum";
 
 @Component({
@@ -6,24 +6,12 @@ import { CommitmentType } from "app/projects/shared/commitment-type.enum";
   templateUrl: './opportunity-commitments.component.html',
   styleUrls: ['./opportunity-commitments.component.css']
 })
-export class OpportunityCommitmentsComponent implements OnChanges {
+export class OpportunityCommitmentsComponent implements OnInit {
 
-  @Input() commitments: any[]
+  @Input() private benefits: any[];
+  @Input() private contributions: any[];
 
-  contributions: any[];
-  benefits: any[];
-  constructor() { }
+  constructor() {}
 
-  ngOnChanges() {
-    this.assignCommitments();
-  }
-
-  /**
-   * @description Assigns commitments based on commitmant party
-   */
-  assignCommitments() {
-    if (!this.commitments) return;
-    this.contributions = this.commitments.filter(x => x.type == CommitmentType.Contribution);
-    this.benefits = this.commitments.filter(x => x.type == CommitmentType.Benefit);
-  }
+  ngOnInit() {}
 }

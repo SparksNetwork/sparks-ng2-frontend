@@ -8,22 +8,21 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
 @Injectable()
-export class ProjectResolver implements Resolve<any> {
+export class OpportunityResolver implements Resolve<any>{
 
     constructor(private http: Http, private router: Router) { }
 
-    resolve(route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): Observable<any> {
-        let id = route.paramMap.get('id');
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        let projectId = route.paramMap.get("id");
 
-        //this is just to remember to validate id or name
-        if (isNaN(+id)) {
-            console.log(`Project id was not a number: ${id}`);
+        if (isNaN(+projectId)) {
+            console.log(`Project id was not a number: ${projectId}`);
             this.router.navigate(['/projects']);
             return Observable.of(null);
         }
+
         //TODO use Stevo's service and models
-        return <Observable<any[]>>this.http.get(`api/projectdetails/${id}`)
+        return <Observable<any[]>>this.http.get(`api/projectdetails/${projectId}`)
             .map(res => this.extractData<any[]>(res))
             .catch(error => {
                 console.log(`Retrieval error: ${error}`);
@@ -32,7 +31,7 @@ export class ProjectResolver implements Resolve<any> {
             });
     }
 
-    private extractData<T>(res: Response) {
+    private extractData<T>(res: Response) : any[] {
         if (res.status < 200 || res.status >= 300 || !res.json) {
             throw new Error('Bad response status: ' + res.status);
         }
@@ -43,6 +42,20 @@ export class ProjectResolver implements Resolve<any> {
             throw new Error('Bad response status: ' + res.status);
         }
 
-        return <T>(body && body.data || {});
+        if (body && body.data && body.data.opportunities && body.data.opportunities.length) {
+            let headerData : any = {
+                projectTicketPrice: body.data.ticketPrice,
+                opportunities: []
+            };
+            body.data.opportunities.forEach(element => {
+                headerData.opportunities.push({
+                    opportunityId: element.id,
+                    summary: element.description,
+                    name: element.name
+                });
+            });
+            return headerData;
+        }
+        return [];
     }
 }

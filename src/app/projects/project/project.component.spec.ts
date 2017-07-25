@@ -99,7 +99,6 @@ function multipleOpportunitiesSetup() {
     createComponent();
     osSpy = fixture.debugElement.injector.get(OpportunityService) as any;
     fixture.detectChanges();
-    console.log(component);
   }));
 
   it('should get engagement', () => {

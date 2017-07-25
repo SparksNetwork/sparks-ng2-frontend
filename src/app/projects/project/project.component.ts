@@ -10,6 +10,7 @@ import { OpportunityService } from "app/core/services/opportunity.service";
 import { UserAssignmentService } from "app/core/services/user-assignments.service";
 import { AddToCalendar } from "app/projects/add-to-calendar/add-to-calendar.model";
 import { EngagementStatus } from "app/projects/shared/engagement-status.enum";
+import { DateService } from "app/core/services/date.service";
 
 @Component({
   selector: 'app-project',
@@ -19,18 +20,22 @@ import { EngagementStatus } from "app/projects/shared/engagement-status.enum";
 export class ProjectComponent implements OnInit {
 
   project: any;
+  projectStart: string;
+  projectEnd: string;
   opportunityCards: ProjectOpportunityCard[];
-  cardItemType = CardItemType;
   scheduleItems: ScheduleItem[];
   opportunityCommitments: any[];
   addToCalendarData: AddToCalendar;
 
-  constructor(private route: ActivatedRoute, private opportunityService: OpportunityService, private userAssignmentService: UserAssignmentService) {
+  constructor(private route: ActivatedRoute, private opportunityService: OpportunityService, private userAssignmentService: UserAssignmentService, private dateSerivce: DateService) {
   }
 
   ngOnInit() {
     this.route.data.subscribe((data: { project: any }) => {
       this.project = data.project;
+      this.projectStart = this.dateSerivce.toDisplayFormat(this.project.startDate);
+      this.projectEnd = this.dateSerivce.toDisplayFormat(this.project.endDate);
+
       this.addToCalendarData = {
         startDate: this.project.startDate,
         endDate: this.project.endDate,
@@ -40,7 +45,7 @@ export class ProjectComponent implements OnInit {
       };
 
       this.processOpportunities(data.project.opportunities);
-      this.getUserEngagement()
+      this.getUserEngagement();
     });
   }
 
@@ -50,7 +55,7 @@ export class ProjectComponent implements OnInit {
    * - poppulating opportunity cards 
    * @param opportunities 
    */
-  processOpportunities(opportunities) {
+  private processOpportunities(opportunities) : void {
     if (!opportunities || !opportunities.length) return;
 
     if (opportunities.length == 1) {
@@ -64,7 +69,7 @@ export class ProjectComponent implements OnInit {
    * @description Gets and processes the engagement by getting engagement's assignments 
    * and setting opportunity card type
    */
-  getUserEngagement() {
+  private getUserEngagement() : void {
     this.opportunityService.getUserEngagement(1, this.project.id).subscribe(engagement => {
       if (!engagement) return;
 
@@ -80,9 +85,9 @@ export class ProjectComponent implements OnInit {
    * @description Gets the commitments for the given opportunity
    * @param opportunityId 
    */
-  getOpportunityCommitments(opportunityId: number) {
-    this.opportunityService.getCommitments(this.project.id, opportunityId).subscribe(opportunityCommitments => {
-      this.opportunityCommitments = opportunityCommitments;
+  private getOpportunityCommitments(opportunityId: number) : void {
+    this.opportunityService.getCommitments(opportunityId).subscribe(data => {
+      this.opportunityCommitments = data;
     });
   }
 
@@ -90,7 +95,7 @@ export class ProjectComponent implements OnInit {
    * @description Gets user assignement for the specified engagement.
    * @param engagement
    */
-  getAssignments(engagement: any) {
+  private getAssignments(engagement: any) : void {
     if (!engagement || engagement.status !== EngagementStatus.Confirmed) return;
 
     this.userAssignmentService.getAssignments(1, engagement.id).subscribe((assignments: Array<any>) => {      
@@ -108,7 +113,7 @@ export class ProjectComponent implements OnInit {
    * @description Sets the ooportunity card status based on engagement provided
    * @param engagement 
    */
-  setProjectOpportunitiesCardType(engagement: any) {   
+  public setProjectOpportunitiesCardType(engagement: any) : void {   
     if (!engagement) return;
 
     for (let card of this.opportunityCards) {      

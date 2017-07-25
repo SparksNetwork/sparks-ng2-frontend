@@ -8,22 +8,23 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
 @Injectable()
-export class OpportunitiesResolver implements Resolve<any>{
+export class OpportunityDetailsResolver implements Resolve<any>{
 
     constructor(private http: Http, private router: Router) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         let projectId = route.paramMap.get("id");
+        let opportunityId = route.paramMap.get("oppId");
 
-        if (isNaN(+projectId)) {
-            console.log(`Project id was not a number: ${projectId}`);
-            this.router.navigate(['/projects']);
+        if (isNaN(+opportunityId)) {
+            console.log(`Opportunity id was not a number: ${opportunityId}`);
+            this.router.navigate([`/projects/${projectId}`]);
             return Observable.of(null);
         }
 
-        //TODO user Stevo service and models
-        return <Observable<any[]>>this.http.get(`api/opps?projectId=${projectId}`)
-            .map(res => this.extractData<any[]>(res))
+        //TODO use Stevo's service and models
+        return <Observable<any[]>>this.http.get(`api/opps?id=${opportunityId}`)
+            .map(res => this.extractData<any>(res))
             .catch(error => {
                 console.log(`Retrieval error: ${error}`);
                 this.router.navigate(['/projects', projectId]);
@@ -31,7 +32,7 @@ export class OpportunitiesResolver implements Resolve<any>{
             });
     }
 
-    private extractData<T>(res: Response) {
+    private extractData<T>(res: Response) : T {
         if (res.status < 200 || res.status >= 300 || !res.json) {
             throw new Error('Bad response status: ' + res.status);
         }
@@ -42,6 +43,6 @@ export class OpportunitiesResolver implements Resolve<any>{
             throw new Error('Bad response status: ' + res.status);
         }
 
-        return <T>(body && body.data || {});
+        return <T>(body && body.data && body.data.length > 0 ? body.data[0] : {});
     }
 }

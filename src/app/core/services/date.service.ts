@@ -10,12 +10,22 @@ export class DateService {
      * @param  {String} timezone  tz offset (in minutes) (optional)
      * @return {String}
      */
-    toUniversalTime(timestamp: string, timezone?: number) {
+    public toUniversalTime(timestamp: string, timezone?: number) : string {
         let dt = moment(timestamp);
 
         if (timezone) {
             dt.utcOffset(timezone);
         }
         return dt.format('YYYYMMDDTHHmmss');
+    }
+
+    /**
+     * Format the time to dislay the month and day in lower case.
+     * 
+     * @param timestamp valid RFC-2822 string timestamp
+     */
+    public toDisplayFormat(timestamp: string) : string {
+        let dt = moment(timestamp);
+        return dt.format('MMM D').toLowerCase();
     }
 }

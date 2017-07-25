@@ -11,9 +11,9 @@ export class OpportunityService {
     constructor(private http: Http) { }
 
     /**
-     * @description Gets oppportunities on which user applied
+     * @description Gets opportunities on which the user applied
      */
-    getUserEngagement(userId: number, projectId: number) {
+    public getUserEngagement(userId: number, projectId: number) : Observable<any> {
         return <Observable<any>>this.http.get(`api/userEngagements?userId=${userId}&projectId=${projectId}`)
             .map(res => {
                 let data = this.extractData<any>(res);
@@ -30,15 +30,18 @@ export class OpportunityService {
             });
     }
 
-    getCommitments(projectId: number, oppportunityId: number) {
-        return <Observable<any>>this.http.get(`api/opportunityCommitments?projectId=${projectId}&opportunityId=${oppportunityId}`)
+    public getCommitments(oppportunityId: number) : Observable<any> {
+        return <Observable<any>>this.http.get(`api/opportunityCommitments?opportunityId=${oppportunityId}`)
             .map(res => {
                 let data = this.extractData<any>(res);
 
                 if (!data.length)
                     return Observable.of(null);
 
-                return data[0].commitments;
+                return {
+                    benefits: data[0].benefits,
+                    contributions: data[0].contributions
+                };
             })
             .catch(exception => {
                 //TODO treat exception;
@@ -47,7 +50,7 @@ export class OpportunityService {
             });
     }
 
-    private extractData<T>(res: Response) {
+    private extractData<T>(res: Response) : T {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
