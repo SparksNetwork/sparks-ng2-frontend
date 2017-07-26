@@ -13,7 +13,7 @@ export class OpportunityService {
     /**
      * @description Gets opportunities on which the user applied
      */
-    public getUserEngagement(userId: number, projectId: number) : Observable<any> {
+    public getUserEngagement(userId: number, projectId: string) : Observable<any> {
         return <Observable<any>>this.http.get(`api/userEngagements?userId=${userId}&projectId=${projectId}`)
             .map(res => {
                 let data = this.extractData<any>(res);

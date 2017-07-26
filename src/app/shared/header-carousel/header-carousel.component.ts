@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IImageModel } from "app/core/models/image.model";
 
 @Component({
   selector: 'app-header-carousel',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./header-carousel.component.css']
 })
 export class HeaderCarouselComponent implements OnInit {
-  @Input() images: string[];
+  @Input() images: IImageModel[];
 
   constructor() { }
 

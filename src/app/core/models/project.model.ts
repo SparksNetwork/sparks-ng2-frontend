@@ -5,6 +5,7 @@ import { IOrganizerModel } from "app/core/models/organizer.model";
 import { IOpportunityCardModel } from "app/core/models/opportunity-card.model";
 
 export interface IProjectModel {
+    projectKey: string;
     projectType: ProjectType;
     title: string;
     description: string;
@@ -15,6 +16,7 @@ export interface IProjectModel {
     ticketPrice?: number;
     maxKarmaPoints: number;
     organizer: IOrganizerModel;
-    projectPageUrl: string;
+    projectPageUrl?: string;
+    shareKarmaPoints?: number;
     opportunities: IOpportunityCardModel[];
 }

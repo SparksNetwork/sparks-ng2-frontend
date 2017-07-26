@@ -6,43 +6,24 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
+import { IProjectModel } from "app/core/models/project.model";
+import { ProjectService } from "app/core/services/project.service";
 
 @Injectable()
-export class ProjectResolver implements Resolve<any> {
+export class ProjectResolver implements Resolve<IProjectModel> {
 
-    constructor(private http: Http, private router: Router) { }
+    constructor(private http: Http, private router: Router, private projectService: ProjectService) { }
 
-    resolve(route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): Observable<any> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProjectModel> {
         let id = route.paramMap.get('id');
 
         //this is just to remember to validate id or name
-        if (isNaN(+id)) {
-            console.log(`Project id was not a number: ${id}`);
-            this.router.navigate(['/projects']);
-            return Observable.of(null);
-        }
-        //TODO use Stevo's service and models
-        return <Observable<any[]>>this.http.get(`api/projectdetails/${id}`)
-            .map(res => this.extractData<any[]>(res))
-            .catch(error => {
-                console.log(`Retrieval error: ${error}`);
-                this.router.navigate(['/projects']);
-                return Observable.of(null);
-            });
-    }
-
-    private extractData<T>(res: Response) {
-        if (res.status < 200 || res.status >= 300 || !res.json) {
-            throw new Error('Bad response status: ' + res.status);
-        }
-
-        let body = res.json();
-
-        if (!body) {
-            throw new Error('Bad response status: ' + res.status);
-        }
-
-        return <T>(body && body.data || {});
+        // if (isNaN(+id)) {
+        //     console.log(`Project id was not a number: ${id}`);
+        //     this.router.navigate(['/projects']);
+        //     return Observable.of(null);
+        // }
+        
+        return this.projectService.getProject(id);
     }
 }

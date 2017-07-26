@@ -28,14 +28,14 @@
           "imageUrl": "string"
         },
         "projectPageUrl": "string",
+        "shareKarmaPoints": "int",
         "opportunities": [
           {
             "opportunityKey": {
               "title": "string",
               "icon": "string",
-              "subtitle": "string e.g. $374 in value, 30 Days, 1 Shift",
-              "summary": "string e.f. 85% discount, 100% involvement, 4 hours long",
-              "price": "decimal"
+              "description": "string e.g. $374 in value, 30 Days, 1 Shift",
+              "summary": "string e.f. 85% discount, 100% involvement, 4 hours long"
             },
             "opportunityKey2": {}
           }

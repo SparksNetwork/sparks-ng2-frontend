@@ -11,6 +11,8 @@ export class DateService {
      * @return {String}
      */
     public toUniversalTime(timestamp: string, timezone?: number) : string {
+        if (!timestamp) return "";
+        
         let dt = moment(timestamp);
 
         if (timezone) {
@@ -25,6 +27,8 @@ export class DateService {
      * @param timestamp valid RFC-2822 string timestamp
      */
     public toDisplayFormat(timestamp: string) : string {
+        if (!timestamp) return "";
+
         let dt = moment(timestamp);
         return dt.format('MMM D').toLowerCase();
     }

@@ -19,9 +19,9 @@ const routes: Routes = [
       {
         path: ':id',
         component: ProjectComponent,
-        resolve: {
-          project: ProjectResolver
-        },
+        // resolve: {
+        //   project: ProjectResolver
+        // },
       },
       {
         path: ':id/opportunity',

@@ -3,11 +3,13 @@ import * as moment from 'moment';
 
 import { DateService } from 'app/core/services/date.service';
 import { AddToCalendar } from "app/projects/add-to-calendar/add-to-calendar.model";
+import { ILocationModel } from "app/core/models/location.model";
+import { FormatterService } from "app/core/services/formatter.service";
 
 @Injectable()
 export class AddToCalendarService {
 
-    constructor(private dateService: DateService) { }
+    constructor(private dateService: DateService, private formatterService: FormatterService) { }
 
     getMicrosoftCalendarUrl(data: AddToCalendar) {
         if(!data) return;
@@ -16,7 +18,7 @@ export class AddToCalendarService {
         microsoftCalendarUrl += '&summary=' + encodeURIComponent(data.title);
         microsoftCalendarUrl += '&dtstart=' + encodeURIComponent(data.startDate) + '&dtend=' + encodeURIComponent(data.endDate);
         microsoftCalendarUrl += '&description=' + encodeURIComponent(data.description);
-        microsoftCalendarUrl += '&location=' + encodeURIComponent(data.location);
+        microsoftCalendarUrl += '&location=' + encodeURIComponent(this.formatterService.getLocationString(data.location));
 
         return microsoftCalendarUrl;
     }
@@ -28,7 +30,7 @@ export class AddToCalendarService {
         googleCalendarUrl += '&text=' + encodeURIComponent(data.title);
         googleCalendarUrl += '&dates=' + encodeURIComponent(data.startDate) + '/' + encodeURIComponent(data.endDate);
         googleCalendarUrl += '&details=' + encodeURIComponent(data.description);
-        googleCalendarUrl += '&location=' + encodeURIComponent(data.location);
+        googleCalendarUrl += '&location=' + encodeURIComponent(this.formatterService.getLocationString(data.location));
 
         return googleCalendarUrl;
     }
@@ -43,7 +45,7 @@ export class AddToCalendarService {
             'DESCRIPTION:' + this.formatIcsText(data.description),
             'DTSTART:' + this.dateService.toUniversalTime(data.startDate),
             'DTEND:' + this.dateService.toUniversalTime(data.endDate),
-            'LOCATION:' + this.formatIcsText(data.location),
+            'LOCATION:' + this.formatIcsText(this.formatterService.getLocationString(data.location)),
             'SUMMARY:' + this.formatIcsText(data.title),
             'TRANSP:TRANSPARENT',
             'END:VEVENT',
@@ -117,4 +119,5 @@ export class AddToCalendarService {
         }
         return title.replace(/[^\w ]+/g, '') + '.ics';
     }
+
 }
