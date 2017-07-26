@@ -3,8 +3,8 @@
     <div class="you-will-give-got segment" *ngIf="benefits?.length">
       <h3>You Will Get</h3>
       <ul>
-        <li *ngFor="let commitment of benefits">
-          <app-card-item [icon]="commitment.icon" [title]="commitment.title" [subtitle]="commitment.description"></app-card-item>
+        <li *ngFor="let b of benefits">
+          <app-card-item [icon]="b.icon" [title]="b.title" [description]="b.description"></app-card-item>
         </li>
       </ul>
     </div>
@@ -12,8 +12,8 @@
     <div class="you-will-give-got segment" *ngIf="contributions?.length">
       <h3>You Will Give</h3>
       <ul>
-        <li *ngFor="let commitment of contributions">
-          <app-card-item [icon]="commitment.icon" [title]="commitment.title" [subtitle]="commitment.description"></app-card-item>
+        <li *ngFor="let c of contributions">
+          <app-card-item [icon]="c.icon" [title]="c.title" [description]="c.description"></app-card-item>
         </li>
       </ul>
     </div>

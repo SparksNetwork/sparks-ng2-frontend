@@ -33,7 +33,7 @@ export class OpportunityDetailsComponent implements OnInit {
    * @description Gets the commitments for the given opportunity
    * @param opportunityId 
    */
-  private getOpportunityCommitments(opportunityId: number) : void {
+  private getOpportunityCommitments(opportunityId: string) : void {
     this.opportunityService.getCommitments(opportunityId).subscribe(data => {
       this.opportunityCommitments = data;
     });

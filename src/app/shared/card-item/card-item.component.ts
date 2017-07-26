@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CardItemType } from "./card-item.enum";
+import { CardItemStatus } from "app/core/enums/card-item-status.enum";
 
 @Component({
   selector: 'app-card-item',
@@ -8,12 +8,12 @@ import { CardItemType } from "./card-item.enum";
 })
 export class CardItemComponent implements OnInit {
   @Input() title: string;
-  @Input() subtitle: string;
   @Input() description: string;
+  @Input() summary: string;
   @Input() icon: string;
-  @Input() type: CardItemType;
+  @Input() status: CardItemStatus;
 
-  cardItemType = CardItemType;
+  cardItemStatus = CardItemStatus;
 
   constructor() { }
 

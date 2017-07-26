@@ -2,10 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Params } from "@angular/router";
 import { Http, Response } from "@angular/http";
 
-import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { ScheduleItem } from "app/shared/schedule/schedule-item.model";
 import { Observable } from "rxjs/Observable";
-import { ProjectOpportunityCard } from "app/projects/shared/project-opportunity-card.model";
 import { OpportunityService } from "app/core/services/opportunity.service";
 import { UserAssignmentService } from "app/core/services/user-assignments.service";
 import { AddToCalendar } from "app/projects/add-to-calendar/add-to-calendar.model";
@@ -14,6 +12,9 @@ import { DateService } from "app/core/services/date.service";
 import { IProjectModel } from "app/core/models/project.model";
 import { ProjectService } from "app/core/services/project.service";
 import { FormatterService } from "app/core/services/formatter.service";
+import { IOpportunityCardModel } from "app/core/models/opportunity-card.model";
+import { IOpportunityCommitmentsModel } from "app/core/models/opportunity-commitments.model";
+import { CardItemStatus } from "app/core/enums/card-item-status.enum";
 
 @Component({
   selector: 'app-project',
@@ -26,9 +27,9 @@ export class ProjectComponent implements OnInit {
   projectStart: string;
   projectEnd: string;
   projectLocation: string;
-  opportunityCards: ProjectOpportunityCard[];
+  opportunityCards: IOpportunityCardModel[];
   scheduleItems: ScheduleItem[];
-  opportunityCommitments: any[];
+  opportunityCommitments: IOpportunityCommitmentsModel[];
   addToCalendarData: AddToCalendar;
 
   constructor(private route: ActivatedRoute, private opportunityService: OpportunityService, private userAssignmentService: UserAssignmentService, 
@@ -40,7 +41,7 @@ export class ProjectComponent implements OnInit {
     this.route.paramMap.subscribe((params: Params) => {
       let id = params.get('id');
 
-      this.projectService.getProject(id).subscribe(project => {
+      this.projectService.getProject(id).subscribe(project => {       
         this.project = <IProjectModel>project;
         this.projectStart = this.dateSerivce.toDisplayFormat(this.project.startDateTime);
         this.projectEnd = this.dateSerivce.toDisplayFormat(this.project.endDateTime);
@@ -68,13 +69,13 @@ export class ProjectComponent implements OnInit {
    * - poppulating opportunity cards 
    * @param opportunities 
    */
-  private processOpportunities(opportunities): void {
+  private processOpportunities(opportunities: IOpportunityCardModel[]): void {
     if (!opportunities || !opportunities.length) return;
 
     if (opportunities.length == 1) {
-      this.getOpportunityCommitments(opportunities[0].id);
+      this.getOpportunityCommitments(opportunities[0].opportunityKey);
     } else {
-      this.opportunityCards = <ProjectOpportunityCard[]>opportunities;
+      this.opportunityCards = <IOpportunityCardModel[]>opportunities;
     }
   }
 
@@ -83,23 +84,23 @@ export class ProjectComponent implements OnInit {
    * and setting opportunity card type
    */
   private getUserEngagement(): void {
-    this.opportunityService.getUserEngagement(1, this.project.projectKey).subscribe(engagement => {
-      if (!engagement) return;
+    // this.opportunityService.getUserEngagement(1, this.project.projectKey).subscribe(engagement => {
+    //   if (!engagement) return;
 
-      this.getAssignments(engagement);
+    //   this.getAssignments(engagement);
 
-      if (this.opportunityCards && this.opportunityCards.length) {
-        this.setProjectOpportunitiesCardType(engagement);
-      }
-    });
+    //   if (this.opportunityCards && this.opportunityCards.length) {
+    //     this.setProjectOpportunitiesCardType(engagement);
+    //   }
+    // });
   }
 
   /**
    * @description Gets the commitments for the given opportunity
-   * @param opportunityId 
+   * @param opportunityKey 
    */
-  private getOpportunityCommitments(opportunityId: number): void {
-    this.opportunityService.getCommitments(opportunityId).subscribe(data => {
+  private getOpportunityCommitments(opportunityKey: string): void {
+    this.opportunityService.getCommitments(opportunityKey).subscribe(data => {
       this.opportunityCommitments = data;
     });
   }
@@ -131,18 +132,18 @@ export class ProjectComponent implements OnInit {
 
     for (let card of this.opportunityCards) {
       //is engagement's opportunity
-      if (engagement.opportunityId == card.id) {
-        card.type = engagement.status == EngagementStatus.Confirmed ? CardItemType.Active : CardItemType.Pending;
+      if (engagement.opportunityId == card.opportunityKey) {
+        card.status = engagement.status == EngagementStatus.Confirmed ? CardItemStatus.Active : CardItemStatus.Pending;
         continue;
       }
 
       switch (<EngagementStatus>engagement.status) {
         case EngagementStatus.Accepted:
         case EngagementStatus.Applyed:
-          card.type = CardItemType.Disabled;
+          card.status = CardItemStatus.Disabled;
           break;
         default:
-          card.type = null;
+          card.status = null;
       }
     }
   }

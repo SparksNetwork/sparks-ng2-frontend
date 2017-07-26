@@ -1,12 +1,12 @@
-<div [ngClass]="{'disabled':type === cardItemType.Disabled, 'active':type === cardItemType.Active,'pending':type === cardItemType.Pending}">
+<div [ngClass]="{'disabled':status === cardItemStatus.Disabled, 'active':status === cardItemStatus.Active,'pending':status === cardItemStatus.Pending}">
   <div class="icon">
     <span class="glyphicon {{icon}} glyphicon-lg"></span>
     <div class="status">
-      <div [ngSwitch]="type">
-        <div *ngSwitchCase="cardItemType.Active">
+      <div [ngSwitch]="status">
+        <div *ngSwitchCase="cardItemStatus.Active">
           active
         </div>
-        <div *ngSwitchCase="cardItemType.Pending">
+        <div *ngSwitchCase="cardItemStatus.Pending">
           pending
         </div>       
       </div>
@@ -14,7 +14,7 @@
   </div>
   <div class="text">
     <h4>{{title}}</h4>
-    <p *ngIf="subtitle">{{subtitle}}</p>
-    <p *ngIf="description"><span>{{description}}</span></p>
+    <p *ngIf="description">{{description}}</p>
+    <p *ngIf="summary"><span>{{summary}}</span></p>
   </div>
 </div>

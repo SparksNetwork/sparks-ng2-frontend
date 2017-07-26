@@ -8,13 +8,13 @@ import { Observable } from "rxjs/Observable";
 import { ProjectComponent } from './project.component';
 import { OpportunityService } from "app/core/services/opportunity.service";
 import { OpportunityServiceSpy } from "test/opportunity.service.spy";
-import { CardItemType } from "app/shared/card-item/card-item.enum";
 import { ProjectsModule } from "app/projects/projects.module";
 import { ActivatedRouteStub } from "test/router-stubs";
 import { UsertAssignmentsServiceSpy } from "test/user-assignments.spy";
 import { UserAssignmentService } from "app/core/services/user-assignments.service";
 import { projectDetails } from "test/project-details.mock";
 import { DateService } from "app/core/services/date.service";
+import { CardItemStatus } from "app/core/enums/card-item-status.enum";
 
 let activatedRoute: ActivatedRouteStub;
 let component: ProjectComponent;
@@ -107,12 +107,12 @@ function multipleOpportunitiesSetup() {
 
   it('should set oportunity cards type to disabled if one engagement is pending', () => {
     component.setProjectOpportunitiesCardType(osSpy.pendingEngagement);    
-    expect(component.opportunityCards.filter(x => x.type == CardItemType.Disabled).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
+    expect(component.opportunityCards.filter(x => x.status == CardItemStatus.Disabled).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
   });
 
   it('should set oportunity cards type to null if one engagement is active', () => {
     component.setProjectOpportunitiesCardType(osSpy.activeEngagement);    
-    expect(component.opportunityCards.filter(x => !x.type).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
+    expect(component.opportunityCards.filter(x => !x.status).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
   });
 
   it('should no get opportunityCommitments', () => {
