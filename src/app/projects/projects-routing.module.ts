@@ -9,6 +9,7 @@ import { OpportunityResolver } from "app/projects/opportunity/opportunity-resolv
 import { OpportunityComponent } from "app/projects/opportunity/opportunity.component";
 import { OpportunityNavService } from "app/projects/opportunity/opportunity-nav.service";
 import { OpportunityDetailsResolver } from "app/projects/opportunity-details/opportunity-details-resolver.service";
+import { QuestionComponent } from "app/shared/question/question.component";
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
             }
           }
         ]
+      },
+      {
+        path: ':id/question',
+        component: QuestionComponent
       }
     ]
   },
