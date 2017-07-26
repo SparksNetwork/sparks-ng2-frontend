@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import 'rxjs/add/operator/mergeMap';
+
+import { AuthService } from "app/core/services/auth.service";
+import { Route, Router } from "@angular/router";
 
 @Component({
   selector: 'app-register-login',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterLoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() {     
   }
 
+  loginWithGoogle() {
+    this.authService.loginWithGoogle();
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 }

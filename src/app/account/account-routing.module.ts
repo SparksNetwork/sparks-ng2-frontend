@@ -5,6 +5,7 @@ import { ForgotPasswordComponent } from "app/account/forgot-password/forgot-pass
 import { ResetPasswordComponent } from "app/account/reset-password/reset-password.component";
 import { RegisterLoginComponent } from "app/account/register-login/register-login.component";
 import { CompleteProfileComponent } from "app/account/complete-profile/complete-profile.component";
+import { RegisterLoginGuard } from "app/account/register-login/register-login-guard.service";
 
 const routes: Routes = [
   {
@@ -13,7 +14,9 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: RegisterLoginComponent
+        component: RegisterLoginComponent,
+        //we need to guard this because of user beeing redirected to login after login process succeeds
+        canActivate: [RegisterLoginGuard],
       },
       {
         path: 'complete-profile',
@@ -33,6 +36,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [RegisterLoginGuard]
 })
 export class AccountRoutingModule { }
