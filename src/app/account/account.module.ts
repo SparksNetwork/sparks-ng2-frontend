@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 import { AccountComponent } from './account.component';
 import { RegisterLoginComponent } from './register-login/register-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -13,6 +15,7 @@ import { CompleteProfileComponent } from './complete-profile/complete-profile.co
   imports: [
     CommonModule,
     AccountRoutingModule,
+    FormsModule,
     SharedModule
   ],
   declarations: [AccountComponent, RegisterLoginComponent, ForgotPasswordComponent, ResetPasswordComponent, CompleteProfileComponent]

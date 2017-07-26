@@ -21,61 +21,68 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="login-register segment">
-      <h3>Login or Register</h3>
-      <form action="">
-        <div class="form-input">
+<form name="form" (ngSubmit)="f.form.valid && signInWithEmailAndPassword()" #f="ngForm" novalidate>  
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="login-register segment">
+        <h3>Login or Register</h3>
+        <div class="alert alert-danger" *ngIf="f.submitted && loginFailed">Invalid email or password</div>        
+        <div class="form-input" [class.has-error]="f.submitted && !email.valid">
           <div class="icon">
             <span class="ic ic-envelope-o"></span>
           </div>
           <div class="text">
-            <input type="text" class="form-control" placeholder="Enter Your Email">
+            <input type="email" class="form-control" placeholder="Enter Your Email" required name="email" email [(ngModel)]="login.email"
+              #email="ngModel">
+           <div *ngIf="f.submitted && email.errors?.required" class="help-block">Email is required</div>
+           <div *ngIf="f.submitted && !email.errors?.required && !email.valid" class="help-block">Email is invalid</div>
           </div>
         </div>
-        <div class="form-input">
+        <div class="form-input" [class.has-error]="f.submitted && !password.valid">
           <div class="icon">
             <span class="ic ic-key"></span>
           </div>
           <div class="text">
-            <input type="password" class="form-control" placeholder="Your Password">
+            <input type="password" name="password" [(ngModel)]="login.password" class="form-control" placeholder="Your Password" required #password="ngModel">
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
           </div>
         </div>
-      </form>
-      <div class="reset-link">
-        Forgot Your Password? <a href="#">Reset it</a>
-      </div>
 
-    </div>
-  </div>
-</div>
+        <div class="reset-link">
+          Forgot Your Password? <a href="#">Reset it</a>
+        </div>
 
-<!-- @TODO generate GENERAL CONTACT component -->
-<div class="row">
-  <div class="col-xs-12">
-    <div class="row segment">
-      <div class="col-xs-4">
-        <div id="event-contact" class="row">
-          <a href="#">
-            <div class="icon">
-              <span class="ic ic-cog"></span>
-            </div>
-            <div class="text">
-              <span>Ask Sparks</span>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-xs-8 bottom-nav">
-        <div class="btn-group" role="group">
-          <a href="#" class="btn btn-block btn-default">Guest/Cancel</a>
-        </div>
-        <div class="btn-group" role="group">
-          <a href="#" class="btn btn-block btn-default">Next</a>
-        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- @TODO generate GENERAL CONTACT component -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row segment">
+        <div class="col-xs-4">
+          <div id="event-contact" class="row">
+            <a href="#">
+              <div class="icon">
+                <span class="ic ic-cog"></span>
+              </div>
+              <div class="text">
+                <span>Ask Sparks</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-8 bottom-nav">
+          <div class="btn-group" role="group">
+            <a href="#" class="btn btn-block btn-default">Guest/Cancel</a>
+          </div>
+          <div class="btn-group" role="group">
+            <button type="submit" class="btn btn-block btn-default">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
