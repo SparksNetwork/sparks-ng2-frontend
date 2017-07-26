@@ -20,6 +20,10 @@ export class RegisterLoginComponent implements OnInit {
     this.authService.loginWithGoogle();
   }
 
+  loginWithFacebook() {
+    this.authService.loginWithFacebook();
+  }
+
   logout() {
     this.authService.logout();
   }

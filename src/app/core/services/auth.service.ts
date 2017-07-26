@@ -21,10 +21,16 @@ export class AuthService {
     return !!this.currentUser;
   }
 
-  loginWithGoogle() {
-    // First, we perform the signInWithRedirect.
-    // Creates the provider object.
+  loginWithGoogle() {   
     var provider = new firebase.auth.GoogleAuthProvider();
+    // You can add additional scopes to the provider:
+    provider.addScope('email');
+    // Sign in with redirect:
+    this.afAuth.auth.signInWithRedirect(provider);
+  }
+
+  loginWithFacebook(){    
+    var provider = new firebase.auth.FacebookAuthProvider();
     // You can add additional scopes to the provider:
     provider.addScope('email');
     // Sign in with redirect:
