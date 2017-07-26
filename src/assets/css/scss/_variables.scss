@@ -57,7 +57,8 @@
     &.ic-envelope-o,
     &.ic-key,
     &.ic-pencil,
-    &.ic-circle{
+    &.ic-circle,
+    &.ic-commenting-o{
     font-family: FontAwesome;
     }
 }
@@ -66,6 +67,9 @@
     content: "\f1db";
 }
 
+.ic.ic-commenting-o::before {
+    content: "\f27b";
+}
 
 .ic.ic-facebook-square:before {
     content: "\F082";
