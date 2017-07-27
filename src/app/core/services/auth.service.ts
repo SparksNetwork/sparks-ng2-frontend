@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   loginWithGoogle() {
-    var provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
     // You can add additional scopes to the provider:
     provider.addScope('email');
     // Sign in with redirect:
@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   loginWithFacebook() {
-    var provider = new firebase.auth.FacebookAuthProvider();
+    const provider = new firebase.auth.FacebookAuthProvider();
     // You can add additional scopes to the provider:
     provider.addScope('email');
     // Sign in with redirect:
@@ -38,12 +38,8 @@ export class AuthService {
   }
 
   signInWithEmailAndPassword(email: string, password: string) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password).catch(function (error) {
-      throw error;
-    });
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
-
-
 
   logout() {
     this.afAuth.auth.signOut();

@@ -3,7 +3,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { RegisterLoginComponent } from './register-login.component';
-import { AuthService } from "app/core/services/auth.service";
+import { AuthService } from 'app/core/services/auth.service';
+import { FormBuilder } from '@angular/forms';
 
 describe('RegisterLoginComponent', () => {
   let component: RegisterLoginComponent;
@@ -12,10 +13,10 @@ describe('RegisterLoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
-      imports:[RouterTestingModule],
+      imports: [RouterTestingModule],
       declarations: [RegisterLoginComponent],
-      providers:[
-        
+      providers: [
+        FormBuilder,
         { provide: AuthService, useValue: {} },
       ]
     })
