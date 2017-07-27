@@ -50,8 +50,8 @@ export class RegisterLoginComponent implements OnInit {
             this.account.reset({ email: this.account.value.email, password: null });
             break;
           case 'auth/user-not-found':
-            // TODO go to register
-             this.loginFailedMessage = 'There is no user corresponding to the given email.';
+            // TODO pass user and password to route but hide from user... 
+             this.router.navigate(['/account/register']);
             break;
           case 'auth/wrong-password':
             this.loginFailedMessage = 'The password is invalid for the given email.';
