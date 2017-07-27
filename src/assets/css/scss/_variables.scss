@@ -66,6 +66,14 @@
     content: "\f1db";
 }
 
+.ic.ic-delete::before {
+    content: "\f00d";
+}
+
+.ic.ic-commenting-o::before {
+    content: "\f27b";
+}
+
 
 .ic.ic-facebook-square:before {
     content: "\F082";
