@@ -41,8 +41,10 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  createUserWithEmailAndPassword(email: string, password: string){
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+  createUserWithEmailAndPassword(email: string, password: string): firebase.Promise<any> {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((user: firebase.User)=>{
+      user.sendEmailVerification();
+    });
   }
 
   logout() {

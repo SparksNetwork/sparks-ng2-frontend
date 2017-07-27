@@ -33,6 +33,7 @@ export class RegisterComponent implements OnInit {
 
     this.authService.createUserWithEmailAndPassword(this.account.value.email, this.account.value.password).then(user => {
       //TODO redirect to congrats generic and send confirm data
+      //maybe logout?????
     })
       .catch((error: FirebaseError) => {
         switch (error.code) {
