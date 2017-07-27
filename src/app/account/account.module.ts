@@ -6,19 +6,21 @@ import { AccountComponent } from './account.component';
 import { RegisterLoginComponent } from './register-login/register-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { AccountRoutingModule } from "app/account/account-routing.module";
-import { SharedModule } from "app/shared/shared.module";
+import { AccountRoutingModule, routedComponents } from 'app/account/account-routing.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { CompleteProfileComponent } from './complete-profile/complete-profile.component';
-
 
 @NgModule({
   imports: [
     CommonModule,
     AccountRoutingModule,
     FormsModule,
-    ReactiveFormsModule ,
+    ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [AccountComponent, RegisterLoginComponent, ForgotPasswordComponent, ResetPasswordComponent, CompleteProfileComponent]
+  declarations: [AccountComponent, RegisterLoginComponent,
+    ForgotPasswordComponent, ResetPasswordComponent,
+    CompleteProfileComponent,
+    routedComponents]
 })
 export class AccountModule { }

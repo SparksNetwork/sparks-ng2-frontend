@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AccountComponent } from "app/account/account.component";
-import { ForgotPasswordComponent } from "app/account/forgot-password/forgot-password.component";
-import { ResetPasswordComponent } from "app/account/reset-password/reset-password.component";
-import { RegisterLoginComponent } from "app/account/register-login/register-login.component";
-import { CompleteProfileComponent } from "app/account/complete-profile/complete-profile.component";
-import { RegisterLoginGuard } from "app/account/register-login/register-login-guard.service";
+import { AccountComponent } from 'app/account/account.component';
+import { ForgotPasswordComponent } from 'app/account/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from 'app/account/reset-password/reset-password.component';
+import { RegisterLoginComponent } from 'app/account/register-login/register-login.component';
+import { CompleteProfileComponent } from 'app/account/complete-profile/complete-profile.component';
+import { RegisterLoginGuard } from 'app/account/register-login/register-login-guard.service';
+import { RegisterComponent } from 'app/account/register/register.component';
 
 const routes: Routes = [
   {
@@ -15,8 +16,12 @@ const routes: Routes = [
       {
         path: 'login',
         component: RegisterLoginComponent,
-        //we need to guard this because of user beeing redirected to login after login process succeeds
+        // we need to guard this because of user beeing redirected to login after login process succeeds
         canActivate: [RegisterLoginGuard],
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
       },
       {
         path: 'complete-profile',
@@ -40,3 +45,5 @@ const routes: Routes = [
   providers: [RegisterLoginGuard]
 })
 export class AccountRoutingModule { }
+
+export const routedComponents = [RegisterComponent]
