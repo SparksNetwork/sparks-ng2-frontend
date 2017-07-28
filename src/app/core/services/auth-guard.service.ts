@@ -18,12 +18,12 @@ import 'rxjs/add/operator/take';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
-  
+
   constructor(private authService: AuthService, private router: Router) { }
 
   //TODO we need segments to preserve the whole path not just de routed module.
   //this will be implemented once this commits are merged on angular master here https://github.com/angular/angular/pull/13127
-  
+
   // canLoad(route: Route): Observable<boolean> {    
   //   return this.checkIfLoggedIn(`/${route.path}`)
   // }
@@ -46,9 +46,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       .take(1)
       .map(authState => !!authState)
       .do(auth => {
-        if (auth) return true;
+        if (auth) {
+          return true;
+        }
 
-        this.router.navigate(['/account/login'], { queryParams: { redirectTo: redirectTo } });
+        this.router.navigate(['/account/register/social'], { queryParams: { redirectTo: redirectTo } });
         return false;
       });
   }

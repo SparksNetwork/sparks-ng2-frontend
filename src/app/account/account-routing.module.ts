@@ -24,6 +24,7 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterComponent,
+        canActivate: [RegisterLoginGuard],
         children: [
           { path: '', redirectTo: 'social' },
           { path: 'social', component: SocialRegisterComponent },
