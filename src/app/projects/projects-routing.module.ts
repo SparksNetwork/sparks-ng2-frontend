@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectComponent } from './project/project.component';
-import { ProjectsComponent } from './projects.component';
-import { ProjectResolver } from 'app/projects/project/project-resolver.service';
-import { OpportunityDetailsComponent } from 'app/projects/opportunity-details/opportunity-details.component';
-import { OpportunityResolver } from 'app/projects/opportunity/opportunity-resolver.service';
-import { OpportunityComponent } from 'app/projects/opportunity/opportunity.component';
-import { OpportunityNavService } from 'app/projects/opportunity/opportunity-nav.service';
-import { OpportunityDetailsResolver } from 'app/projects/opportunity-details/opportunity-details-resolver.service';
-import { QuestionComponent } from 'app/shared/question/question.component';
+import { ProjectsComponent } from "./projects.component";
+import { ProjectResolver } from "app/projects/project/project-resolver.service";
+import { OpportunityDetailsComponent } from "app/projects/opportunity-details/opportunity-details.component";
+import { OpportunityResolver } from "app/projects/opportunity/opportunity-resolver.service";
+import { OpportunityComponent } from "app/projects/opportunity/opportunity.component";
+import { OpportunityNavService } from "app/projects/opportunity/opportunity-nav.service";
+import { OpportunityDetailsResolver } from "app/projects/opportunity-details/opportunity-details-resolver.service";
 
 const routes: Routes = [
   {
@@ -38,10 +37,6 @@ const routes: Routes = [
             }
           }
         ]
-      },
-      {
-        path: ':id/question',
-        component: QuestionComponent
       }
     ]
   },
