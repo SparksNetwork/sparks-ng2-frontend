@@ -42,7 +42,8 @@ export class AuthService {
   }
 
   createUserWithEmailAndPassword(email: string, password: string): firebase.Promise<any> {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((user: firebase.User)=>{
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((user: firebase.User) => {
+      // TODo this should be called from firebase triger.      
       user.sendEmailVerification();
     });
   }
