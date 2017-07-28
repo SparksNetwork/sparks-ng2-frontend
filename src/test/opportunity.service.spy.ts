@@ -1,6 +1,6 @@
-import { Observable } from "rxjs/Observable";
-import { CommitmentType } from "app/projects/shared/commitment-type.enum";
-import { EngagementStatus } from "app/projects/shared/engagement-status.enum";
+import { Observable } from 'rxjs/Observable';
+import { CommitmentType } from 'app/projects/shared/commitment-type.enum';
+import { EngagementStatus } from 'app/core/enums/engagement-status.enum';
 
 export class OpportunityServiceSpy {
   pendingEngagement = {
@@ -8,7 +8,7 @@ export class OpportunityServiceSpy {
     userId: 1,
     eventId: 1,
     opportunityId: 1,
-    status: EngagementStatus.Applyed
+    status: EngagementStatus.Applied
   };
 
   activeEngagement = {
@@ -24,25 +24,25 @@ export class OpportunityServiceSpy {
       type: CommitmentType.Benefit,
       title: '20 Karma Points',
       icon: 'glyphicon-cd',
-      description: "Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network"
+      description: 'Get Badges, Accolafes, and more by volunteering throuh the Sparks.Network'
     },
     {
       type: CommitmentType.Benefit,
       title: 'To help you community',
       icon: 'glyphicon-globe',
-      description: "Serve your neightbors on the Avenue!"
+      description: 'Serve your neightbors on the Avenue!'
     },
     {
       type: CommitmentType.Contribution,
       title: 'To help you community',
       icon: 'glyphicon-globe',
-      description: "Serve your neightbors on the Avenue!"
+      description: 'Serve your neightbors on the Avenue!'
     },
     {
       type: CommitmentType.Contribution,
       title: 'Shift',
       icon: 'glyphicon-tower',
-      description: "Serve your neightbors on the Avenue!"
+      description: 'Serve your neightbors on the Avenue!'
     }
   ];
 

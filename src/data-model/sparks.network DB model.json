@@ -31,13 +31,11 @@
         "shareKarmaPoints": "int",
         "opportunities": [
           {
-            "opportunityKey": {
-              "title": "string",
-              "icon": "string",
-              "description": "string e.g. $374 in value, 30 Days, 1 Shift",
-              "summary": "string e.f. 85% discount, 100% involvement, 4 hours long"
-            },
-            "opportunityKey2": {}
+            "opportunityKey": "string",
+            "title": "string",
+            "icon": "string",
+            "description": "string e.g. $374 in value, 30 Days, 1 Shift",
+            "summary": "string e.f. 85% discount, 100% involvement, 4 hours long"
           }
         ]
       }
@@ -99,6 +97,19 @@
         "icon": "string",
         "count": "int",
         "value": "decimal"
+      }
+    }
+  ],
+  "Engagements": [
+    {
+      "engagementKey1": {
+        "userUID": "string",
+        "projectUserKey": "string-string",
+        "opportunityKey": "string",
+        "status": "string",
+        "appliedOn": "dateTime",
+        "acceptedOn": "dateTime",
+        "confirmedOn": "dateTime"
       }
     }
   ]
