@@ -57,13 +57,22 @@
     &.ic-envelope-o,
     &.ic-key,
     &.ic-pencil,
-    &.ic-circle{
+    &.ic-circle,
+    &.ic-delete{
     font-family: FontAwesome;
     }
 }
 
 .ic.ic-circle::before {
     content: "\f1db";
+}
+
+.ic.ic-delete::before {
+    content: "\f00d";
+}
+
+.ic.ic-commenting-o::before {
+    content: "\f27b";
 }
 
 
