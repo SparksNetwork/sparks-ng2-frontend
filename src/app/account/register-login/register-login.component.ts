@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Route, Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/catch';
 
@@ -16,7 +16,7 @@ export class RegisterLoginComponent implements OnInit {
   loginFailedMessage: string;
   private account: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router, private builder: FormBuilder) { }
+  constructor(private authService: AuthService, private router: Router, private builder: FormBuilder, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.account = this.builder.group({
@@ -38,7 +38,10 @@ export class RegisterLoginComponent implements OnInit {
 
     this.loginFailedMessage = null;
 
-    this.authService.signInWithEmailAndPassword(this.account.value.email, this.account.value.password)
+    this.authService.signInWithEmailAndPassword(this.account.value.email, this.account.value.password).then(user => {
+      const redirectTo = this.route.snapshot.queryParamMap.get('redirectTo') || 'dashboard';
+      this.router.navigate([redirectTo]);
+    })
       .catch((error: FirebaseError) => {
         switch (error.code) {
           case 'auth/invalid-email':
@@ -52,6 +55,9 @@ export class RegisterLoginComponent implements OnInit {
             break;
           case 'auth/wrong-password':
             this.loginFailedMessage = 'The password is invalid for the given email.';
+            break;
+          case 'auth/emailNotVerified':
+            this.loginFailedMessage = 'The email address has not been verified.';
             break;
           default:
             this.loginFailedMessage = 'Login failed.';

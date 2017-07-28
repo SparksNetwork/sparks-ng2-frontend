@@ -38,12 +38,18 @@ export class AuthService {
   }
 
   signInWithEmailAndPassword(email: string, password: string) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password).then((user: firebase.User) => {
+      if (!user.emailVerified) {
+        this.afAuth.auth.signOut();
+        throw { code: 'auth/emailNotVerified' };
+      }
+      return user;
+    });
   }
 
   createUserWithEmailAndPassword(email: string, password: string): firebase.Promise<any> {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((user: firebase.User) => {
-      // TODo this should be called from firebase triger.      
+      // TODo this should be called from firebase triger.
       user.sendEmailVerification();
     });
   }
