@@ -7,15 +7,13 @@ import { OpportunityService } from 'app/core/services/opportunity.service';
 import { UserAssignmentService } from 'app/core/services/user-assignments.service';
 import { AddToCalendar } from 'app/projects/add-to-calendar/add-to-calendar.model';
 import { EngagementStatus } from 'app/core/enums/engagement-status.enum';
-import { DateService } from 'app/core/services/date.service';
 import { IProjectModel } from 'app/core/models/project.model';
 import { ProjectService } from 'app/core/services/project.service';
-import { FormatterService } from 'app/core/services/formatter.service';
 import { IOpportunityCardModel } from 'app/core/models/opportunity-card.model';
 import { IOpportunityCommitmentsModel } from 'app/core/models/opportunity-commitments.model';
 import { CardItemStatus } from 'app/core/enums/card-item-status.enum';
 import { IUserEngagementModel } from 'app/core/models/user-engagement.model';
-import { ProjectPageSources } from "app/projects/project/project-resolver.service";
+import { ProjectPageSources } from 'app/projects/project/project-resolver.service';
 
 @Component({
   selector: 'app-project',
@@ -24,33 +22,25 @@ import { ProjectPageSources } from "app/projects/project/project-resolver.servic
 })
 export class ProjectComponent implements OnInit {
 
+  readonly dateFormat = 'MMM d';
+
   project: IProjectModel;
   engagements: IUserEngagementModel[];
-  projectStart: string;
-  projectEnd: string;
-  projectLocation: string;
   opportunityCards: IOpportunityCardModel[];
   scheduleItems: ScheduleItem[];
   opportunityCommitments: IOpportunityCommitmentsModel[];
   addToCalendarData: AddToCalendar;
 
   constructor(private route: ActivatedRoute, private opportunityService: OpportunityService,
-    private userAssignmentService: UserAssignmentService, private dateSerivce: DateService,
-    private projectService: ProjectService, private changeDetectorRef: ChangeDetectorRef,
-    private formatterService: FormatterService) {
+    private userAssignmentService: UserAssignmentService,
+    private projectService: ProjectService, private changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
     this.route.data.subscribe((data: { sources: ProjectPageSources }) => {
-      console.log(data);
-      console.log(data.sources.projectObservable);
-
       if (data && data.sources) {
         data.sources.projectObservable.subscribe(project => {
           this.project = project;
-          this.projectStart = this.dateSerivce.toDisplayFormat(this.project.startDateTime);
-          this.projectEnd = this.dateSerivce.toDisplayFormat(this.project.endDateTime);
-          this.projectLocation = this.formatterService.getLocationString(this.project.location);
 
           this.addToCalendarData = {
             startDate: this.project.startDateTime,

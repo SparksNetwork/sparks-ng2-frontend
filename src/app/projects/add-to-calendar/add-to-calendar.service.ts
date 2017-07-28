@@ -1,51 +1,56 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 
-import { DateService } from 'app/core/services/date.service';
-import { AddToCalendar } from "app/projects/add-to-calendar/add-to-calendar.model";
-import { ILocationModel } from "app/core/models/location.model";
-import { FormatterService } from "app/core/services/formatter.service";
+import { AddToCalendar } from 'app/projects/add-to-calendar/add-to-calendar.model';
+import { ILocationModel } from 'app/core/models/location.model';
+import { LocationPipe } from 'app/shared/pipes/location.pipe';
 
 @Injectable()
 export class AddToCalendarService {
 
-    constructor(private dateService: DateService, private formatterService: FormatterService) { }
+    constructor(private locationPipe: LocationPipe) { }
 
     getMicrosoftCalendarUrl(data: AddToCalendar) {
-        if(!data) return;
+        if (!data) {
+            return;
+        }
 
-        var microsoftCalendarUrl = 'http://calendar.live.com/calendar/calendar.aspx?rru=addevent';
+        let microsoftCalendarUrl = 'http://calendar.live.com/calendar/calendar.aspx?rru=addevent';
         microsoftCalendarUrl += '&summary=' + encodeURIComponent(data.title);
         microsoftCalendarUrl += '&dtstart=' + encodeURIComponent(data.startDate) + '&dtend=' + encodeURIComponent(data.endDate);
         microsoftCalendarUrl += '&description=' + encodeURIComponent(data.description);
-        microsoftCalendarUrl += '&location=' + encodeURIComponent(this.formatterService.getLocationString(data.location));
+        microsoftCalendarUrl += '&location=' + encodeURIComponent(this.locationPipe.transform(data.location));
 
         return microsoftCalendarUrl;
     }
 
     getGoogleCalendarUrl(data: AddToCalendar) {
-        if(!data) return;
+        if (!data) {
+            return;
+        }
 
-        var googleCalendarUrl = 'https://www.google.com/calendar/render?action=TEMPLATE';
+        let googleCalendarUrl = 'https://www.google.com/calendar/render?action=TEMPLATE';
         googleCalendarUrl += '&text=' + encodeURIComponent(data.title);
         googleCalendarUrl += '&dates=' + encodeURIComponent(data.startDate) + '/' + encodeURIComponent(data.endDate);
         googleCalendarUrl += '&details=' + encodeURIComponent(data.description);
-        googleCalendarUrl += '&location=' + encodeURIComponent(this.formatterService.getLocationString(data.location));
+        googleCalendarUrl += '&location=' + encodeURIComponent(this.locationPipe.transform(data.location));
 
         return googleCalendarUrl;
     }
 
     getIcsCalendar(data: AddToCalendar) {
-        if(!data) return;
+        if (!data) {
+            return;
+        }
         return [
             'BEGIN:VCALENDAR',
             'VERSION:2.0',
             'BEGIN:VEVENT',
             'CLASS:PUBLIC',
             'DESCRIPTION:' + this.formatIcsText(data.description),
-            'DTSTART:' + this.dateService.toUniversalTime(data.startDate),
-            'DTEND:' + this.dateService.toUniversalTime(data.endDate),
-            'LOCATION:' + this.formatIcsText(this.formatterService.getLocationString(data.location)),
+            'DTSTART:' + this.toUniversalTime(data.startDate),
+            'DTEND:' + this.toUniversalTime(data.endDate),
+            'LOCATION:' + this.formatIcsText(this.locationPipe.transform(data.location)),
             'SUMMARY:' + this.formatIcsText(data.title),
             'TRANSP:TRANSPARENT',
             'END:VEVENT',
@@ -70,15 +75,16 @@ export class AddToCalendarService {
         }
         str = str.replace(/\n/g, '\\n');
 
-        if (maxLength)
+        if (maxLength) {
             str = str.substring(0, maxLength);
+        }
 
         return str;
     }
 
     /**
       * Returns a random base 36 hash for iCal UID.
-      * 
+      *
       * @return {String}
       */
     private getUid() {
@@ -87,7 +93,7 @@ export class AddToCalendarService {
 
     /**
      * Returns a universal timestamp of current time.
-     * 
+     *
      * @return {String}
      */
     private getTimeCreated() {
@@ -109,7 +115,7 @@ export class AddToCalendarService {
 
     /**
     * Transforms given string to be valid file name.
-    * 
+    *
     * @param  {String} title
     * @return {String}
     */
@@ -118,6 +124,26 @@ export class AddToCalendarService {
             return 'event.ics';
         }
         return title.replace(/[^\w ]+/g, '') + '.ics';
+    }
+
+    /**
+     * Format time as a universal timestamp format w.r.t. the given timezone.
+     *
+     * @param  {String} timestamp valid RFC-2822 string timestamp
+     * @param  {String} timezone  tz offset (in minutes) (optional)
+     * @return {String}
+     */
+    toUniversalTime(timestamp: string, timezone?: number): string {
+        if (!timestamp) {
+            return '';
+        }
+
+        const dt = moment(timestamp);
+
+        if (timezone) {
+            dt.utcOffset(timezone);
+        }
+        return dt.format('YYYYMMDDTHHmmss');
     }
 
 }
