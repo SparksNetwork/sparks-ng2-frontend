@@ -4,6 +4,9 @@
     ".write": "auth != null",
     "OpportunityCommitments": {
       ".indexOn": ["opportunityKey"]
+    },
+    "Engagements": {
+      ".indexOn": ["projectUserKey"]
     }
   }
 }

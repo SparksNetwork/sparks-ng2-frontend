@@ -1,5 +1,6 @@
 export enum EngagementStatus {
-    Applied = 1,
+    Pending,
+    Applied,
     Accepted,
     Confirmed
 }

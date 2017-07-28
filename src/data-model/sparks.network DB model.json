@@ -106,7 +106,7 @@
         "userUID": "string",
         "projectUserKey": "string-string",
         "opportunityKey": "string",
-        "status": "string",
+        "status": "int - Pending=0,Applied,Accepted,Confirmed",
         "appliedOn": "dateTime",
         "acceptedOn": "dateTime",
         "confirmedOn": "dateTime"

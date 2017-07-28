@@ -106,12 +106,12 @@ function multipleOpportunitiesSetup() {
   });
 
   it('should set oportunity cards type to disabled if one engagement is pending', () => {
-    component.setProjectOpportunitiesCardType(osSpy.pendingEngagement);    
+    component.setOpportunityCardTypes(osSpy.pendingEngagement);    
     expect(component.opportunityCards.filter(x => x.status == CardItemStatus.Disabled).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
   });
 
   it('should set oportunity cards type to null if one engagement is active', () => {
-    component.setProjectOpportunitiesCardType(osSpy.activeEngagement);    
+    component.setOpportunityCardTypes(osSpy.activeEngagement);    
     expect(component.opportunityCards.filter(x => !x.status).length).toEqual(component.opportunityCards.length - 1, "card item type not set to disabled");
   });
 

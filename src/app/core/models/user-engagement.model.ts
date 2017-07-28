@@ -4,6 +4,7 @@ export interface IUserEngagementModel {
     engagementKey: string;
     userUID: string;
     projectUserKey: string;
+    opportunityKey: string;
     status: EngagementStatus;
     appliedOn: string;
     acceptedOn: string;

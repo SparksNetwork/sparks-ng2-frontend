@@ -41,6 +41,12 @@ export class ProjectComponent implements OnInit {
       if (data && data.sources) {
         data.sources.projectObservable.subscribe(project => {
           this.project = project;
+          this.opportunityCards = this.project.opportunities;
+
+          // get the commitments if there is only one opportunity
+          if (this.opportunityCards.length === 1) {
+            this.getOpportunityCommitments(this.opportunityCards[0].opportunityKey);
+          }
 
           this.addToCalendarData = {
             startDate: this.project.startDateTime,
@@ -49,35 +55,20 @@ export class ProjectComponent implements OnInit {
             location: this.project.location,
             description: this.project.description
           };
-
-          this.processOpportunities(this.project.opportunities);
         });
 
         data.sources.engagementsObservable.subscribe(engagemens => {
           this.engagements = engagemens;
-           // this.getUserEngagement(); TODO finish implementation
+
+          // this.getUserEngagement(); TODO finish implementation
+
+          if (this.opportunityCards && this.opportunityCards.length) { // TODO do this afer init
+            this.setOpportunityCardTypes();
+          }
         });
       }
 
     });
-  }
-
-  /**
-   * @description Processes opportunities by:
-   * - getting commitments if only one opportunity available
-   * - poppulating opportunity cards
-   * @param opportunities
-   */
-  private processOpportunities(opportunities: IOpportunityCardModel[]): void {
-    if (!opportunities || !opportunities.length) {
-      return
-    };
-
-    if (opportunities.length === 1) {
-      this.getOpportunityCommitments(opportunities[0].opportunityKey);
-    } else {
-      this.opportunityCards = <IOpportunityCardModel[]>opportunities;
-    }
   }
 
   /**
@@ -128,27 +119,26 @@ export class ProjectComponent implements OnInit {
 
   /**
    * @description Sets the ooportunity card status based on engagement provided
-   * @param engagement
    */
-  public setProjectOpportunitiesCardType(engagement: any): void {
-    if (!engagement) {
+  public setOpportunityCardTypes(): void {
+    if (!this.engagements) {
       return;
     }
 
     for (const card of this.opportunityCards) {
-      // is engagement's opportunity
-      if (engagement.opportunityId === card.opportunityKey) {
-        card.status = engagement.status === EngagementStatus.Confirmed ? CardItemStatus.Active : CardItemStatus.Pending;
-        continue;
-      }
+      const engagement = this.engagements.find((e) => e.opportunityKey === card.opportunityKey);
 
-      switch (<EngagementStatus>engagement.status) {
-        case EngagementStatus.Accepted:
-        case EngagementStatus.Applied:
-          card.status = CardItemStatus.Disabled;
-          break;
-        default:
-          card.status = null;
+      if (engagement) {
+        switch (engagement.status) {
+          case EngagementStatus.Pending:
+            card.status = CardItemStatus.Pending;
+            break;
+          case EngagementStatus.Accepted:
+            card.status = CardItemStatus.Active;
+            break;
+          default:
+            card.status = null;
+        }
       }
     }
   }
