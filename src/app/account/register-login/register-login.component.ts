@@ -43,25 +43,21 @@ export class RegisterLoginComponent implements OnInit {
         switch (error.code) {
           case 'auth/invalid-email':
             this.loginFailedMessage = 'The email address is not valid.';
-            this.account.reset({ email: this.account.value.email, password: null });
             break;
           case 'auth/user-disabled':
             this.loginFailedMessage = 'The user corresponding to the given email has been disabled.';
-            this.account.reset({ email: this.account.value.email, password: null });
             break;
           case 'auth/user-not-found':
-            // TODO pass user and password to route but hide from user... 
-             this.router.navigate(['/account/register']);
+            this.loginFailedMessage = 'There is no user corresponding to the given email';
             break;
           case 'auth/wrong-password':
             this.loginFailedMessage = 'The password is invalid for the given email.';
-            this.account.reset({ email: this.account.value.email, password: null });
             break;
           default:
             this.loginFailedMessage = 'Login failed.';
-            this.account.reset({ email: this.account.value.email, password: null });
             break;
-        }
+        };
+        this.account.reset({ email: this.account.value.email, password: null });
       });
   }
 

@@ -7,6 +7,8 @@ import { RegisterLoginComponent } from 'app/account/register-login/register-logi
 import { CompleteProfileComponent } from 'app/account/complete-profile/complete-profile.component';
 import { RegisterLoginGuard } from 'app/account/register-login/register-login-guard.service';
 import { RegisterComponent } from 'app/account/register/register.component';
+import { SocialRegisterComponent } from 'app/account/register/social-register/social-register.component';
+import { EmailRegisterComponent } from 'app/account/register/email-register/email-register.component';
 
 const routes: Routes = [
   {
@@ -21,7 +23,12 @@ const routes: Routes = [
       },
       {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
+        children: [
+          { path: '', redirectTo: 'social' },
+          { path: 'social', component: SocialRegisterComponent },
+          { path: 'email', component: EmailRegisterComponent }
+        ]
       },
       {
         path: 'complete-profile',
@@ -46,4 +53,4 @@ const routes: Routes = [
 })
 export class AccountRoutingModule { }
 
-export const routedComponents = [RegisterComponent]
+export const routedComponents = [RegisterComponent, EmailRegisterComponent, SocialRegisterComponent]

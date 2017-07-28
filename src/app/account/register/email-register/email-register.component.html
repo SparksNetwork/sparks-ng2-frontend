@@ -1,32 +1,9 @@
-<app-header-simple></app-header-simple>
-
-<div class="row">
-  <div class="col-xs-12">
-    <div class="segment">
-      <p class="card-text">Start by entering your credentials or by filling in with your details.</p>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
-    <div class="social-login segment">
-      <div class="btn-group" role="group">
-        <button type="button" (click)="loginWithFacebook()" class="btn btn-block btn-social-login"><i class="ic ic-facebook-square" aria-hidden="true"></i> Facebook Login</button>
-      </div>
-      <div class="btn-group" role="group">
-        <button type="button" (click)="loginWithGoogle()" class="btn btn-block btn-social-login"><i class="ic ic-google-plus" aria-hidden="true"></i> Google Login</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<form novalidate (ngSubmit)="signInWithEmailAndPassword($event)" [formGroup]="account" novalidate>  
+<form novalidate (ngSubmit)="createUserWithEmailAndPassword($event)" [formGroup]="account" novalidate>
   <div class="row">
     <div class="col-xs-12">
       <div class="login-register segment">
-        <h3>Login</h3>
-        <div class="alert alert-danger" *ngIf="loginFailedMessage">{{loginFailedMessage}}</div>
+        <h3>Register</h3>
+        <div class="alert alert-danger" *ngIf="registerFailedMessage">{{registerFailedMessage}}</div>
         <div class="form-input" [class.has-error]="!account.get('email').valid && account.get('email').touched">
           <div class="icon">
             <span class="ic ic-envelope-o"></span>
@@ -52,9 +29,6 @@
             </div>
           </div>
         </div>
-        <div class="reset-link">
-          Forgot Your Password? <a href="#">Reset it</a>
-        </div>
       </div>
     </div>
   </div>
@@ -78,13 +52,14 @@
 
         <div class="col-xs-8 bottom-nav">
           <div class="btn-group" role="group">
-            <a [routerLink]="['/account/register/social']" class="btn btn-block btn-default">Guest/Cancel</a>
+            <a [routerLink]="['/account/register/social']" class="btn btn-block btn-default">Cancel</a>
           </div>
           <div class="btn-group" role="group">
-            <button type="submit" class="btn btn-block btn-default" [disabled]="!account.valid">Login</button>
+            <button type="submit" class="btn btn-block btn-default" [disabled]="!account.valid">Sign Up</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </form>
