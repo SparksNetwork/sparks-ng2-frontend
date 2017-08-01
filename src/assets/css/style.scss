@@ -341,13 +341,14 @@ h3 {
 .event-karma {
     width: 90px;
     float: right;
+    overflow: hidden;
     div {
         display: block;
         float: left;
     }
     .event-karma-count {
         font-size: 24px;
-        font-weight: regular;
+        font-weight: normal;
         p {
             margin: 0;
             font-size: 15px;
@@ -681,7 +682,7 @@ h3 {
         }
         .event-karma-count {
             font-size: 12px;
-            font-weight: regular;
+            font-weight: normal;
             p {
                 margin: 0;
                 font-size: 15px;
