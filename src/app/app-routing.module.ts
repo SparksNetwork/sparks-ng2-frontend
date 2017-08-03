@@ -9,7 +9,8 @@ const routes: Routes = [
     { path: 'project', loadChildren: 'app/projects/projects.module#ProjectsModule' },  
     { path: 'profile', loadChildren: 'app/user-profile/user-profile.module#UserProfileModule' },
     { path: 'account', loadChildren: 'app/account/account.module#AccountModule' }, 
-    { path: 'teams', loadChildren: 'app/teams/teams.module#TeamsModule' },    
+    { path: 'teams', loadChildren: 'app/teams/teams.module#TeamsModule' },  
+    { path: 'qa', loadChildren: 'app/qa/qa.module#QAModule' },  
     { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ]
 
