@@ -6,11 +6,12 @@ import { PageNotFoundComponent } from './core/page-not-found/page-not-found.comp
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
-    { path: 'project', loadChildren: 'app/projects/projects.module#ProjectsModule' },  
+    { path: 'project', loadChildren: 'app/projects/projects.module#ProjectsModule' },
     { path: 'profile', loadChildren: 'app/user-profile/user-profile.module#UserProfileModule' },
-    { path: 'account', loadChildren: 'app/account/account.module#AccountModule' }, 
-    { path: 'teams', loadChildren: 'app/teams/teams.module#TeamsModule' },  
-    { path: 'qa', loadChildren: 'app/qa/qa.module#QAModule' },  
+    { path: 'account', loadChildren: 'app/account/account.module#AccountModule' },
+    { path: 'teams', loadChildren: 'app/teams/teams.module#TeamsModule' },
+    { path: 'qa', loadChildren: 'app/qa/qa.module#QAModule' },
+    { path: 'shift', loadChildren: 'app/shift/shift.module#ShiftModule' },
     { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ]
 
