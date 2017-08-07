@@ -13,6 +13,8 @@ import { OpportunityDetailsComponent } from "app/projects/opportunity-details/op
 import { OpportunityComponent } from './opportunity/opportunity.component';
 import { OpportunityTeamsComponent } from './shared/opportunity-teams/opportunity-teams.component';
 import { ProjectJoinComponent } from './shared/project-join/project-join.component';
+import { CancelVolunteeringComponent } from './cancel-volunteering/cancel-volunteering.component';
+import { CancelConfirmationComponent } from './cancel-confirmation/cancel-confirmation.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,7 @@ import { ProjectJoinComponent } from './shared/project-join/project-join.compone
     ProjectsRoutingModule,
     SharedModule
   ],
-  declarations: [routedComponents, ProjectSocialComponent, ProjectAskOrganizerButtonComponent, OpportunityCommitmentsComponent, AddToCalendarComponent, OpportunityComponent, OpportunityDetailsComponent, OpportunityTeamsComponent, ProjectJoinComponent],
+  declarations: [routedComponents, ProjectSocialComponent, ProjectAskOrganizerButtonComponent, OpportunityCommitmentsComponent, AddToCalendarComponent, OpportunityComponent, OpportunityDetailsComponent, OpportunityTeamsComponent, ProjectJoinComponent, CancelVolunteeringComponent, CancelConfirmationComponent],
   providers: [OpportunityService, AddToCalendarService]
 })
 export class ProjectsModule { }

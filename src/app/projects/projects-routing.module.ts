@@ -10,6 +10,8 @@ import { OpportunityComponent } from 'app/projects/opportunity/opportunity.compo
 import { OpportunityNavService } from 'app/projects/opportunity/opportunity-nav.service';
 import { OpportunityDetailsResolver } from 'app/projects/opportunity-details/opportunity-details-resolver.service';
 import { QuestionComponent } from 'app/shared/question/question.component';
+import { CancelVolunteeringComponent } from "app/projects/cancel-volunteering/cancel-volunteering.component";
+import { CancelConfirmationComponent } from "app/projects/cancel-confirmation/cancel-confirmation.component";
 
 const routes: Routes = [
   {
@@ -42,7 +44,15 @@ const routes: Routes = [
       {
         path: ':id/question',
         component: QuestionComponent
-      }
+      },
+      {
+        path: ':id/cancel',
+        component: CancelVolunteeringComponent
+      },
+      {
+        path: ':id/cancel-confirm',
+        component: CancelConfirmationComponent
+      },
     ]
   },
 ];
