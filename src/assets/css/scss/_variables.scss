@@ -59,7 +59,8 @@
     &.ic-pencil,
     &.ic-circle,
     &.ic-delete,
-    &.ic-commenting-o{
+    &.ic-commenting-o,
+    &.ic-bars{
     font-family: FontAwesome;
     }
 }
@@ -95,6 +96,10 @@
 
 .ic.ic-pencil::before {
     content: "\F040";
+}
+
+.ic.ic-bars::before {
+    content: "\f0c9";
 }
 
 // Colors
