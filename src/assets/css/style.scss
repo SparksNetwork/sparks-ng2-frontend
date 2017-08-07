@@ -720,3 +720,39 @@ h3 {
         }
     }
 }
+
+/* Modal */
+.modal-content{
+    @include border-radius(0);
+    .modal-header{
+        background: url( 'https://placeimg.com/600/190/people/grayscale' ) top center no-repeat;
+        .input-group{
+            margin: 30px 0;
+            padding: 10px;
+            background: #FFF;
+            border: 1px solid #000;
+            .form-control{
+                border: none;
+                box-shadow: none;
+            }
+            .input-group-btn{
+                border: 1px solid #F7F7F7;
+            }
+        }
+    }
+    .close{
+        font-size: 30px;
+        background: #FFF;
+        @include border-radius(50%);
+        width: 30px;
+        opacity: 1;
+        margin-right: -22px;
+        margin-top: -22px;
+    }
+
+    .modal-footer{
+        .btn{
+            float: left;
+        }
+    }
+}
