@@ -1,17 +1,16 @@
-<div class="row" style="margin-top: 100px;">
+<div class="row" style="margin-top: 101px;">
   <div class="col-xs-12">
     <div class="row segment">
       <div class="col-xs-4">
         <div class="row">
-          <!-- Trigger the modal with a button -->
-          <a href="#" data-toggle="modal" data-target="#qa-modal">
+          <div class="btn-ask" (click)="openModal(qamodal)">
             <div class="icon">
               <span class="ic ic-question-sign"></span>
             </div>
             <div class="text">
               Ask The Organizer
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>
@@ -19,20 +18,13 @@
 </div>
 
 
-<!-- Modal -->
-<div id="qa-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Ask Sparks.Network/Ask The Organizer</h2>
-        <app-ask-question></app-ask-question>
-      </div>
-      <div class="modal-body">
-        <app-suggested-qa></app-suggested-qa>
-      </div>
-    </div>
+<ng-template #qamodal>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">&times;</button>
+    <h2 class="modal-title">Ask Sparks.Network/Ask The Organizer</h2>
+    <app-ask-question></app-ask-question>
   </div>
-</div>
+  <div class="modal-body">
+    <app-suggested-qa></app-suggested-qa>
+  </div>
+</ng-template>

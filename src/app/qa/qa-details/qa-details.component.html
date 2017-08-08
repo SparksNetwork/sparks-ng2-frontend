@@ -1,21 +1,15 @@
-<div id="qa-modal" class="modal fade autoshow" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Safety Requirements Details</h2>
-      </div>
-      <div class="modal-body">
+<ng-template #qamodal>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">&times;</button>
+    <h2 class="modal-title">Safety Requirements Details</h2>
+  </div>
+  <div class="modal-body">
         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque gravida nunc eu eros ultrices feugiat. Donec in viverra metus. Nam at lacus ornare, tincidunt eros ac, maximus elit. Integer ac consectetur enim. Nam ex eros, blandit sed ultrices eget, ullamcorper eget lorem. Aliquam non pellentesque enim. Nulla facilisi.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Return To Page</button>
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Return To Page</button>
       </div>
-    </div>
-  </div>
-</div>
+</ng-template>
 
 
 
@@ -24,14 +18,14 @@
   <div class="row segment">
     <div class="col-xs-4">
       <div id="event-contact" class="row">
-        <a href="#" data-toggle="modal" data-target="#qa-modal">
-          <div class="icon">
-            <span class="ic ic-question-sign"></span>
+        <div class="btn-ask" (click)="openModal(qamodal)">
+            <div class="icon">
+              <span class="ic ic-question-sign"></span>
+            </div>
+            <div class="text">
+              Ask Sparks
+            </div>
           </div>
-          <div class="text">
-            <span>Ask Sparks</span>
-          </div>
-        </a>
       </div>
     </div>
 
