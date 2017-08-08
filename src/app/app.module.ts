@@ -11,9 +11,12 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryProjectsService } from "../test/in-memory-projects.service";
 import { CoreModule } from "app/core/core.module";
 
+import { ModalModule } from "ngx-bootstrap/modal";
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    ModalModule.forRoot(),
     BrowserModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryProjectsService, { delay: 600 }),
