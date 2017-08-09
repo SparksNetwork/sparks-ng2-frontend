@@ -97,6 +97,9 @@ h3 {
         padding-top: 15px;
         padding-bottom: 15px;
     }
+    &.no-brd {
+        border: none;
+    }
     &:before,
     &:after {
         display: table;
@@ -473,6 +476,14 @@ h3 {
             float: right;
         }
     }
+    &.shift-list{
+        ul{
+            li{
+                min-height: 65px;
+                border-bottom: 2px solid $light-gray;
+            }
+        }
+    }
 }
 
 .profile-reward {
@@ -759,4 +770,19 @@ h3 {
 
 .btn-ask{
     cursor: pointer;
+}
+
+.team-mates-avatar{
+    width: 100%;
+    @include block-nooverflow;
+    img{
+        float: right;
+        margin-left: -15px;
+        border: 2px solid #FFF;
+    }
+}
+.team-mates-count{
+    width: 100%;
+    @include block-nooverflow;
+    font-size: 12px;
 }

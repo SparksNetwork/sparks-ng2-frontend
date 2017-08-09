@@ -1,9 +1,57 @@
 <app-header-simple></app-header-simple>
 
-<p>Shift selector description</p>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="segment">
+      <p class="card-text">Now that you've been approved for Lucidity Crossroafs, let's set up your schedule.</p>
+    </div>
+  </div>
+</div>
 
 <app-selected-shifts></app-selected-shifts>
 
 <app-filter-shifts></app-filter-shifts>
 
 <app-shift-list></app-shift-list>
+
+
+  <!-- @TODO generate GENERAL CONTACT component -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="segment row">
+        <div class="col-xs-4">
+          <div id="event-contact" class="row">
+            <a class="btn-ask" (click)="openModal(qamodal)">
+              <div class="icon">
+                <span class="ic ic-question-sign"></span>
+              </div>
+              <div class="text">
+                <span>Ask Sparks</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-xs-8 bottom-nav">
+          <div class="btn-group" role="group">
+            <a href="#" class="btn btn-block btn-default">Previous</a>
+          </div>
+          <div class="btn-group" role="group">
+            <button type="submit" class="btn btn-block btn-default">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <ng-template #qamodal>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">&times;</button>
+    <h2 class="modal-title">Ask Sparks.Network/Ask The Organizer</h2>
+    <!-- <app-ask-question></app-ask-question> -->
+  </div>
+  <div class="modal-body">
+    <!-- <app-suggested-qa></app-suggested-qa> -->
+  </div>
+</ng-template>
