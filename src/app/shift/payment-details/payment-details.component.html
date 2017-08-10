@@ -1,3 +1,79 @@
-<p>
-  payment-details works!
-</p>
+<app-header-simple></app-header-simple>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="segment">
+      <p class="card-text">One final step, the payment, and your volunteering is ready and done.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="event-requirements">
+      <div class="col-xs-12 event-req-row">
+        <div class="row">
+          <ng-container>
+            <div class="col-xs-6">
+              <a href="#">
+                <!-- <app-card-item></app-card-item> -->
+                <div>
+                  <div class="icon">
+                    <span class="ic ic-paypal"></span>
+                  </div>
+                  <div class="text">
+                    <h4>PayPal</h4>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-xs-6">
+              <a href="#">
+                <!-- <app-card-item></app-card-item> -->
+                <div>
+                  <div class="icon">
+                    <span class="ic ic-credit-card"></span>
+                  </div>
+                  <div class="text">
+                    <h4>Credit Card</h4>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="segment">
+      <div class="checkbox">
+      <label><input type="checkbox" value="">Remember payment option</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- @TODO generate GENERAL CONTACT component -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="segment row">
+      <div class="col-xs-4">
+        <app-ask-action [askWho]="'The Organizer'" [modalTitle]="'Ask The Organizer'"></app-ask-action>
+      </div>
+
+      <div class="col-xs-8 bottom-nav">
+        <div class="btn-group" role="group">
+          <a href="#" class="btn btn-block btn-default">Previous</a>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="submit" class="btn btn-block btn-default">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

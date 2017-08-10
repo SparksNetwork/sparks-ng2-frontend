@@ -69,6 +69,10 @@ h3 {
     cursor: pointer;
 }
 
+label{
+    color: #A5A7A9;
+}
+
 
 /* General */
 
@@ -404,9 +408,18 @@ h3 {
         padding-bottom: 15px;
     
         border-right: 1px solid $light-gray;
-         // &:last-child {
-        //     border-bottom: none;
-        // }
+        &:nth-of-type(2) {
+            border-right: none;
+        }
+        &:nth-of-type(5) {
+            border-right: none;
+        }
+        &:nth-of-type(7) {
+            border-right: none;
+        }
+        &:nth-of-type(10) {
+            border-right: none;
+        }
         /* only two items */
         // &:first-child:nth-last-child(2),
         // &:first-child:nth-last-child(2) ~ li {

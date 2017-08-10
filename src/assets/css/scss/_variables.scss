@@ -60,9 +60,18 @@
     &.ic-circle,
     &.ic-delete,
     &.ic-commenting-o,
-    &.ic-bars{
+    &.ic-bars,
+    &.ic-paypal,
+    &.ic-credit-card{
     font-family: FontAwesome;
     }
+}
+
+.ic.ic-paypal::before {
+    content: "\f1ed";
+}
+.ic.ic-credit-card::before {
+    content: "\f09d";
 }
 
 .ic.ic-circle::before {
