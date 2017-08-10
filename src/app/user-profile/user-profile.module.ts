@@ -13,12 +13,11 @@ import { EditContactInfoComponent } from './edit-contact-info/edit-contact-info.
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ConfirmChangesComponent } from './confirm-changes/confirm-changes.component';
 import { PublicProfileComponent } from './public-profile/public-profile.component';
-import { UserProfileComponent } from "app/user-profile/user-profile.component";
-import { SharedModule } from "app/shared/shared.module";
+import { UserProfileComponent } from 'app/user-profile/user-profile.component';
+import { SharedModule } from 'app/shared/shared.module';
 import { BadgeListComponent } from './shared/badge-list/badge-list.component';
 import { TrophyListComponent } from './shared/trophy-list/trophy-list.component';
 import { AccoladeListComponent } from './shared/accolade-list/accolade-list.component';
-import { QuestsComponent } from './profile-activity-details/quests/quests.component';
 import { EventsHistoryComponent } from './shared/events-history/events-history.component';
 import { BadgeListDetailsComponent } from './badges/badge-list-details/badge-list-details.component';
 import { AccoladeListDetailsComponent } from './accolades/accolade-list-details/accolade-list-details.component';
@@ -28,6 +27,7 @@ import { CongratsAccoladesComponent } from './accolades/congrats-accolades/congr
 import { SelectBadgeComponent } from './badges/select-badge/select-badge.component';
 import { ConfirmBadgeComponent } from './badges/confirm-badge/confirm-badge.component';
 import { CongratsBadgeComponent } from './badges/congrats-badge/congrats-badge.component';
+import { QuestsComponent } from 'app/user-profile/quests/quests.component';
 
 @NgModule({
   imports: [
@@ -35,6 +35,11 @@ import { CongratsBadgeComponent } from './badges/congrats-badge/congrats-badge.c
     UserProfileRoutingModule,
     SharedModule
   ],
-  declarations: [UserProfileComponent, UserHeaderComponent, ProfileInfoComponent, BadgesComponent, TrophiesComponent, AccoladesComponent, ProfileActivityDetailsComponent, EditProfileDetailsComponent, EditContactInfoComponent, ChangePasswordComponent, ConfirmChangesComponent, PublicProfileComponent, BadgeListComponent, TrophyListComponent, AccoladeListComponent, QuestsComponent, EventsHistoryComponent, BadgeListDetailsComponent, AccoladeListDetailsComponent, TrophyListDetailsComponent, CongratsTrophyComponent, CongratsAccoladesComponent, SelectBadgeComponent, ConfirmBadgeComponent, CongratsBadgeComponent]
+  declarations: [UserProfileComponent, UserHeaderComponent, ProfileInfoComponent, BadgesComponent, TrophiesComponent,
+     AccoladesComponent, ProfileActivityDetailsComponent, EditProfileDetailsComponent, EditContactInfoComponent,
+     ChangePasswordComponent, ConfirmChangesComponent, PublicProfileComponent, BadgeListComponent, TrophyListComponent,
+     AccoladeListComponent, QuestsComponent, EventsHistoryComponent, BadgeListDetailsComponent, AccoladeListDetailsComponent,
+     TrophyListDetailsComponent, CongratsTrophyComponent, CongratsAccoladesComponent, SelectBadgeComponent,
+     ConfirmBadgeComponent, CongratsBadgeComponent]
 })
 export class UserProfileModule { }
