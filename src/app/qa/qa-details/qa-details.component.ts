@@ -1,6 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -9,14 +7,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 })
 export class QaDetailsComponent implements OnInit {
 
-  public modalRef: BsModalRef;
-
-  constructor(private modalService: BsModalService) { }
-
-  public openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
-
+  
+  constructor() { }
 
   ngOnInit() {
   }

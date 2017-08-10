@@ -1,32 +1,8 @@
-<ng-template #qamodal>
-  <div class="modal-header">
-    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">&times;</button>
-    <h2 class="modal-title">Safety Requirements Details</h2>
-  </div>
-  <div class="modal-body">
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque gravida nunc eu eros ultrices feugiat. Donec in viverra metus. Nam at lacus ornare, tincidunt eros ac, maximus elit. Integer ac consectetur enim. Nam ex eros, blandit sed ultrices eget, ullamcorper eget lorem. Aliquam non pellentesque enim. Nulla facilisi.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="modalRef.hide()">Return To Page</button>
-      </div>
-</ng-template>
-
-
-
 <!-- @TODO generate GENERAL CONTACT component -->
 <div class="col-xs-12" style="margin-top: 100px;">
   <div class="row segment">
     <div class="col-xs-4">
-      <div id="event-contact" class="row">
-        <a class="btn-ask" (click)="openModal(qamodal)">
-            <div class="icon">
-              <span class="ic ic-question-sign"></span>
-            </div>
-            <div class="text">
-              Ask Sparks
-            </div>
-          </a>
-      </div>
+     <app-ask-action [askWho]="'Sparks'" [modalTitle]="'Safety Requirements Details'"></app-ask-action>
     </div>
 
     <div class="col-xs-8 bottom-nav">

@@ -1,0 +1,33 @@
+<div class="row">
+  <a class="btn-ask" (click)="openModal(qamodal)">
+    <div class="icon">
+      <span class="ic ic-question-sign"></span>
+    </div>
+    <div class="text">
+      Ask {{askWho}}
+    </div>
+  </a>
+</div>
+
+<ng-template #qamodal>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">&times;</button>
+    <h2 class="modal-title">{{modalTitle}}</h2>
+  </div>
+  <div class="modal-body">
+      <div *ngIf="this.router.url === '/qa/1/details/1'">
+      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque gravida nunc eu eros ultrices feugiat. Donec in viverra
+      metus. Nam at lacus ornare, tincidunt eros ac, maximus elit. Integer ac consectetur enim. Nam ex eros, blandit sed
+      ultrices eget, ullamcorper eget lorem. Aliquam non pellentesque enim. Nulla facilisi.</p>
+      </div>
+      <div *ngIf="this.router.url === '/qa/1/confirm'">
+      <p class="card-text">Your application has been sent to the organizer. Watch you ingox for notice that you've been accepted, or just sign in to the Sparks.Network to check any time!</p>
+      </div>
+      <app-ask-question *ngIf="this.router.url !== '/qa/1/details/1' && this.router.url !== '/qa/1/confirm'"></app-ask-question>
+      <app-suggested-qa *ngIf="this.router.url !== '/qa/1/details/1' && this.router.url !== '/qa/1/confirm'"></app-suggested-qa>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Return To Page</button>
+  </div>
+</ng-template>
