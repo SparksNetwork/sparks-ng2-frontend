@@ -26,8 +26,8 @@ export class AskActionComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.askWho);
-    console.log( this.router.url );
+    // console.log(this.askWho);
+    // console.log( this.router.url );
   }
 
 }
