@@ -28,6 +28,8 @@ import { SelectBadgeComponent } from './badges/select-badge/select-badge.compone
 import { ConfirmBadgeComponent } from './badges/confirm-badge/confirm-badge.component';
 import { CongratsBadgeComponent } from './badges/congrats-badge/congrats-badge.component';
 import { QuestsComponent } from 'app/user-profile/quests/quests.component';
+import { QuestListDetailsComponent } from './quests/quest-list-details/quest-list-details.component';
+import { QuestListComponent } from './shared/quest-list/quest-list.component';
 
 @NgModule({
   imports: [
@@ -40,6 +42,6 @@ import { QuestsComponent } from 'app/user-profile/quests/quests.component';
      ChangePasswordComponent, ConfirmChangesComponent, PublicProfileComponent, BadgeListComponent, TrophyListComponent,
      AccoladeListComponent, QuestsComponent, EventsHistoryComponent, BadgeListDetailsComponent, AccoladeListDetailsComponent,
      TrophyListDetailsComponent, CongratsTrophyComponent, CongratsAccoladesComponent, SelectBadgeComponent,
-     ConfirmBadgeComponent, CongratsBadgeComponent]
+     ConfirmBadgeComponent, CongratsBadgeComponent, QuestListDetailsComponent, QuestListComponent]
 })
 export class UserProfileModule { }
