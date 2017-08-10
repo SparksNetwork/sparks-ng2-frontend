@@ -8,6 +8,10 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { CalendarPipe } from 'app/shared/pipes/calendar.pipe';
 import { QuestionComponent } from './question/question.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { AskActionComponent } from './ask-action/ask-action.component';
+
+import { AskQuestionComponent } from './ask-question/ask-question.component';
+import { SuggestedQaComponent } from './suggested-qa/suggested-qa.component';
 
 @NgModule({
   imports: [
@@ -17,11 +21,11 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   declarations: [
     HeaderSimpleComponent,
     HeaderCarouselComponent, CardItemComponent,
-    ScheduleComponent, CalendarPipe, QuestionComponent],
+    ScheduleComponent, CalendarPipe, QuestionComponent, AskActionComponent, AskQuestionComponent, SuggestedQaComponent],
   exports: [
     HeaderSimpleComponent,
     HeaderCarouselComponent, CardItemComponent,
-    ScheduleComponent, CalendarPipe
+    ScheduleComponent, CalendarPipe, AskActionComponent
   ]
 
 })
