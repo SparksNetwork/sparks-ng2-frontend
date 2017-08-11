@@ -1,3 +1,91 @@
-<p>
-  cancel-volunteering works!
-</p>
+<app-header-simple></app-header-simple>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="segment">
+      <p class="card-text">Work a few shifts during the event and get a massive ticket discount, special shwag, and meals from our delicious commissary.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- YOU WILL GET/ YOU WILL GIVE -->
+<!-- <app-opportunity-commitments *ngIf="opportunityCommitments" [benefits]="opportunityCommitments.benefits" [contributions]="opportunityCommitments.contributions"></app-opportunity-commitments> -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="you-will-give-got segment">
+      <h3>You Will Loose</h3>
+      <ul>
+        <li>
+          <div>
+            <div class="icon">
+              <span class="ic ic-cog"></span>
+            </div>
+            <div class="text">
+              <h4>1519 Karma Points</h4>
+              <p><span>Get Badges, Accolades, an more by volunteering through the Sparks.Network</span></p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="icon">
+              <span class="ic ic-cog"></span>
+            </div>
+            <div class="text">
+              <h4>1 Ticket - <span>$339 value</span></h4>
+              <p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit i can not lie</span></p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="icon">
+              <span class="ic ic-cog"></span>
+            </div>
+            <div class="text">
+              <h4>Gifts - <span>$25 value</span></h4>
+              <p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit i can not lie</span></p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="icon">
+              <span class="ic ic-cog"></span>
+            </div>
+            <div class="text">
+              <h4>3 Food Tickets - <span>$30 value</span></h4>
+              <p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit i can not lie</span></p>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- @TODO generate VISIT REQUIREMENTS component - similar to project-social  -->
+<div class="row">
+  <div class="col-xs-12">
+    <!--similar to <app-project-social></app-project-social>-->
+    <div class="page-social segment">
+      <a href="#" class="requirements-link">Visit the requirements page <span class="ic ic-link"></span></a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="col-xs-12">
+  <div class="row segment">
+    <div class="col-xs-5">
+      <app-ask-action [askWho]="'The Organizer'" [modalTitle]="'Ask The Organizer'"></app-ask-action>
+    </div>
+
+    <div class="col-xs-7">
+      <app-project-join></app-project-join>
+    </div>
+  </div>
+</div>
